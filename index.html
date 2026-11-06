@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -13,9 +13,7 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     min-height: 100vh;
@@ -99,9 +97,7 @@ body {
     transition: .3s;
 }
 
-.menu a:hover {
-    color: #aaa;
-}
+.menu a:hover { color: #aaa; }
 
 .nav-right {
     display: flex;
@@ -141,15 +137,12 @@ body {
     justify-content: center;
     text-align: center;
     padding: 170px 20px 60px;
-
     background:
         linear-gradient(rgba(0,0,0,.20), rgba(0,0,0,.60)),
         url("./Celestial Angel Gate Portal.png") center center / cover no-repeat !important;
 }
 
-.home-content {
-    max-width: 1100px;
-}
+.home-content { max-width: 1100px; }
 
 .year {
     color: #fff;
@@ -284,6 +277,41 @@ section {
     border: 1px solid #555;
 }
 
+/* BLACK FRIDAY TIMER */
+
+.bf-timer-box {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    padding: 25px;
+    text-align: center;
+    background: #080808;
+    border: 1px solid #555;
+}
+
+#bf-status {
+    color: #fff;
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+#bf-countdown {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.bf-locked {
+    opacity: .45;
+    filter: grayscale(1);
+}
+
+.bf-locked a {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 .tickets {
     max-width: 1000px;
     margin: auto;
@@ -387,9 +415,7 @@ section {
 
 /* PROGRAM */
 
-.program-section {
-    min-height: 100vh;
-}
+.program-section { min-height: 100vh; }
 
 .program-box {
     max-width: 1000px;
@@ -609,6 +635,16 @@ section {
         font-size:18px;
         letter-spacing:2px;
     }
+
+    #bf-status {
+        font-size:15px;
+        letter-spacing:2px;
+    }
+
+    #bf-countdown {
+        font-size:19px;
+        letter-spacing:1px;
+    }
 }
 </style>
 </head>
@@ -717,6 +753,13 @@ section {
 <section id="tickets">
 
     <h2 class="section-title">BLACK FRIDAY TICKETS</h2>
+
+    <!-- BLACK FRIDAY TIMER -->
+
+    <div class="bf-timer-box">
+        <h3 id="bf-status">BLACK FRIDAY STARTS IN</h3>
+        <div id="bf-countdown">00d : 00h : 00m : 00s</div>
+    </div>
 
     <div class="ticket-alert">
         ★ BLACK FRIDAY SPECIAL OFFERS ★
@@ -877,9 +920,11 @@ section {
 
 </section>
 
-<!-- COUNTDOWN SCRIPT -->
+<!-- COUNTDOWN SCRIPTS -->
 
 <script>
+
+/* FESTIVAL COUNTDOWN */
 
 const festivalDate =
     new Date("2027-07-15T18:00:00").getTime();
@@ -933,8 +978,65 @@ const timer = setInterval(function(){
 
 },1000);
 
+
+/* BLACK FRIDAY COUNTDOWN */
+
+const bfStart = new Date("2026-11-06T10:30:00").getTime();
+const bfEnd = new Date("2026-11-07T00:00:00").getTime();
+
+function updateBlackFriday() {
+
+    const now = Date.now();
+
+    const status = document.getElementById("bf-status");
+    const countdown = document.getElementById("bf-countdown");
+    const ticketCards = document.querySelectorAll(".ticket-card");
+
+    if (now >= bfEnd) {
+
+        status.textContent = "BLACK FRIDAY LOCKED";
+        countdown.textContent = "OFFERS CLOSED";
+
+        ticketCards.forEach(card => {
+            card.classList.add("bf-locked");
+
+            card.querySelectorAll("a").forEach(link => {
+                link.removeAttribute("href");
+                link.textContent = "LOCKED";
+            });
+        });
+
+        return;
+    }
+
+    let target;
+
+    if (now < bfStart) {
+        status.textContent = "BLACK FRIDAY STARTS IN";
+        target = bfStart;
+    } else {
+        status.textContent = "BLACK FRIDAY ENDS IN";
+        target = bfEnd;
+    }
+
+    const distance = target - now;
+
+    const days = Math.floor(distance / 86400000);
+    const hours = Math.floor((distance % 86400000) / 3600000);
+    const minutes = Math.floor((distance % 3600000) / 60000);
+    const seconds = Math.floor((distance % 60000) / 1000);
+
+    countdown.textContent =
+        String(days).padStart(2,"0") + "d : " +
+        String(hours).padStart(2,"0") + "h : " +
+        String(minutes).padStart(2,"0") + "m : " +
+        String(seconds).padStart(2,"0") + "s";
+}
+
+updateBlackFriday();
+setInterval(updateBlackFriday, 1000);
+
 </script>
 
 </body>
 </html>
-```
