@@ -526,33 +526,6 @@ section {
     letter-spacing: 4px;
 }
 
-/* MUSIC PLAY / PAUSE BUTTON */
-
-#musicButton {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 100000;
-    background: #000;
-    color: #00eaff;
-    border: 2px solid #00eaff;
-    padding: 14px 22px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #00eaff;
-    transition: .3s;
-}
-
-#musicButton:hover {
-    background: #00eaff;
-    color: #000;
-    box-shadow: 0 0 25px #00eaff;
-    transform: scale(1.05);
-}
-
 /* MOBILE */
 
 @media(max-width:600px) {
@@ -672,30 +645,23 @@ section {
         font-size:19px;
         letter-spacing:1px;
     }
-
-    #musicButton {
-        bottom: 15px;
-        right: 15px;
-        padding: 12px 17px;
-        font-size: 12px;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- MAIN MUSIC MP3 -->
+<!-- MAIN MUSIC -->
 
-<audio id="mainMusic" loop preload="auto">
-    <source src="./Video%20Project%201.mp3" type="audio/mpeg">
-</audio>
-
-<!-- PLAY / PAUSE BUTTON -->
-
-<button id="musicButton" type="button">
-    ▶ PLAY MUSIC
-</button>
+<video
+    id="mainMusic"
+    loop
+    playsinline
+    preload="auto"
+    style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left:0;bottom:0;"
+>
+    <source src="./Video%20Project%201.mp4" type="video/mp4">
+</video>
 
 <!-- TOP BAR -->
 
@@ -927,64 +893,40 @@ section {
 
 <script>
 
-/* MAIN MUSIC + PLAY / PAUSE */
+/* MAIN MUSIC */
 
 const mainMusic = document.getElementById("mainMusic");
-const musicButton = document.getElementById("musicButton");
 
 mainMusic.volume = 0.7;
 
 async function startMainMusic() {
+    if (!mainMusic.paused) return;
+
     try {
         await mainMusic.play();
+        console.log("Muzica RAVE FESTIVAL a pornit!");
     } catch (error) {
-        console.log("Browserul a blocat pornirea automată sau fișierul MP3 nu este disponibil:", error);
+        console.log("Redarea muzicii a fost blocată sau fișierul nu poate fi redat:", error);
     }
 }
-
-async function toggleMusic() {
-
-    if (mainMusic.paused) {
-
-        try {
-            await mainMusic.play();
-        } catch (error) {
-            console.error("Muzica nu a putut porni:", error);
-        }
-
-    } else {
-
-        mainMusic.pause();
-
-    }
-}
-
-/* ACTUALIZARE BUTON */
-
-mainMusic.addEventListener("play", function() {
-    musicButton.textContent = "⏸ PAUSE MUSIC";
-});
-
-mainMusic.addEventListener("pause", function() {
-    musicButton.textContent = "▶ PLAY MUSIC";
-});
-
-/* BUTON PLAY / PAUSE */
-
-musicButton.addEventListener("click", toggleMusic);
 
 /* ÎNCERCARE AUTOMATĂ */
 
-window.addEventListener("load", startMainMusic);
+startMainMusic();
 
-/* VERIFICARE MP3 */
+/* PORNIRE DUPĂ PRIMA INTERACȚIUNE */
+
+document.addEventListener("pointerdown", startMainMusic);
+document.addEventListener("keydown", startMainMusic);
+
+/* VERIFICARE FIȘIER */
 
 mainMusic.addEventListener("error", function() {
-    console.error("Eroare la încărcarea fișierului Video Project 1.mp3");
+    console.error("Eroare la încărcarea fișierului Video Project 1.mp4");
 });
 
 mainMusic.addEventListener("canplay", function() {
-    console.log("Fișierul MP3 este pregătit pentru redare.");
+    console.log("Fișierul video este pregătit pentru redare.");
 });
 
 
