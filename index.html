@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -490,7 +490,7 @@ section {
     font-weight: 900;
 }
 
-/* TRON */
+/* CELESTIAL ANGEL EDITION */
 
 .tron-section {
     display: flex;
@@ -524,6 +524,33 @@ section {
     font-size: 24px;
     font-weight: 900;
     letter-spacing: 4px;
+}
+
+/* MUSIC PLAY / PAUSE BUTTON */
+
+#musicButton {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 100000;
+    background: #000;
+    color: #00eaff;
+    border: 2px solid #00eaff;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00eaff;
+    transition: .3s;
+}
+
+#musicButton:hover {
+    background: #00eaff;
+    color: #000;
+    box-shadow: 0 0 25px #00eaff;
+    transform: scale(1.05);
 }
 
 /* MOBILE */
@@ -645,11 +672,30 @@ section {
         font-size:19px;
         letter-spacing:1px;
     }
+
+    #musicButton {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 17px;
+        font-size: 12px;
+    }
 }
 </style>
 </head>
 
 <body>
+
+<!-- MAIN MUSIC MP3 -->
+
+<audio id="mainMusic" loop preload="auto">
+    <source src="./Video%20Project%201.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PLAY / PAUSE BUTTON -->
+
+<button id="musicButton" type="button">
+    ▶ PLAY MUSIC
+</button>
 
 <!-- TOP BAR -->
 
@@ -667,7 +713,6 @@ section {
 <!-- NAVBAR -->
 
 <nav class="navbar">
-
     <div class="logo">RAVE FESTIVAL</div>
 
     <ul class="menu">
@@ -675,29 +720,21 @@ section {
         <li><a href="#tickets">BILETE</a></li>
         <li><a href="#artists">ARTIȘTI</a></li>
         <li><a href="#program">PROGRAM</a></li>
-        <li>
-            <a href="./RBL%20CHRISTMAS/index.html.html">
-                RBL CHRISTMAS
-            </a>
-        </li>
+        <li><a href="./RBL%20CHRISTMAS/index.html.html">RBL CHRISTMAS</a></li>
     </ul>
 
     <div class="nav-right">
         <div class="year-top">2027</div>
         <a href="join.html" class="join-button">JOIN RBL</a>
     </div>
-
 </nav>
 
 <!-- HOME -->
 
 <section class="home" id="home">
-
     <div class="home-content">
         <div class="year">2027</div>
-
         <h1 class="title">RAVE FESTIVAL</h1>
-
         <div class="subtitle">15–18 JULY 2027</div>
         <div class="subtitle">THE FUTURE IS HERE</div>
 
@@ -707,21 +744,17 @@ section {
             <a href="#program" class="home-button">PROGRAM</a>
         </div>
     </div>
-
 </section>
 
 <!-- COUNTDOWN -->
 
 <section class="countdown-section">
-
     <div class="countdown-box">
-
         <div class="countdown-title">
             RAVE FESTIVAL 2027 STARTS IN
         </div>
 
         <div id="countdown">
-
             <div class="countdown-item">
                 <span id="days">00</span>
                 <small>ZILE</small>
@@ -741,20 +774,14 @@ section {
                 <span id="seconds">00</span>
                 <small>SECUNDE</small>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
 <!-- BILETE -->
 
 <section id="tickets">
-
     <h2 class="section-title">BLACK FRIDAY TICKETS</h2>
-
-    <!-- BLACK FRIDAY TIMER -->
 
     <div class="bf-timer-box">
         <h3 id="bf-status">BLACK FRIDAY STARTS IN</h3>
@@ -768,37 +795,28 @@ section {
     <br><br>
 
     <div class="tickets">
-
         <div class="ticket-card">
             <h3>GENERAL ACCESS</h3>
             <div class="price">2 LEI</div>
             <a href="https://www.roblox.com/games/123235106040213/RBL-FESTIVAL#!/store"
-               class="home-button">
-                CUMPĂRĂ
-            </a>
+               class="home-button">CUMPĂRĂ</a>
         </div>
 
         <div class="ticket-card">
             <h3>VIP</h3>
             <div class="price">459 LEI</div>
             <a href="https://www.roblox.com/games/123235106040213/RBL-FESTIVAL#!/store"
-               class="home-button">
-                CUMPĂRĂ
-            </a>
+               class="home-button">CUMPĂRĂ</a>
         </div>
-
     </div>
-
 </section>
 
 <!-- ARTISTI -->
 
 <section id="artists">
-
     <h2 class="section-title">ARTIȘTI</h2>
 
     <div class="artists">
-
         <div class="artist artist-1"><span>MEDUZA</span></div>
         <div class="artist artist-2"><span>BABY GANG</span></div>
         <div class="artist artist-3"><span>AZTECA</span></div>
@@ -822,26 +840,21 @@ section {
         <div class="artist artist-21"><span>DENISA IOANA</span></div>
         <div class="artist artist-22"><span>INDUSTRY BABY</span></div>
         <div class="artist artist-23"><span>MIRA</span></div>
-
     </div>
-
 </section>
 
 <!-- PROGRAM -->
 
 <section class="program-section" id="program">
-
     <h2 class="section-title">PROGRAM LIVE</h2>
 
     <div class="program-box">
-
         <div class="program-live">
             <div class="live-indicator">• FESTIVAL PROGRAM</div>
         </div>
 
         <div class="program-day">
             <h3>15 JUL</h3>
-
             <div class="program-item"><span class="program-time">18:00</span><span class="program-artist">OPENING</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">MEDUZA</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">20:00</span><span class="program-artist">BABY GANG</span><span class="program-status">UPCOMING</span></div>
@@ -852,7 +865,6 @@ section {
 
         <div class="program-day">
             <h3>16 JUL</h3>
-
             <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">ZARA LARSSON</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">BORIS BREJCHA</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">23:00</span><span class="program-artist">FRED AGAIN..</span><span class="program-status">UPCOMING</span></div>
@@ -860,7 +872,6 @@ section {
 
         <div class="program-day">
             <h3>17 JUL</h3>
-
             <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">ANYMA</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">ANDRA</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">23:00</span><span class="program-artist">IRINA RIMES</span><span class="program-status">UPCOMING</span></div>
@@ -868,7 +879,6 @@ section {
 
         <div class="program-day">
             <h3>18 JUL</h3>
-
             <div class="program-item"><span class="program-time">18:00</span><span class="program-artist">ALBERT NBN</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">19:30</span><span class="program-artist">SKRILLEX</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">KISS FM</span><span class="program-status">UPCOMING</span></div>
@@ -880,49 +890,103 @@ section {
             <div class="program-item"><span class="program-time">03:00</span><span class="program-artist">INDUSTRY BABY</span><span class="program-status">UPCOMING</span></div>
             <div class="program-item"><span class="program-time">04:00</span><span class="program-artist">MIRA</span><span class="program-status">UPCOMING</span></div>
         </div>
-
     </div>
-
 </section>
 
-<!-- TRON -->
+<!-- CELESTIAL ANGEL EDITION -->
 
 <section class="tron-section">
-
     <div class="tron-content">
-
-        <h2 class="tron-title">TRON: LEGACY</h2>
+        <h2 class="tron-title">CELESTIAL ANGEL EDITION</h2>
 
         <p class="tron-text">
-            TRON: Legacy este o aventură SF futuristă
-            care te transportă într-o lume digitală
-            spectaculoasă, plină de lumini neon,
-            tehnologie avansată și curse electrizante.
+            RAVE FESTIVAL 2027 – Step into a breathtaking
+            celestial universe where heavenly angels,
+            divine light and electronic music come together.
+            Experience majestic angel gates, spectacular
+            visual effects and an unforgettable journey
+            through a world beyond imagination.
         </p>
 
         <p class="tron-slogan">
-            ENTER THE FUTURE • LIVE THE EXPERIENCE
+            ENTER THE CELESTIAL WORLD • LIVE THE EXPERIENCE
         </p>
-
     </div>
-
 </section>
 
 <!-- FINAL -->
 
 <section>
-
     <h2 class="section-title">RAVE FESTIVAL 2027</h2>
-
     <div style="text-align:center">
         <p class="subtitle">15–18 IULIE 2027</p>
     </div>
-
 </section>
 
-<!-- COUNTDOWN SCRIPTS -->
+<!-- SCRIPTS -->
 
 <script>
+
+/* MAIN MUSIC + PLAY / PAUSE */
+
+const mainMusic = document.getElementById("mainMusic");
+const musicButton = document.getElementById("musicButton");
+
+mainMusic.volume = 0.7;
+
+async function startMainMusic() {
+    try {
+        await mainMusic.play();
+    } catch (error) {
+        console.log("Browserul a blocat pornirea automată sau fișierul MP3 nu este disponibil:", error);
+    }
+}
+
+async function toggleMusic() {
+
+    if (mainMusic.paused) {
+
+        try {
+            await mainMusic.play();
+        } catch (error) {
+            console.error("Muzica nu a putut porni:", error);
+        }
+
+    } else {
+
+        mainMusic.pause();
+
+    }
+}
+
+/* ACTUALIZARE BUTON */
+
+mainMusic.addEventListener("play", function() {
+    musicButton.textContent = "⏸ PAUSE MUSIC";
+});
+
+mainMusic.addEventListener("pause", function() {
+    musicButton.textContent = "▶ PLAY MUSIC";
+});
+
+/* BUTON PLAY / PAUSE */
+
+musicButton.addEventListener("click", toggleMusic);
+
+/* ÎNCERCARE AUTOMATĂ */
+
+window.addEventListener("load", startMainMusic);
+
+/* VERIFICARE MP3 */
+
+mainMusic.addEventListener("error", function() {
+    console.error("Eroare la încărcarea fișierului Video Project 1.mp3");
+});
+
+mainMusic.addEventListener("canplay", function() {
+    console.log("Fișierul MP3 este pregătit pentru redare.");
+});
+
 
 /* FESTIVAL COUNTDOWN */
 
@@ -935,7 +999,6 @@ const timer = setInterval(function(){
     const distance = festivalDate - now;
 
     if(distance <= 0){
-
         clearInterval(timer);
 
         document.getElementById("countdown").innerHTML =
@@ -1040,3 +1103,4 @@ setInterval(updateBlackFriday, 1000);
 
 </body>
 </html>
+```
