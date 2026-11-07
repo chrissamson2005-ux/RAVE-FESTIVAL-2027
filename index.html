@@ -524,7 +524,7 @@ section:last-of-type {
     position: fixed;
     inset: 0;
     z-index: 100000;
-    background: rgba(2,5,18,.96);
+    background: #050914;
     backdrop-filter: blur(15px);
     align-items: center;
     justify-content: center;
@@ -559,24 +559,6 @@ section:last-of-type {
     color: #8eb8ff !important;
     font-weight: 900;
     letter-spacing: 2px;
-}
-
-.maintenance-button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    background: #4169e1;
-    color: white;
-    border: 1px solid #8eb8ff;
-    font-weight: 900;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.maintenance-button:hover {
-    background: #8eb8ff;
-    color: #050914;
-    box-shadow: 0 0 25px #4169e1;
 }
 
 /* MOBILE */
@@ -706,10 +688,10 @@ section:last-of-type {
     <div class="maintenance-box">
         <h1>RAVE FESTIVAL 2027</h1>
 
-        <p>WE ARE WORKING ON OUR WEBSITE!</p>
+        <p>WEBSITE UNDER MAINTENANCE</p>
 
         <p>
-            Our website is currently being updated
+            We are currently working on our website
             to prepare an amazing new experience.
         </p>
 
@@ -717,12 +699,9 @@ section:last-of-type {
             NOVEMBER 7 – NOVEMBER 13, 2026
         </p>
 
-        <p>THANK YOU FOR YOUR PATIENCE!</p>
+        <p>THE WEBSITE WILL BE BACK ON NOVEMBER 14.</p>
 
-        <button class="maintenance-button"
-                onclick="closeMaintenance()">
-            CONTINUE TO WEBSITE
-        </button>
+        <p>THANK YOU FOR YOUR PATIENCE!</p>
     </div>
 </div>
 
@@ -1054,17 +1033,36 @@ const timer = setInterval(function() {
 }, 1000);
 
 /* MAINTENANCE: NOVEMBER 7–13, 2026 */
-const today = new Date();
-const maintenanceStart = new Date(2026, 10, 7);
-const maintenanceEnd = new Date(2026, 10, 14);
+(function() {
+    const now = new Date();
 
-if (today >= maintenanceStart && today < maintenanceEnd) {
-    document.getElementById("maintenanceOverlay").style.display = "flex";
-}
+    // Ora României
+    const romaniaDate = new Date(
+        now.toLocaleString("en-US", {
+            timeZone: "Europe/Bucharest"
+        })
+    );
 
-function closeMaintenance() {
-    document.getElementById("maintenanceOverlay").style.display = "none";
-}
+    const year = romaniaDate.getFullYear();
+    const month = romaniaDate.getMonth();
+    const day = romaniaDate.getDate();
+
+    const maintenanceActive =
+        year === 2026 &&
+        month === 10 &&
+        day >= 7 &&
+        day <= 13;
+
+    if (maintenanceActive) {
+        document.getElementById("maintenanceOverlay").style.display = "flex";
+
+        // Împiedică derularea paginii în timpul mentenanței
+        document.body.style.overflow = "hidden";
+
+        // Oprește muzica în timpul mentenanței
+        mainMusic.pause();
+    }
+})();
 
 </script>
 
