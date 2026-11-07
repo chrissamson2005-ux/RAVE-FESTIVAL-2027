@@ -35,55 +35,6 @@ body {
     overflow-x: hidden;
 }
 
-/* DEVICE ACCESS BLOCK */
-.device-block {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 999999;
-    background:
-        radial-gradient(ellipse at center, #14264a, #050914 75%);
-    color: #fff;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 25px;
-}
-
-.device-block-content {
-    width: 100%;
-    max-width: 650px;
-    padding: 45px 25px;
-    background: linear-gradient(145deg, #101f3c, #080f20);
-    border: 1px solid #8eb8ff;
-    box-shadow: 0 0 35px rgba(65,105,225,.35);
-}
-
-.device-block h1 {
-    font-size: clamp(25px, 5vw, 42px);
-    letter-spacing: 3px;
-    margin-bottom: 25px;
-}
-
-.device-block h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.device-block p {
-    color: #cbd8f0;
-    font-size: 16px;
-    line-height: 1.8;
-    margin: 12px 0;
-}
-
-.device-block .device-date {
-    color: #a9c9ff;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-top: 25px;
-}
-
 /* NAVBAR */
 .navbar {
     position: fixed;
@@ -280,6 +231,118 @@ body {
     font-size: 13px;
     font-weight: 900;
     letter-spacing: 3px;
+}
+
+/* MYSTERY ARTIST POSTER */
+.artist-announcement-section {
+    padding: 35px 20px 65px;
+    background: linear-gradient(180deg,#050914,#081329);
+}
+
+.artist-announcement {
+    max-width: 650px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin: auto;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 35%, #294d91, transparent 55%),
+        linear-gradient(145deg, #14264a, #050914 75%);
+    border: 1px solid #8eb8ff;
+    box-shadow: 0 0 35px rgba(65,105,225,.35);
+}
+
+.artist-announcement::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(142,184,255,.35);
+    pointer-events: none;
+}
+
+.announcement-top,
+.announcement-center,
+.announcement-bottom {
+    position: relative;
+    z-index: 1;
+}
+
+.announcement-top {
+    color: #dce8ff;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+.announcement-silhouette {
+    width: 125px;
+    height: 125px;
+    margin: 15px auto;
+    border-radius: 50%;
+    background: radial-gradient(circle, #8eb8ff 0%, #4169e1 35%, #101f3c 75%);
+    box-shadow: 0 0 45px rgba(100,160,255,.5);
+}
+
+.announcement-center h2 {
+    font-size: clamp(25px, 5vw, 42px);
+    letter-spacing: 3px;
+    color: #fff;
+}
+
+.announcement-center p {
+    margin-top: 8px;
+    color: #a9c9ff;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.announcement-label {
+    color: #dce8ff;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.announcement-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.announcement-timer div {
+    min-width: 75px;
+    padding: 12px 8px;
+    background: rgba(8,15,32,.85);
+    border: 1px solid #668fff;
+}
+
+.announcement-timer span {
+    display: block;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.announcement-timer small {
+    color: #a9c9ff;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.announcement-footer {
+    margin-top: 15px;
+    color: #cbd8f0;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
 /* SECTIONS */
@@ -558,11 +621,58 @@ section {
     letter-spacing: 4px;
 }
 
-/* FINAL */
-section:last-of-type {
+/* DEVICE MAINTENANCE SCREEN */
+.device-block {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    min-height: 100vh;
+    overflow-y: auto;
     background:
-        radial-gradient(ellipse at 50% 0%,#14264a 0%,transparent 65%),
-        #050914;
+        radial-gradient(ellipse at 50% 15%,#1b376b,transparent 60%),
+        linear-gradient(180deg,#050914,#081329 55%,#050914);
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 18px;
+}
+
+.device-block-content {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    padding: 35px 22px;
+    background: linear-gradient(145deg,#101f3c,#080f20);
+    border: 1px solid #8eb8ff;
+    box-shadow: 0 0 35px rgba(65,105,225,.35);
+}
+
+.device-block h1 {
+    font-size: clamp(25px,5vw,42px);
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.device-block h2 {
+    color: #a9c9ff;
+    font-size: clamp(18px,4vw,27px);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.device-block p {
+    color: #dce8ff;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 12px 0;
+}
+
+.device-date {
+    color: #a9c9ff !important;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
 /* MOBILE */
@@ -669,24 +779,69 @@ section:last-of-type {
         font-size:18px;
         letter-spacing:2px;
     }
+
+    .artist-announcement {
+        padding: 18px;
+    }
+
+    .announcement-silhouette {
+        width: 90px;
+        height: 90px;
+    }
+
+    .announcement-timer {
+        gap: 7px;
+    }
+
+    .announcement-timer div {
+        min-width: 60px;
+    }
+
+    .announcement-timer span {
+        font-size: 23px;
+    }
+
+    .announcement-top {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .announcement-center p {
+        font-size: 17px;
+    }
+
+    .announcement-label {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+}
+
+/* FINAL */
+section:last-of-type {
+    background:
+        radial-gradient(ellipse at 50% 0%,#14264a 0%,transparent 65%),
+        #050914;
 }
 </style>
 </head>
 
 <body>
 
-<!-- DEVICE BLOCK MESSAGE -->
+<!-- DEVICE MAINTENANCE MESSAGE -->
 <div class="device-block" id="deviceBlock">
     <div class="device-block-content">
         <h1>RAVE FESTIVAL 2027</h1>
         <h2>WEBSITE UNDER MAINTENANCE</h2>
+
         <p>
             We are currently working on our website
             to prepare an amazing new experience.
         </p>
+
         <p class="device-date">
             NOVEMBER 7 – NOVEMBER 13, 2026
         </p>
+
         <p>THE WEBSITE WILL BE BACK ON NOVEMBER 14.</p>
         <p>THANK YOU FOR YOUR PATIENCE!</p>
     </div>
@@ -737,7 +892,7 @@ section:last-of-type {
     </div>
 </section>
 
-<!-- COUNTDOWN -->
+<!-- COUNTDOWN FESTIVAL -->
 <section class="countdown-section">
     <div class="countdown-box">
         <div class="countdown-title">
@@ -762,6 +917,50 @@ section:last-of-type {
                 <small>SECUNDE</small>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- MYSTERY ARTIST ANNOUNCEMENT -->
+<section class="artist-announcement-section" id="artistAnnouncement">
+    <div class="artist-announcement">
+
+        <div class="announcement-top">
+            RAVE FESTIVAL 2027
+        </div>
+
+        <div class="announcement-center">
+            <div class="announcement-silhouette"></div>
+            <h2>A NEW ARTIST</h2>
+            <p>IS COMING</p>
+        </div>
+
+        <div class="announcement-bottom">
+            <div class="announcement-label" id="announcementHeading">
+                ARTIST ANNOUNCEMENT IN
+            </div>
+
+            <div class="announcement-timer">
+                <div>
+                    <span id="announcementHours">00</span>
+                    <small>ORE</small>
+                </div>
+
+                <div>
+                    <span id="announcementMinutes">00</span>
+                    <small>MINUTE</small>
+                </div>
+
+                <div>
+                    <span id="announcementSeconds">00</span>
+                    <small>SECUNDE</small>
+                </div>
+            </div>
+
+            <p class="announcement-footer" id="announcementFooter">
+                TODAY • 22:40 • STAY TUNED
+            </p>
+        </div>
+
     </div>
 </section>
 
@@ -899,6 +1098,27 @@ section:last-of-type {
 <!-- SCRIPTS -->
 <script>
 
+/* DEVICE ACCESS CONTROL */
+(function () {
+    const ua = navigator.userAgent || "";
+
+    const isPhone =
+        /Android.*Mobile|iPhone|iPod|Windows Phone|Mobile/i.test(ua);
+
+    const isSmartTV =
+        /SmartTV|SMART-TV|HbbTV|Tizen|Web0S|webOS|NetCast|GoogleTV|Google TV|AppleTV/i.test(ua);
+
+    const isPS4 =
+        /PlayStation 4|PS4/i.test(ua);
+
+    const blockedDevice = isPhone || isSmartTV || isPS4;
+
+    if (blockedDevice) {
+        document.getElementById("deviceBlock").style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+})();
+
 /* MAIN MUSIC */
 const mainMusic = document.getElementById("mainMusic");
 mainMusic.volume = 0.7;
@@ -978,22 +1198,38 @@ const timer = setInterval(function() {
 
 }, 1000);
 
-/* DEVICE ACCESS CONTROL */
-(function () {
-    const ua = navigator.userAgent || "";
+/* MYSTERY ARTIST COUNTDOWN */
+function updateArtistAnnouncement() {
+    const target = new Date(
+        "2026-11-07T22:40:00+02:00"
+    ).getTime();
 
-    const blockedDevice =
-        /Android|iPhone|iPad|iPod|Mobile|Tablet|SmartTV|SMART-TV|HbbTV|Tizen|Web0S|webOS|NetCast|PlayStation 4|PlayStation 5|PS4|PS5|Xbox/i.test(ua);
+    const distance = Math.max(0, target - Date.now());
 
-    if (blockedDevice) {
-        document.getElementById("deviceBlock").style.display = "flex";
-        document.body.style.overflow = "hidden";
+    const hours = Math.floor(distance / 3600000);
+    const minutes = Math.floor((distance % 3600000) / 60000);
+    const seconds = Math.floor((distance % 60000) / 1000);
 
-        if (mainMusic) {
-            mainMusic.pause();
-        }
+    document.getElementById("announcementHours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("announcementMinutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("announcementSeconds").textContent =
+        String(seconds).padStart(2, "0");
+
+    if (distance <= 0) {
+        document.getElementById("announcementHeading").textContent =
+            "THE ANNOUNCEMENT IS HERE";
+
+        document.getElementById("announcementFooter").textContent =
+            "RAVE FESTIVAL 2027 • NEW ARTIST";
     }
-})();
+}
+
+updateArtistAnnouncement();
+setInterval(updateArtistAnnouncement, 1000);
 
 </script>
 
