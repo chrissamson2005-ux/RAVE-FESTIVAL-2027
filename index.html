@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -22,11 +21,8 @@ html{scroll-behavior:smooth;width:100%;overflow-x:hidden}
 }
 
 body{
-min-height:100vh;
-width:100%;
-background:
-linear-gradient(rgba(5,9,20,.48),rgba(5,9,20,.58)),
-url("./Celestial Angel Gate Portal.png") center center / cover fixed no-repeat;
+min-height:100vh;width:100%;
+background:linear-gradient(rgba(5,9,20,.48),rgba(5,9,20,.58)),url("./Celestial Angel Gate Portal.png") center center/cover fixed no-repeat;
 color:var(--luxury-white);
 font-family:Arial,Helvetica,sans-serif;
 overflow-x:hidden
@@ -42,8 +38,7 @@ padding:0 45px;background:rgba(5,12,29,.88);
 border-bottom:1px solid var(--luxury-border);
 box-shadow:0 5px 30px rgba(30,80,180,.18);
 backdrop-filter:blur(15px);
--webkit-backdrop-filter:blur(15px);
-z-index:9998
+-webkit-backdrop-filter:blur(15px);z-index:9998
 }
 .logo{color:#fff;font-size:24px;font-weight:900;letter-spacing:3px;text-shadow:0 0 15px rgba(100,160,255,.5)}
 .menu{display:flex;gap:30px;list-style:none}
@@ -51,18 +46,38 @@ z-index:9998
 .menu a:hover{color:var(--luxury-light);text-shadow:0 0 12px #4169e1}
 .nav-right{display:flex;align-items:center;gap:12px}
 .year-top{color:var(--luxury-light);font-size:21px;font-weight:900;letter-spacing:4px}
-.join-button{
-padding:12px 20px;color:#fff;text-decoration:none;font-size:14px;font-weight:900;
-border:1px solid #668fff;background:linear-gradient(135deg,#172b52,#0a142b);
-box-shadow:0 0 15px rgba(65,105,225,.2);transition:.3s
+
+/* ROBLOX PROFILE CARD */
+.roblox-profile{
+display:flex;align-items:center;gap:10px;
+min-width:190px;padding:7px 12px;
+color:#fff;text-decoration:none;
+background:linear-gradient(135deg,#172b52,#080f20);
+border:1px solid #668fff;
+box-shadow:0 0 15px rgba(65,105,225,.25);
+transition:.3s;cursor:pointer
 }
-.join-button:hover{background:#4169e1;box-shadow:0 0 25px rgba(65,105,225,.6)}
+.roblox-profile:hover{
+background:#193b75;border-color:#a9c9ff;
+box-shadow:0 0 22px rgba(65,105,225,.55)
+}
+.roblox-avatar{
+width:38px;height:38px;display:flex;
+align-items:center;justify-content:center;
+flex-shrink:0;background:linear-gradient(135deg,#4169e1,#8eb8ff);
+border:1px solid #c5dcff;border-radius:8px;
+font-size:20px;font-weight:900
+}
+.roblox-profile-info{display:flex;flex-direction:column;gap:4px}
+.roblox-profile-info strong{font-size:10px;letter-spacing:1px}
+.roblox-profile-info small{font-size:8px;color:#a9c9ff;letter-spacing:1px}
+.roblox-arrow{margin-left:auto;font-size:25px;color:#a9c9ff}
 
 /* HOME */
 .home{
 min-height:100vh;display:flex;align-items:center;justify-content:center;
 text-align:center;padding:120px 20px 60px;
-background:linear-gradient(rgba(0,5,20,.18),rgba(0,5,20,.42));
+background:linear-gradient(rgba(0,5,20,.18),rgba(0,5,20,.42))
 }
 .home-content{max-width:1100px;width:100%}
 .year{color:#dce8ff;font-size:25px;letter-spacing:8px;margin-bottom:15px}
@@ -78,16 +93,16 @@ box-shadow:0 0 15px rgba(65,105,225,.2);transition:.3s
 .home-button:hover{background:#4169e1;transform:translateY(-3px);box-shadow:0 0 25px rgba(65,105,225,.5)}
 
 /* COUNTDOWN */
-.countdown-section{
-min-height:auto;padding:40px 20px;
-background:rgba(5,9,20,.35)
+.countdown-section{min-height:auto;padding:40px 20px;background:rgba(5,9,20,.35)}
+.countdown-layout{
+max-width:1200px;margin:auto;
+display:flex;align-items:center;justify-content:center;gap:22px
 }
 .countdown-box{
-max-width:1000px;margin:auto;padding:35px 20px;text-align:center;
+flex:1;max-width:1000px;margin:auto;padding:35px 20px;text-align:center;
 background:linear-gradient(145deg,rgba(16,31,60,.88),rgba(8,15,32,.88));
 border:1px solid var(--luxury-border);box-shadow:0 0 30px rgba(35,80,180,.15);
-backdrop-filter:blur(5px);
--webkit-backdrop-filter:blur(5px)
+backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)
 }
 .countdown-title{margin-bottom:25px;color:#dce8ff;font-size:22px;font-weight:900;letter-spacing:4px}
 #countdown{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
@@ -96,26 +111,18 @@ backdrop-filter:blur(5px);
 .countdown-item small{display:block;margin-top:10px;color:#c2d4f5;font-size:13px;font-weight:900;letter-spacing:3px}
 
 /* SECTIONS */
-section{
-min-height:100vh;padding:120px 30px 100px;
-background:rgba(5,9,20,.34)
-}
+section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .section-title{text-align:center;font-size:45px;margin-bottom:50px;letter-spacing:5px;color:#e5edff;text-shadow:0 0 18px rgba(100,150,255,.35)}
 
 /* TICKETS */
-#tickets{
-min-height:100vh;
-background:rgba(5,12,29,.38);
-padding:120px 30px 100px
-}
+#tickets{min-height:100vh;background:rgba(5,12,29,.38);padding:120px 30px 100px}
 #tickets .section-title{color:#e5edff}
 .tickets{max-width:1000px;margin:auto;display:flex;justify-content:center;gap:25px;flex-wrap:wrap}
 .ticket-card{
 width:280px;padding:35px 25px;text-align:center;
 background:linear-gradient(145deg,rgba(23,45,84,.91),rgba(9,19,41,.91));
 border:1px solid #4269ad;box-shadow:0 10px 35px rgba(0,0,0,.3);transition:.3s;
-backdrop-filter:blur(5px);
--webkit-backdrop-filter:blur(5px)
+backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)
 }
 .ticket-card:hover{transform:translateY(-8px);border-color:#9fc4ff;box-shadow:0 0 25px rgba(65,105,225,.35)}
 .ticket-card h3{font-size:24px;margin-bottom:15px;color:#e8f0ff}
@@ -159,7 +166,7 @@ background-size:cover;background-position:center;background-repeat:no-repeat;tra
 .artist-21{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./DenisaIoana.png")}
 .artist-22{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./IndustryBaby.png")}
 .artist-23{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Mira.png")}
-.artist-24{background-image:linear-gradient(135deg,#14264a,#050914)}
+.artist-24{background:linear-gradient(135deg,#14264a,#050914)}
 
 /* PROGRAM */
 .program-section{min-height:100vh;background:rgba(5,9,20,.35)}
@@ -167,8 +174,7 @@ background-size:cover;background-position:center;background-repeat:no-repeat;tra
 max-width:1000px;margin:auto;padding:35px;
 background:linear-gradient(145deg,rgba(16,31,60,.91),rgba(8,15,32,.91));
 border:1px solid var(--luxury-border);box-shadow:0 0 25px rgba(30,70,150,.15);
-backdrop-filter:blur(5px);
--webkit-backdrop-filter:blur(5px)
+backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)
 }
 .program-live{text-align:center;margin-bottom:35px}
 .live-indicator{display:inline-block;padding:10px 20px;border:1px solid #8eb8ff;color:#c9ddff;font-weight:900;letter-spacing:3px}
@@ -181,10 +187,7 @@ backdrop-filter:blur(5px);
 .program-status{min-width:90px;text-align:right;color:#9eafd0;font-size:9px;font-weight:900}
 
 /* CELESTIAL */
-.tron-section{
-display:flex;align-items:center;justify-content:center;text-align:center;
-background:rgba(5,9,20,.32)
-}
+.tron-section{display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(5,9,20,.32)}
 .tron-content{max-width:950px;margin:auto}
 .tron-title{color:#e5edff;font-size:50px;letter-spacing:6px;margin-bottom:30px;text-shadow:0 0 20px rgba(100,150,255,.4)}
 .tron-text{color:#cbd8f0;font-size:19px;line-height:1.8;margin-bottom:30px}
@@ -194,26 +197,42 @@ section:last-of-type{background:rgba(5,9,20,.35)}
 /* MAINTENANCE */
 .maintenance-overlay{
 display:none;position:fixed;inset:0;z-index:100000;
-background:rgba(5,9,20,.48);
-backdrop-filter:blur(3px);
--webkit-backdrop-filter:blur(3px);
-align-items:flex-start;justify-content:center;
+background:rgba(5,9,20,.48);backdrop-filter:blur(3px);
+-webkit-backdrop-filter:blur(3px);align-items:flex-start;justify-content:center;
 padding:25px 15px;overflow-y:auto
 }
 .maintenance-content{
-width:100%;max-width:650px;display:flex;flex-direction:column;
+width:100%;max-width:900px;display:flex;flex-direction:column;
 align-items:center;gap:25px;margin:auto;position:relative;z-index:2
 }
 .maintenance-box{
-width:100%;max-width:600px;padding:35px 25px;text-align:center;
+width:100%;max-width:850px;padding:35px 25px;
+display:flex;align-items:center;justify-content:space-between;gap:25px;
+text-align:center;
 background:linear-gradient(145deg,rgba(20,38,74,.88),rgba(8,15,32,.88));
 border:1px solid #668fff;box-shadow:0 0 45px rgba(65,105,225,.35);
-backdrop-filter:blur(5px);
--webkit-backdrop-filter:blur(5px)
+backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)
 }
-.maintenance-box h1{color:#fff;font-size:32px;letter-spacing:3px;margin-bottom:20px}
-.maintenance-box p{color:#cbd8f0;font-size:17px;line-height:1.7;margin-bottom:15px}
+.maintenance-message{flex:1;min-width:0;text-align:center}
+.maintenance-message h1{color:#fff;font-size:32px;letter-spacing:3px;margin-bottom:20px}
+.maintenance-message p{color:#cbd8f0;font-size:17px;line-height:1.7;margin-bottom:15px}
 .maintenance-date{color:#8eb8ff!important;font-weight:900;letter-spacing:2px}
+
+/* CONTINUE BUTTON */
+.continue-button{
+display:none;flex-shrink:0;padding:18px 28px;
+color:#fff;background:linear-gradient(135deg,#4169e1,#172b52);
+border:1px solid #8eb8ff;font-size:15px;font-weight:900;
+letter-spacing:3px;cursor:pointer;white-space:nowrap;
+box-shadow:0 0 25px rgba(65,105,225,.5);transition:.3s
+}
+.continue-button:hover{
+background:#4169e1;box-shadow:0 0 35px #4169e1;
+transform:translateY(-3px)
+}
+@media(min-width:1025px) and (hover:hover) and (pointer:fine){
+.continue-button{display:block}
+}
 
 /* POSTER */
 .maintenance-poster{
@@ -222,23 +241,11 @@ display:flex;flex-direction:column;justify-content:space-between;align-items:cen
 background:radial-gradient(ellipse at 50% 42%,rgba(65,105,225,.55),transparent 55%),linear-gradient(145deg,#172d54,#050914 80%);
 border:1px solid #8eb8ff;box-shadow:0 0 35px rgba(65,105,225,.35)
 }
-.maintenance-poster::before{
-content:"";position:absolute;inset:0;
-background:linear-gradient(120deg,transparent 25%,rgba(142,184,255,.13) 50%,transparent 75%),radial-gradient(ellipse at 50% 100%,rgba(65,105,225,.3),transparent 60%);
-pointer-events:none
-}
+.maintenance-poster::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(142,184,255,.13) 50%,transparent 75%),radial-gradient(ellipse at 50% 100%,rgba(65,105,225,.3),transparent 60%);pointer-events:none}
 .poster-top{position:relative;z-index:3;color:#a9c9ff;font-size:12px;font-weight:900;letter-spacing:4px}
-.poster-silhouette{
-position:absolute;inset:15% 0 15%;
-background:radial-gradient(ellipse at 50% 25%,#02040a 0 10%,transparent 10.5%),radial-gradient(ellipse at 50% 75%,#02040a 0 27%,transparent 27.5%);
-filter:drop-shadow(0 0 18px rgba(0,0,0,.9));opacity:.96
-}
-.poster-silhouette::after{
-content:"";position:absolute;inset:0;
-background:linear-gradient(70deg,transparent 30%,rgba(142,184,255,.18) 50%,transparent 70%);
-clip-path:polygon(42% 20%,58% 20%,78% 100%,22% 100%)
-}
-.poster-title{position:relative;z-index:3;margin:auto 0;text-shadow:0 0 20px #000}
+.poster-silhouette{position:absolute;inset:15% 0 15%;background:radial-gradient(ellipse at 50% 25%,#02040a 0 10%,transparent 10.5%),radial-gradient(ellipse at 50% 75%,#02040a 0 27%,transparent 27.5%);filter:drop-shadow(0 0 18px rgba(0,0,0,.9));opacity:.96}
+.poster-silhouette::after{content:"";position:absolute;inset:0;background:linear-gradient(70deg,transparent 30%,rgba(142,184,255,.18) 50%,transparent 70%);clip-path:polygon(42% 20%,58% 20%,78% 100%,22% 100%)}
+.poster-title{position:relative;z-index:3;margin:auto 0}
 .poster-title h2{color:white;font-size:clamp(25px,5vw,38px);font-weight:900;letter-spacing:2px}
 .poster-title p{color:#c6dcff;font-weight:900;letter-spacing:5px;margin-top:8px}
 .poster-countdown{position:relative;z-index:3;width:100%}
@@ -249,22 +256,18 @@ clip-path:polygon(42% 20%,58% 20%,78% 100%,22% 100%)
 .poster-timer small{color:#a9c9ff;font-size:9px}
 .poster-countdown>p{margin-top:12px;color:#a9c9ff;font-size:10px;font-weight:900;letter-spacing:2px}
 
-/* RESPONSIVE - MOBILE */
+/* RESPONSIVE */
 @media(max-width:600px){
-.navbar{
-position:relative;
-height:auto;
-min-height:60px;
-padding:12px 10px;
-flex-direction:column;
-gap:12px
-}
+.navbar{position:relative;height:auto;min-height:60px;padding:12px 10px;flex-direction:column;gap:12px}
 .logo{font-size:17px;letter-spacing:1px}
 .menu{gap:10px;justify-content:center;flex-wrap:wrap}
 .menu a{font-size:10px;letter-spacing:1px}
-.nav-right{justify-content:center}
+.nav-right{justify-content:center;flex-wrap:wrap}
 .year-top{font-size:14px;letter-spacing:2px}
-.join-button{padding:8px 10px;font-size:10px}
+.roblox-profile{min-width:170px;padding:6px 9px}
+.roblox-avatar{width:32px;height:32px}
+.roblox-profile-info strong{font-size:9px}
+.roblox-profile-info small{font-size:7px}
 .home{min-height:80vh;padding:65px 12px 45px}
 .year{font-size:18px;letter-spacing:4px}
 .title{font-size:clamp(32px,10vw,55px);letter-spacing:2px}
@@ -295,10 +298,11 @@ section,#tickets{padding:75px 12px 60px}
 .tron-slogan{font-size:17px;letter-spacing:2px}
 .maintenance-overlay{padding:15px 10px}
 .maintenance-content{gap:18px}
-.maintenance-box{padding:28px 15px}
-.maintenance-box h1{font-size:23px}
-.maintenance-box p{font-size:14px}
+.maintenance-box{padding:28px 15px;flex-direction:column}
+.maintenance-message h1{font-size:23px}
+.maintenance-message p{font-size:14px}
 .maintenance-date{font-size:13px}
+.continue-button{display:none!important}
 .maintenance-poster{width:min(100%,380px);padding:18px}
 .poster-top{font-size:10px;letter-spacing:3px}
 .poster-title h2{font-size:27px}
@@ -309,20 +313,26 @@ section,#tickets{padding:75px 12px 60px}
 .poster-timer small{font-size:8px}
 }
 
-/* TABLETS */
 @media(min-width:601px) and (max-width:1024px){
 .navbar{padding:12px 18px;gap:12px}
 .menu{gap:13px}
 .menu a{font-size:11px;letter-spacing:1px}
 .logo{font-size:18px}
 .year-top{font-size:16px}
-.join-button{padding:10px 12px;font-size:11px}
+.roblox-profile{padding:7px 9px;min-width:165px}
+.roblox-profile-info strong{font-size:9px}
+.roblox-profile-info small{font-size:7px}
 .artists{grid-template-columns:repeat(3,minmax(0,1fr))}
 .artist{min-height:260px}
 .ticket-card{width:45%}
+.maintenance-box{flex-direction:column}
+.continue-button{display:none!important}
 }
 
-/* LARGE TV SCREENS */
+@media(max-width:1024px),(pointer:coarse){
+.continue-button{display:none!important}
+}
+
 @media(min-width:1600px){
 .home-content,.tickets,.artists,.program-box,.tron-content{max-width:1500px}
 .title{font-size:130px}
@@ -330,13 +340,11 @@ section,#tickets{padding:75px 12px 60px}
 .navbar{padding-left:70px;padding-right:70px}
 }
 
-/* LANDSCAPE SMALL SCREENS */
 @media(orientation:landscape) and (max-height:500px){
 .home{min-height:100vh;padding-top:80px}
 .navbar{min-height:55px}
 }
 
-/* REDUCED MOTION */
 @media(prefers-reduced-motion:reduce){
 html{scroll-behavior:auto}
 .ticket-card,.artist,.home-button{transition:none}
@@ -349,13 +357,20 @@ html{scroll-behavior:auto}
 <!-- MAINTENANCE -->
 <div class="maintenance-overlay" id="maintenanceOverlay">
 <div class="maintenance-content">
+
 <div class="maintenance-box">
+<div class="maintenance-message">
 <h1>RAVE FESTIVAL 2027</h1>
 <p>WEBSITE UNDER MAINTENANCE</p>
 <p>We are currently working on our website to prepare an amazing new experience.</p>
 <p class="maintenance-date">NOVEMBER 7 – NOVEMBER 13, 2026</p>
 <p>THE WEBSITE WILL BE BACK ON NOVEMBER 14.</p>
 <p>THANK YOU FOR YOUR PATIENCE!</p>
+</div>
+
+<button class="continue-button" id="continueButton" type="button">
+CONTINUE →
+</button>
 </div>
 
 <div class="maintenance-poster">
@@ -375,6 +390,7 @@ html{scroll-behavior:auto}
 <p id="maintenanceFooter">TODAY • 22:40 • STAY TUNED</p>
 </div>
 </div>
+
 </div>
 </div>
 
@@ -394,9 +410,18 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 <li><a href="#program">PROGRAM</a></li>
 <li><a href="./RBL%20CHRISTMAS/index.html.html">RBL CHRISTMAS</a></li>
 </ul>
+
 <div class="nav-right">
 <div class="year-top">2027</div>
-<a href="join.html" class="join-button">JOIN RBL</a>
+
+<a href="#" class="roblox-profile" id="robloxProfileLink">
+<div class="roblox-avatar" id="robloxAvatar">R</div>
+<div class="roblox-profile-info">
+<strong>CONNECT YOUR ACCOUNT</strong>
+<small id="robloxProfileStatus">ROBLOX • DIRECT PROFILE</small>
+</div>
+<span class="roblox-arrow">›</span>
+</a>
 </div>
 </nav>
 
@@ -417,6 +442,7 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 
 <!-- COUNTDOWN -->
 <section class="countdown-section">
+<div class="countdown-layout">
 <div class="countdown-box">
 <div class="countdown-title">RAVE FESTIVAL 2027 STARTS IN</div>
 <div id="countdown">
@@ -424,6 +450,7 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 <div class="countdown-item"><span id="hours">00</span><small>ORE</small></div>
 <div class="countdown-item"><span id="minutes">00</span><small>MINUTE</small></div>
 <div class="countdown-item"><span id="seconds">00</span><small>SECUNDE</small></div>
+</div>
 </div>
 </div>
 </section>
@@ -546,15 +573,12 @@ through a world beyond imagination.
 </section>
 
 <script>
-/* ALL DEVICES ALLOWED */
-
 /* MAIN MUSIC */
 const mainMusic=document.getElementById("mainMusic");
 mainMusic.volume=.7;
 
 async function startMainMusic(){
     if(!mainMusic.paused)return;
-
     try{
         await mainMusic.play();
         console.log("Muzica RAVE FESTIVAL a pornit!");
@@ -573,6 +597,68 @@ mainMusic.addEventListener("error",()=>{
 
 mainMusic.addEventListener("canplay",()=>{
     console.log("Fișierul video este pregătit pentru redare.");
+});
+
+/* ROBLOX PROFILE - FIECARE VIZITATOR */
+const robloxProfileLink=document.getElementById("robloxProfileLink");
+const robloxProfileStatus=document.getElementById("robloxProfileStatus");
+const robloxAvatar=document.getElementById("robloxAvatar");
+
+/* Profilul tău este valoarea inițială */
+const defaultRobloxProfile="https://www.roblox.com/users/6086630546/profile";
+
+const savedRobloxProfile=localStorage.getItem("raveFestivalRobloxProfile");
+
+function isValidRobloxProfile(link){
+    try{
+        const url=new URL(link);
+        return url.protocol==="https:" &&
+        (url.hostname==="www.roblox.com" || url.hostname==="roblox.com") &&
+        /^\/users\/\d+\/profile\/?$/.test(url.pathname);
+    }catch(error){
+        return false;
+    }
+}
+
+function updateRobloxCard(profile){
+    robloxProfileLink.href=profile;
+    robloxProfileLink.target="_blank";
+    robloxProfileLink.rel="noopener noreferrer";
+    robloxProfileStatus.textContent="ROBLOX • PROFILE CONNECTED";
+    robloxAvatar.textContent="R";
+}
+
+/* Dacă vizitatorul are deja un profil salvat */
+if(savedRobloxProfile && isValidRobloxProfile(savedRobloxProfile)){
+    updateRobloxCard(savedRobloxProfile);
+}else{
+    updateRobloxCard(defaultRobloxProfile);
+}
+
+/* Click pe card */
+robloxProfileLink.addEventListener("click",function(event){
+    event.preventDefault();
+
+    const currentProfile=localStorage.getItem("raveFestivalRobloxProfile");
+
+    const enteredProfile=prompt(
+        "CONNECT YOUR ROBLOX ACCOUNT\n\nIntrodu linkul profilului tău Roblox:",
+        currentProfile || defaultRobloxProfile
+    );
+
+    if(enteredProfile===null)return;
+
+    const cleanProfile=enteredProfile.trim();
+
+    if(!isValidRobloxProfile(cleanProfile)){
+        alert("Link invalid! Introdu un link de profil Roblox valid.");
+        return;
+    }
+
+    localStorage.setItem("raveFestivalRobloxProfile",cleanProfile);
+    updateRobloxCard(cleanProfile);
+
+    window.open(cleanProfile,"_blank","noopener,noreferrer");
 });
 
 /* COUNTDOWN ARTIST */
@@ -600,23 +686,19 @@ const festivalDate=new Date("2027-07-15T18:00:00+03:00").getTime();
 
 function updateFestivalCountdown(){
 const distance=festivalDate-Date.now();
-
 if(distance<=0){
 document.getElementById("countdown").innerHTML="<div style='color:#fff;font-size:30px;font-weight:900'>RAVE FESTIVAL A ÎNCEPUT!</div>";
 return;
 }
-
 const days=Math.floor(distance/(1000*60*60*24));
 const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
 const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
 const seconds=Math.floor((distance%(1000*60))/1000);
-
 document.getElementById("days").textContent=String(days).padStart(2,"0");
 document.getElementById("hours").textContent=String(hours).padStart(2,"0");
 document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
 document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
 }
-
 updateFestivalCountdown();
 setInterval(updateFestivalCountdown,1000);
 
@@ -625,13 +707,10 @@ setInterval(updateFestivalCountdown,1000);
 const romaniaDate=new Date(
 new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"})
 );
-
 const year=romaniaDate.getFullYear();
 const month=romaniaDate.getMonth();
 const day=romaniaDate.getDate();
-
-const maintenanceActive=
-year===2026&&month===10&&day>=7&&day<=13;
+const maintenanceActive=year===2026&&month===10&&day>=7&&day<=13;
 
 if(maintenanceActive){
 document.getElementById("maintenanceOverlay").style.display="flex";
@@ -639,6 +718,12 @@ document.body.style.overflow="hidden";
 mainMusic.pause();
 }
 })();
+
+/* CONTINUE BUTTON */
+document.getElementById("continueButton").addEventListener("click",function(){
+    document.getElementById("maintenanceOverlay").style.display="none";
+    document.body.style.overflow="";
+});
 </script>
 </body>
 </html>
