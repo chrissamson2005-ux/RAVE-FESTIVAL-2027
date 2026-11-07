@@ -1,13 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050914">
 <title>RAVE FESTIVAL 2027</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;width:100%;overflow-x:hidden}
 
 :root{
 --luxury-bg:#050914;
@@ -21,6 +23,7 @@ html{scroll-behavior:smooth}
 
 body{
 min-height:100vh;
+width:100%;
 background:
 linear-gradient(rgba(5,9,20,.48),rgba(5,9,20,.58)),
 url("./Celestial Angel Gate Portal.png") center center / cover fixed no-repeat;
@@ -29,6 +32,8 @@ font-family:Arial,Helvetica,sans-serif;
 overflow-x:hidden
 }
 
+img,video,iframe{max-width:100%}
+
 /* NAVBAR */
 .navbar{
 position:fixed;top:0;left:0;width:100%;min-height:70px;
@@ -36,7 +41,9 @@ display:flex;align-items:center;justify-content:space-between;
 padding:0 45px;background:rgba(5,12,29,.88);
 border-bottom:1px solid var(--luxury-border);
 box-shadow:0 5px 30px rgba(30,80,180,.18);
-backdrop-filter:blur(15px);z-index:9998
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+z-index:9998
 }
 .logo{color:#fff;font-size:24px;font-weight:900;letter-spacing:3px;text-shadow:0 0 15px rgba(100,160,255,.5)}
 .menu{display:flex;gap:30px;list-style:none}
@@ -57,9 +64,9 @@ min-height:100vh;display:flex;align-items:center;justify-content:center;
 text-align:center;padding:120px 20px 60px;
 background:linear-gradient(rgba(0,5,20,.18),rgba(0,5,20,.42));
 }
-.home-content{max-width:1100px}
+.home-content{max-width:1100px;width:100%}
 .year{color:#dce8ff;font-size:25px;letter-spacing:8px;margin-bottom:15px}
-.title{font-size:clamp(50px,9vw,120px);font-weight:900;letter-spacing:8px;color:#fff;text-shadow:0 0 25px rgba(100,160,255,.5)}
+.title{font-size:clamp(50px,9vw,120px);font-weight:900;letter-spacing:8px;color:#fff;text-shadow:0 0 25px rgba(100,160,255,.5);overflow-wrap:anywhere}
 .subtitle{margin-top:20px;color:#d2ddf5;font-size:20px;letter-spacing:5px}
 .home-buttons{margin-top:40px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
 .home-button{
@@ -79,7 +86,8 @@ background:rgba(5,9,20,.35)
 max-width:1000px;margin:auto;padding:35px 20px;text-align:center;
 background:linear-gradient(145deg,rgba(16,31,60,.88),rgba(8,15,32,.88));
 border:1px solid var(--luxury-border);box-shadow:0 0 30px rgba(35,80,180,.15);
-backdrop-filter:blur(5px)
+backdrop-filter:blur(5px);
+-webkit-backdrop-filter:blur(5px)
 }
 .countdown-title{margin-bottom:25px;color:#dce8ff;font-size:22px;font-weight:900;letter-spacing:4px}
 #countdown{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
@@ -106,7 +114,8 @@ padding:120px 30px 100px
 width:280px;padding:35px 25px;text-align:center;
 background:linear-gradient(145deg,rgba(23,45,84,.91),rgba(9,19,41,.91));
 border:1px solid #4269ad;box-shadow:0 10px 35px rgba(0,0,0,.3);transition:.3s;
-backdrop-filter:blur(5px)
+backdrop-filter:blur(5px);
+-webkit-backdrop-filter:blur(5px)
 }
 .ticket-card:hover{transform:translateY(-8px);border-color:#9fc4ff;box-shadow:0 0 25px rgba(65,105,225,.35)}
 .ticket-card h3{font-size:24px;margin-bottom:15px;color:#e8f0ff}
@@ -158,7 +167,8 @@ background-size:cover;background-position:center;background-repeat:no-repeat;tra
 max-width:1000px;margin:auto;padding:35px;
 background:linear-gradient(145deg,rgba(16,31,60,.91),rgba(8,15,32,.91));
 border:1px solid var(--luxury-border);box-shadow:0 0 25px rgba(30,70,150,.15);
-backdrop-filter:blur(5px)
+backdrop-filter:blur(5px);
+-webkit-backdrop-filter:blur(5px)
 }
 .program-live{text-align:center;margin-bottom:35px}
 .live-indicator{display:inline-block;padding:10px 20px;border:1px solid #8eb8ff;color:#c9ddff;font-weight:900;letter-spacing:3px}
@@ -186,6 +196,7 @@ section:last-of-type{background:rgba(5,9,20,.35)}
 display:none;position:fixed;inset:0;z-index:100000;
 background:rgba(5,9,20,.48);
 backdrop-filter:blur(3px);
+-webkit-backdrop-filter:blur(3px);
 align-items:flex-start;justify-content:center;
 padding:25px 15px;overflow-y:auto
 }
@@ -197,7 +208,8 @@ align-items:center;gap:25px;margin:auto;position:relative;z-index:2
 width:100%;max-width:600px;padding:35px 25px;text-align:center;
 background:linear-gradient(145deg,rgba(20,38,74,.88),rgba(8,15,32,.88));
 border:1px solid #668fff;box-shadow:0 0 45px rgba(65,105,225,.35);
-backdrop-filter:blur(5px)
+backdrop-filter:blur(5px);
+-webkit-backdrop-filter:blur(5px)
 }
 .maintenance-box h1{color:#fff;font-size:32px;letter-spacing:3px;margin-bottom:20px}
 .maintenance-box p{color:#cbd8f0;font-size:17px;line-height:1.7;margin-bottom:15px}
@@ -237,62 +249,56 @@ clip-path:polygon(42% 20%,58% 20%,78% 100%,22% 100%)
 .poster-timer small{color:#a9c9ff;font-size:9px}
 .poster-countdown>p{margin-top:12px;color:#a9c9ff;font-size:10px;font-weight:900;letter-spacing:2px}
 
-/* DEVICE ACCESS BLOCK */
-.device-block{
-display:none;
-position:fixed;
-inset:0;
-z-index:200000;
-background:radial-gradient(ellipse at center,#14264a,#050914 75%);
-color:white;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:25px;
-}
-.device-block-content{
-max-width:550px;
-padding:40px 25px;
-background:linear-gradient(145deg,#172d54,#080f20);
-border:1px solid #668fff;
-box-shadow:0 0 35px rgba(65,105,225,.45);
-}
-.device-block h1{font-size:30px;letter-spacing:3px;margin-bottom:20px}
-.device-block p{color:#cbd8f0;font-size:16px;line-height:1.7;margin-bottom:10px}
-
-/* MOBILE */
+/* RESPONSIVE - MOBILE */
 @media(max-width:600px){
-.navbar{height:60px;padding:0 10px}
-.logo{font-size:14px;letter-spacing:1px}
-.menu{gap:8px}
-.menu a{font-size:9px;letter-spacing:1px}
-.year-top{font-size:12px;letter-spacing:2px}
-.join-button{padding:7px 8px;font-size:8px}
-.title{font-size:45px;letter-spacing:3px}
+.navbar{
+position:relative;
+height:auto;
+min-height:60px;
+padding:12px 10px;
+flex-direction:column;
+gap:12px
+}
+.logo{font-size:17px;letter-spacing:1px}
+.menu{gap:10px;justify-content:center;flex-wrap:wrap}
+.menu a{font-size:10px;letter-spacing:1px}
+.nav-right{justify-content:center}
+.year-top{font-size:14px;letter-spacing:2px}
+.join-button{padding:8px 10px;font-size:10px}
+.home{min-height:80vh;padding:65px 12px 45px}
+.year{font-size:18px;letter-spacing:4px}
+.title{font-size:clamp(32px,10vw,55px);letter-spacing:2px}
 .subtitle{font-size:14px;letter-spacing:2px}
-.section-title{font-size:32px}
-.artist{min-height:280px}
-.artist-festival{font-size:8px;letter-spacing:1px}
-.countdown-box{margin:25px 10px;padding:25px 10px}
+.home-buttons{gap:10px}
+.home-button{padding:12px 16px;font-size:12px}
+.section-title{font-size:32px;letter-spacing:3px;margin-bottom:30px}
+.artists{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.artist{min-height:220px;padding:12px;font-size:16px;letter-spacing:1px}
+.artist-festival{font-size:7px;letter-spacing:1px;padding:6px}
+.countdown-box{margin:10px auto;padding:25px 10px}
 .countdown-title{font-size:15px;letter-spacing:2px}
 #countdown{gap:8px}
-.countdown-item{min-width:75px;padding:15px 8px}
-.countdown-item span{font-size:30px}
-.countdown-item small{font-size:9px;letter-spacing:1px}
+.countdown-item{min-width:65px;padding:14px 6px}
+.countdown-item span{font-size:27px}
+.countdown-item small{font-size:8px;letter-spacing:1px}
+section,#tickets{padding:75px 12px 60px}
+.ticket-card{width:100%;max-width:350px}
 .program-box{padding:20px 10px}
 .program-day{padding-left:10px}
+.program-day h3{font-size:21px}
 .program-item{gap:7px;padding:8px 6px}
-.program-time{min-width:48px;font-size:10px}
+.program-time{min-width:42px;font-size:10px}
 .program-artist{font-size:10px}
-.program-status{min-width:60px;font-size:7px}
+.program-status{min-width:55px;font-size:7px}
 .tron-title{font-size:30px;letter-spacing:3px}
 .tron-text{font-size:16px}
-.tron-slogan{font-size:18px;letter-spacing:2px}
+.tron-slogan{font-size:17px;letter-spacing:2px}
 .maintenance-overlay{padding:15px 10px}
 .maintenance-content{gap:18px}
 .maintenance-box{padding:28px 15px}
 .maintenance-box h1{font-size:23px}
 .maintenance-box p{font-size:14px}
+.maintenance-date{font-size:13px}
 .maintenance-poster{width:min(100%,380px);padding:18px}
 .poster-top{font-size:10px;letter-spacing:3px}
 .poster-title h2{font-size:27px}
@@ -301,27 +307,44 @@ box-shadow:0 0 35px rgba(65,105,225,.45);
 .poster-timer div{min-width:55px;padding:8px 5px}
 .poster-timer span{font-size:22px}
 .poster-timer small{font-size:8px}
-.device-block h1{font-size:24px}
 }
 
+/* TABLETS */
+@media(min-width:601px) and (max-width:1024px){
+.navbar{padding:12px 18px;gap:12px}
+.menu{gap:13px}
+.menu a{font-size:11px;letter-spacing:1px}
+.logo{font-size:18px}
+.year-top{font-size:16px}
+.join-button{padding:10px 12px;font-size:11px}
+.artists{grid-template-columns:repeat(3,minmax(0,1fr))}
+.artist{min-height:260px}
+.ticket-card{width:45%}
+}
+
+/* LARGE TV SCREENS */
+@media(min-width:1600px){
+.home-content,.tickets,.artists,.program-box,.tron-content{max-width:1500px}
+.title{font-size:130px}
+.section-title{font-size:60px}
+.navbar{padding-left:70px;padding-right:70px}
+}
+
+/* LANDSCAPE SMALL SCREENS */
+@media(orientation:landscape) and (max-height:500px){
+.home{min-height:100vh;padding-top:80px}
+.navbar{min-height:55px}
+}
+
+/* REDUCED MOTION */
 @media(prefers-reduced-motion:reduce){
-.maintenance-poster,.maintenance-box,.ticket-card,.countdown-box,.program-box{animation:none}
+html{scroll-behavior:auto}
+.ticket-card,.artist,.home-button{transition:none}
 }
 </style>
 </head>
 
 <body>
-
-<!-- DEVICE ACCESS BLOCK -->
-<div class="device-block" id="deviceBlock">
-<div class="device-block-content">
-<h1>ACCESS RESTRICTED</h1>
-<p>RAVE FESTIVAL 2027</p>
-<p>This website is available only on desktop computers.</p>
-<p>Mobile phones, tablets, PlayStation, Xbox and Smart TVs are not permitted.</p>
-<p>PLEASE USE A COMPUTER.</p>
-</div>
-</div>
 
 <!-- MAINTENANCE -->
 <div class="maintenance-overlay" id="maintenanceOverlay">
@@ -355,7 +378,7 @@ box-shadow:0 0 35px rgba(65,105,225,.45);
 </div>
 </div>
 
-<!-- MUSIC -->
+<!-- MUSIC VIDEO -->
 <video id="mainMusic" loop playsinline preload="auto"
 style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left:0;bottom:0">
 <source src="./Video%20Project%201.mp4" type="video/mp4">
@@ -523,65 +546,34 @@ through a world beyond imagination.
 </section>
 
 <script>
-/* DEVICE ACCESS: DESKTOP ONLY */
-(function(){
-const userAgent = navigator.userAgent || "";
-const platform = navigator.platform || "";
-const touchPoints = navigator.maxTouchPoints || 0;
-const userAgentData = navigator.userAgentData;
-
-const blockedPattern =
-/Android|iPhone|iPod|iPad|Mobile|Tablet|PlayStation|PS4|PS5|Xbox|Nintendo|SmartTV|SMART-TV|Tizen|webOS|HbbTV|NetCast|AppleTV|GoogleTV|Roku|Kindle|Silk/i;
-
-const isIPad =
-platform === "MacIntel" && touchPoints > 1;
-
-const isMobileDevice =
-(userAgentData && userAgentData.mobile === true);
-
-const isBlocked =
-blockedPattern.test(userAgent) ||
-isIPad ||
-isMobileDevice;
-
-if(isBlocked){
-const block = document.getElementById("deviceBlock");
-block.style.display = "flex";
-document.body.style.overflow = "hidden";
-
-const music = document.getElementById("mainMusic");
-if(music){
-music.pause();
-music.removeAttribute("autoplay");
-}
-
-document.documentElement.style.overflow = "hidden";
-document.body.style.overflow = "hidden";
-}
-})();
+/* ALL DEVICES ALLOWED */
 
 /* MAIN MUSIC */
 const mainMusic=document.getElementById("mainMusic");
 mainMusic.volume=.7;
 
 async function startMainMusic(){
-if(!mainMusic.paused)return;
+    if(!mainMusic.paused)return;
 
-if(document.getElementById("deviceBlock").style.display==="flex")return;
-
-try{
-await mainMusic.play();
-console.log("Muzica RAVE FESTIVAL a pornit!");
-}catch(error){
-console.log("Redarea muzicii a fost blocată sau fișierul nu poate fi redat:",error);
-}
+    try{
+        await mainMusic.play();
+        console.log("Muzica RAVE FESTIVAL a pornit!");
+    }catch(error){
+        console.log("Redarea automată poate fi blocată. Apasă pe pagină pentru a porni muzica.",error);
+    }
 }
 
 startMainMusic();
 document.addEventListener("pointerdown",startMainMusic);
 document.addEventListener("keydown",startMainMusic);
-mainMusic.addEventListener("error",()=>console.error("Eroare la încărcarea fișierului Video Project 1.mp4"));
-mainMusic.addEventListener("canplay",()=>console.log("Fișierul video este pregătit pentru redare."));
+
+mainMusic.addEventListener("error",()=>{
+    console.error("Eroare la încărcarea fișierului Video Project 1.mp4");
+});
+
+mainMusic.addEventListener("canplay",()=>{
+    console.log("Fișierul video este pregătit pentru redare.");
+});
 
 /* COUNTDOWN ARTIST */
 function updateMaintenanceCountdown(){
@@ -605,30 +597,41 @@ setInterval(updateMaintenanceCountdown,1000);
 
 /* FESTIVAL COUNTDOWN */
 const festivalDate=new Date("2027-07-15T18:00:00+03:00").getTime();
-const timer=setInterval(function(){
+
+function updateFestivalCountdown(){
 const distance=festivalDate-Date.now();
+
 if(distance<=0){
-clearInterval(timer);
 document.getElementById("countdown").innerHTML="<div style='color:#fff;font-size:30px;font-weight:900'>RAVE FESTIVAL A ÎNCEPUT!</div>";
 return;
 }
+
 const days=Math.floor(distance/(1000*60*60*24));
 const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
 const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
 const seconds=Math.floor((distance%(1000*60))/1000);
+
 document.getElementById("days").textContent=String(days).padStart(2,"0");
 document.getElementById("hours").textContent=String(hours).padStart(2,"0");
 document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
 document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
-},1000);
+}
+
+updateFestivalCountdown();
+setInterval(updateFestivalCountdown,1000);
 
 /* MAINTENANCE: NOVEMBER 7–13, 2026 */
 (function(){
-const romaniaDate=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"}));
+const romaniaDate=new Date(
+new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"})
+);
+
 const year=romaniaDate.getFullYear();
 const month=romaniaDate.getMonth();
 const day=romaniaDate.getDate();
-const maintenanceActive=year===2026&&month===10&&day>=7&&day<=13;
+
+const maintenanceActive=
+year===2026&&month===10&&day>=7&&day<=13;
 
 if(maintenanceActive){
 document.getElementById("maintenanceOverlay").style.display="flex";
