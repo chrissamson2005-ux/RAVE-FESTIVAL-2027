@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -1106,12 +1105,14 @@ section:last-of-type {
         /Android.*Mobile|iPhone|iPod|Windows Phone|Mobile/i.test(ua);
 
     const isSmartTV =
-        /SmartTV|SMART-TV|HbbTV|Tizen|Web0S|webOS|NetCast|GoogleTV|Google TV|AppleTV/i.test(ua);
+        /SmartTV|SMART-TV|Smart-TV|HbbTV|Tizen|Web0S|webOS|NetCast|GoogleTV|Google TV|AppleTV|Apple TV|BRAVIA|AFTB|AFTT|Roku|Viera|PhilipsTV|Hisense|VIDAA|TCL|Samsung|Panasonic/i.test(ua);
 
     const isPS4 =
         /PlayStation 4|PS4/i.test(ua);
 
     const blockedDevice = isPhone || isSmartTV || isPS4;
+
+    window.raveDeviceBlocked = blockedDevice;
 
     if (blockedDevice) {
         document.getElementById("deviceBlock").style.display = "flex";
@@ -1124,6 +1125,7 @@ const mainMusic = document.getElementById("mainMusic");
 mainMusic.volume = 0.7;
 
 async function startMainMusic() {
+    if (window.raveDeviceBlocked) return;
     if (!mainMusic.paused) return;
 
     try {
@@ -1134,10 +1136,12 @@ async function startMainMusic() {
     }
 }
 
-startMainMusic();
+if (!window.raveDeviceBlocked) {
+    startMainMusic();
 
-document.addEventListener("pointerdown", startMainMusic);
-document.addEventListener("keydown", startMainMusic);
+    document.addEventListener("pointerdown", startMainMusic);
+    document.addEventListener("keydown", startMainMusic);
+}
 
 mainMusic.addEventListener("error", function() {
     console.error("Eroare la încărcarea fișierului Video Project 1.mp4");
