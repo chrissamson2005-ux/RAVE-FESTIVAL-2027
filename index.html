@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -6,1261 +7,589 @@
 <title>RAVE FESTIVAL 2027</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+--luxury-bg:#050914;
+--luxury-dark:#080f20;
+--luxury-card:#0c1830;
+--luxury-blue:#4169e1;
+--luxury-light:#8eb8ff;
+--luxury-white:#f4f7ff;
+--luxury-border:rgba(100,150,255,.35)
+}
+body{
+min-height:100vh;
+background:radial-gradient(ellipse at 50% 0%,#14264b 0%,transparent 55%),linear-gradient(180deg,#050914,#081329 45%,#050914);
+color:var(--luxury-white);
+font-family:Arial,Helvetica,sans-serif;
+overflow-x:hidden
 }
 
-html { scroll-behavior: smooth; }
-
-:root {
-    --luxury-bg: #050914;
-    --luxury-dark: #080f20;
-    --luxury-card: #0c1830;
-    --luxury-blue: #4169e1;
-    --luxury-light: #8eb8ff;
-    --luxury-white: #f4f7ff;
-    --luxury-border: rgba(100,150,255,.35);
+/* LED LIGHT SHOW */
+.led-light-show{
+position:fixed;
+inset:0;
+z-index:9997;
+pointer-events:none;
+overflow:hidden;
+opacity:1;
+mix-blend-mode:screen
 }
+.led-beam{
+position:absolute;
+top:-35%;
+width:15%;
+height:150%;
+transform-origin:top center;
+filter:blur(16px);
+opacity:.55;
+animation:ledMove 7s ease-in-out infinite alternate
+}
+.led-beam.blue{left:10%;background:linear-gradient(180deg,transparent,rgba(0,140,255,.8),transparent)}
+.led-beam.purple{left:40%;background:linear-gradient(180deg,transparent,rgba(150,50,255,.8),transparent);animation-delay:1s}
+.led-beam.cyan{right:15%;background:linear-gradient(180deg,transparent,rgba(0,230,255,.8),transparent);animation-delay:2s}
+.led-beam.white{right:40%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.65),transparent);animation-delay:3s}
+@keyframes ledMove{
+0%{transform:rotate(-30deg) scaleX(.7);opacity:.3}
+50%{opacity:.7}
+100%{transform:rotate(30deg) scaleX(1.2);opacity:.4}
+}
+body::after{
+content:"";
+position:fixed;
+inset:0;
+z-index:9996;
+pointer-events:none;
+background:
+radial-gradient(ellipse at 10% 30%,rgba(0,120,255,.13),transparent 35%),
+radial-gradient(ellipse at 90% 60%,rgba(150,40,255,.13),transparent 35%);
+animation:ledPulse 4s ease-in-out infinite alternate
+}
+@keyframes ledPulse{from{opacity:.45}to{opacity:1}}
 
-body {
-    min-height: 100vh;
-    background:
-        radial-gradient(ellipse at 50% 0%, #14264b 0%, transparent 55%),
-        linear-gradient(180deg, #050914, #081329 45%, #050914);
-    color: var(--luxury-white);
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+/* LED CARD GLOW */
+.maintenance-poster,.maintenance-box,.ticket-card,.countdown-box,.program-box{
+animation:ledBorder 3s ease-in-out infinite alternate
+}
+@keyframes ledBorder{
+from{box-shadow:0 0 12px rgba(65,105,225,.25)}
+to{box-shadow:0 0 25px rgba(0,180,255,.45),0 0 40px rgba(130,60,255,.25)}
 }
 
 /* NAVBAR */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 45px;
-    background: rgba(5,12,29,.96);
-    border-bottom: 1px solid var(--luxury-border);
-    box-shadow: 0 5px 30px rgba(30,80,180,.18);
-    backdrop-filter: blur(15px);
-    z-index: 9998;
+.navbar{
+position:fixed;top:0;left:0;width:100%;min-height:70px;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 45px;background:rgba(5,12,29,.96);
+border-bottom:1px solid var(--luxury-border);
+box-shadow:0 5px 30px rgba(30,80,180,.18);
+backdrop-filter:blur(15px);z-index:9998
 }
-
-.logo {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    text-shadow: 0 0 15px rgba(100,160,255,.5);
+.logo{color:#fff;font-size:24px;font-weight:900;letter-spacing:3px;text-shadow:0 0 15px rgba(100,160,255,.5)}
+.menu{display:flex;gap:30px;list-style:none}
+.menu a{color:#e5edff;text-decoration:none;font-size:14px;font-weight:bold;letter-spacing:2px;transition:.3s}
+.menu a:hover{color:var(--luxury-light);text-shadow:0 0 12px #4169e1}
+.nav-right{display:flex;align-items:center;gap:12px}
+.year-top{color:var(--luxury-light);font-size:21px;font-weight:900;letter-spacing:4px}
+.join-button{
+padding:12px 20px;color:#fff;text-decoration:none;font-size:14px;font-weight:900;
+border:1px solid #668fff;background:linear-gradient(135deg,#172b52,#0a142b);
+box-shadow:0 0 15px rgba(65,105,225,.2);transition:.3s
 }
-
-.menu {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-}
-
-.menu a {
-    color: #e5edff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: .3s;
-}
-
-.menu a:hover {
-    color: var(--luxury-light);
-    text-shadow: 0 0 12px #4169e1;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.year-top {
-    color: var(--luxury-light);
-    font-size: 21px;
-    font-weight: 900;
-    letter-spacing: 4px;
-}
-
-.join-button {
-    padding: 12px 20px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 900;
-    border: 1px solid #668fff;
-    background: linear-gradient(135deg,#172b52,#0a142b);
-    box-shadow: 0 0 15px rgba(65,105,225,.2);
-    transition: .3s;
-}
-
-.join-button:hover {
-    background: #4169e1;
-    color: #fff;
-    box-shadow: 0 0 25px rgba(65,105,225,.6);
-}
+.join-button:hover{background:#4169e1;box-shadow:0 0 25px rgba(65,105,225,.6)}
 
 /* HOME */
-.home {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 20px 60px;
-    background:
-        linear-gradient(rgba(0,5,20,.20), rgba(0,5,20,.60)),
-        url("./Celestial Angel Gate Portal.png") center center / cover no-repeat;
+.home{
+min-height:100vh;display:flex;align-items:center;justify-content:center;
+text-align:center;padding:120px 20px 60px;
+background:linear-gradient(rgba(0,5,20,.20),rgba(0,5,20,.60)),url("./Celestial Angel Gate Portal.png") center/cover no-repeat
 }
-
-.home-content { max-width: 1100px; }
-
-.year {
-    color: #dce8ff;
-    font-size: 25px;
-    letter-spacing: 8px;
-    margin-bottom: 15px;
+.home-content{max-width:1100px}
+.year{color:#dce8ff;font-size:25px;letter-spacing:8px;margin-bottom:15px}
+.title{font-size:clamp(50px,9vw,120px);font-weight:900;letter-spacing:8px;color:#fff;text-shadow:0 0 25px rgba(100,160,255,.5)}
+.subtitle{margin-top:20px;color:#d2ddf5;font-size:20px;letter-spacing:5px}
+.home-buttons{margin-top:40px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.home-button{
+display:inline-block;padding:16px 32px;color:#fff;text-decoration:none;font-weight:bold;
+letter-spacing:2px;border:1px solid #8eb8ff;
+background:linear-gradient(135deg,#172b52,#080f20);
+box-shadow:0 0 15px rgba(65,105,225,.2);transition:.3s
 }
+.home-button:hover{background:#4169e1;transform:translateY(-3px);box-shadow:0 0 25px rgba(65,105,225,.5)}
 
-.title {
-    font-size: clamp(50px, 9vw, 120px);
-    font-weight: 900;
-    letter-spacing: 8px;
-    color: #fff;
-    text-shadow: 0 0 25px rgba(100,160,255,.5);
+/* COUNTDOWN */
+.countdown-section{min-height:auto;padding:40px 20px;background:linear-gradient(180deg,#081329,#050914)}
+.countdown-box{
+max-width:1000px;margin:auto;padding:35px 20px;text-align:center;
+background:linear-gradient(145deg,#101f3c,#080f20);
+border:1px solid var(--luxury-border);box-shadow:0 0 30px rgba(35,80,180,.15)
 }
-
-.subtitle {
-    margin-top: 20px;
-    color: #d2ddf5;
-    font-size: 20px;
-    letter-spacing: 5px;
-}
-
-.home-buttons {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.home-button {
-    display: inline-block;
-    padding: 16px 32px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    letter-spacing: 2px;
-    border: 1px solid #8eb8ff;
-    background: linear-gradient(135deg,#172b52,#080f20);
-    box-shadow: 0 0 15px rgba(65,105,225,.2);
-    transition: .3s;
-}
-
-.home-button:hover {
-    background: #4169e1;
-    color: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px rgba(65,105,225,.5);
-}
-
-/* COUNTDOWN FESTIVAL */
-.countdown-section {
-    min-height: auto;
-    padding: 40px 20px;
-    background: linear-gradient(180deg,#081329,#050914);
-}
-
-.countdown-box {
-    max-width: 1000px;
-    margin: auto;
-    padding: 35px 20px;
-    text-align: center;
-    background: linear-gradient(145deg,#101f3c,#080f20);
-    border: 1px solid var(--luxury-border);
-    box-shadow: 0 0 30px rgba(35,80,180,.15);
-}
-
-.countdown-title {
-    margin-bottom: 25px;
-    color: #dce8ff;
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 4px;
-}
-
-#countdown {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.countdown-item {
-    min-width: 140px;
-    padding: 20px 15px;
-    border: 1px solid var(--luxury-border);
-    background: linear-gradient(145deg,#13264b,#080f20);
-}
-
-.countdown-item span {
-    display: block;
-    color: #a9c9ff;
-    font-size: 48px;
-    font-weight: 900;
-    line-height: 1;
-}
-
-.countdown-item small {
-    display: block;
-    margin-top: 10px;
-    color: #c2d4f5;
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 3px;
-}
+.countdown-title{margin-bottom:25px;color:#dce8ff;font-size:22px;font-weight:900;letter-spacing:4px}
+#countdown{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.countdown-item{min-width:140px;padding:20px 15px;border:1px solid var(--luxury-border);background:linear-gradient(145deg,#13264b,#080f20)}
+.countdown-item span{display:block;color:#a9c9ff;font-size:48px;font-weight:900;line-height:1}
+.countdown-item small{display:block;margin-top:10px;color:#c2d4f5;font-size:13px;font-weight:900;letter-spacing:3px}
 
 /* SECTIONS */
-section {
-    min-height: 100vh;
-    padding: 120px 30px 100px;
-    background:
-        radial-gradient(ellipse at 50% 0%,rgba(30,65,130,.22),transparent 65%),
-        linear-gradient(180deg,#081329,#050914);
+section{
+min-height:100vh;padding:120px 30px 100px;
+background:radial-gradient(ellipse at 50% 0%,rgba(30,65,130,.22),transparent 65%),linear-gradient(180deg,#081329,#050914)
 }
+.section-title{text-align:center;font-size:45px;margin-bottom:50px;letter-spacing:5px;color:#e5edff;text-shadow:0 0 18px rgba(100,150,255,.35)}
 
-.section-title {
-    text-align: center;
-    font-size: 45px;
-    margin-bottom: 50px;
-    letter-spacing: 5px;
-    color: #e5edff;
-    text-shadow: 0 0 18px rgba(100,150,255,.35);
-}
-
-/* BILETE */
-#tickets {
-    min-height: 100vh;
-    background:
-        radial-gradient(ellipse at 50% 0%,#142c55 0%,transparent 65%),
-        linear-gradient(180deg,#081329,#050914);
-    padding: 120px 30px 100px;
-}
-
-#tickets .section-title { color: #e5edff; }
-
-.tickets {
-    max-width: 1000px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.ticket-card {
-    width: 280px;
-    padding: 35px 25px;
-    text-align: center;
-    background: linear-gradient(145deg,#172d54,#091329);
-    border: 1px solid #4269ad;
-    box-shadow: 0 10px 35px rgba(0,0,0,.3);
-    transition: .3s;
-}
-
-.ticket-card:hover {
-    transform: translateY(-8px);
-    border-color: #9fc4ff;
-    box-shadow: 0 0 25px rgba(65,105,225,.35);
-}
-
-.ticket-card h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #e8f0ff;
-}
-
-.price {
-    color: #a9c9ff;
-    font-size: 35px;
-    margin-bottom: 25px;
-    font-weight: 900;
-}
-
-#tickets .home-button {
-    background: linear-gradient(135deg,#254b91,#102448);
-    border: 1px solid #8eb8ff;
-}
-
-#tickets .home-button:hover {
-    background: #4169e1;
-    color: #fff;
-}
+/* TICKETS */
+#tickets{min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#142c55 0%,transparent 65%),linear-gradient(180deg,#081329,#050914);padding:120px 30px 100px}
+#tickets .section-title{color:#e5edff}
+.tickets{max-width:1000px;margin:auto;display:flex;justify-content:center;gap:25px;flex-wrap:wrap}
+.ticket-card{width:280px;padding:35px 25px;text-align:center;background:linear-gradient(145deg,#172d54,#091329);border:1px solid #4269ad;box-shadow:0 10px 35px rgba(0,0,0,.3);transition:.3s}
+.ticket-card:hover{transform:translateY(-8px);border-color:#9fc4ff;box-shadow:0 0 25px rgba(65,105,225,.35)}
+.ticket-card h3{font-size:24px;margin-bottom:15px;color:#e8f0ff}
+.price{color:#a9c9ff;font-size:35px;margin-bottom:25px;font-weight:900}
+#tickets .home-button{background:linear-gradient(135deg,#254b91,#102448);border:1px solid #8eb8ff}
+#tickets .home-button:hover{background:#4169e1}
 
 /* ARTISTS */
-.artists {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+.artists{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.artist{
+min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+padding:25px;position:relative;overflow:hidden;border:1px solid var(--luxury-border);
+font-size:25px;font-weight:900;letter-spacing:2px;color:#fff;text-shadow:0 0 5px #000;
+background-size:cover;background-position:center;background-repeat:no-repeat;transition:.3s
 }
-
-.artist {
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 25px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--luxury-border);
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #fff;
-    text-shadow: 0 0 5px #000;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: .3s;
-}
-
-.artist:hover {
-    transform: scale(1.04);
-    border-color: #8eb8ff;
-    box-shadow: 0 0 22px rgba(65,105,225,.3);
-}
-
-.artist-name {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
-
-.artist-festival {
-    position: relative;
-    z-index: 2;
-    margin-top: 9px;
-    padding: 7px 10px;
-    color: #dceaff;
-    background: rgba(8,20,45,.88);
-    border: 1px solid #8eb8ff;
-    box-shadow: 0 0 14px rgba(65,105,225,.5);
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-align: center;
-}
-
-/* ARTIST IMAGES */
-.artist-1 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Meduza.png");}
-.artist-2 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Baby Gang.png");}
-.artist-3 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Azteca.png");}
-.artist-4 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./PetreStefan.png");}
-.artist-5 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Rava.png");}
-.artist-6 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./ZaraLarsson.webp");}
-.artist-7 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Boris.png");}
-.artist-8 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./FredAgain.png");}
-.artist-9 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Anyma.png");}
-.artist-10 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Andra.png");}
-.artist-11 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./IrinaRimes.png");}
-.artist-12 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./AlbertNBN.png");}
-.artist-13 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Skrillex.png");}
-.artist-14 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./KissFM.png");}
-.artist-15 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Hugel.webp");}
-.artist-16 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Kolsch.webp");}
-.artist-17 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./DTF.png");}
-.artist-18 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./MartinGarrix.png");}
-.artist-19 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Saguna.png");}
-.artist-20 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./PostMalone.png");}
-.artist-21 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./DenisaIoana.png");}
-.artist-22 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./IndustryBaby.png");}
-.artist-23 {background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Mira.png");}
-.artist-24 {
-    background-image: linear-gradient(135deg,#14264a,#050914);
-}
+.artist:hover{transform:scale(1.04);border-color:#8eb8ff;box-shadow:0 0 22px rgba(65,105,225,.3)}
+.artist-name{position:relative;z-index:2;text-align:center}
+.artist-festival{position:relative;z-index:2;margin-top:9px;padding:7px 10px;color:#dceaff;background:rgba(8,20,45,.88);border:1px solid #8eb8ff;box-shadow:0 0 14px rgba(65,105,225,.5);font-size:10px;font-weight:900;letter-spacing:2px;text-align:center}
+.artist-1{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Meduza.png")}
+.artist-2{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Baby Gang.png")}
+.artist-3{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Azteca.png")}
+.artist-4{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./PetreStefan.png")}
+.artist-5{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Rava.png")}
+.artist-6{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./ZaraLarsson.webp")}
+.artist-7{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Boris.png")}
+.artist-8{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./FredAgain.png")}
+.artist-9{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Anyma.png")}
+.artist-10{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Andra.png")}
+.artist-11{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./IrinaRimes.png")}
+.artist-12{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./AlbertNBN.png")}
+.artist-13{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Skrillex.png")}
+.artist-14{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./KissFM.png")}
+.artist-15{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Hugel.webp")}
+.artist-16{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Kolsch.webp")}
+.artist-17{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./DTF.png")}
+.artist-18{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./MartinGarrix.png")}
+.artist-19{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Saguna.png")}
+.artist-20{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./PostMalone.png")}
+.artist-21{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./DenisaIoana.png")}
+.artist-22{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./IndustryBaby.png")}
+.artist-23{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Mira.png")}
+.artist-24{background-image:linear-gradient(135deg,#14264a,#050914)}
 
 /* PROGRAM */
-.program-section { min-height: 100vh; }
+.program-section{min-height:100vh}
+.program-box{max-width:1000px;margin:auto;padding:35px;background:linear-gradient(145deg,#101f3c,#080f20);border:1px solid var(--luxury-border);box-shadow:0 0 25px rgba(30,70,150,.15)}
+.program-live{text-align:center;margin-bottom:35px}
+.live-indicator{display:inline-block;padding:10px 20px;border:1px solid #8eb8ff;color:#c9ddff;font-weight:900;letter-spacing:3px}
+.program-day{margin-bottom:40px;border-left:3px solid #668fff;padding-left:20px}
+.program-day h3{color:#a9c9ff;font-size:27px;margin-bottom:18px;letter-spacing:4px}
+.program-item{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 12px;margin-bottom:7px;background:#0b162b;border:1px solid #1d3155;transition:.3s}
+.program-item:hover{background:#142747;border-color:#8eb8ff}
+.program-time{min-width:60px;color:#a9c9ff;font-size:13px;font-weight:900}
+.program-artist{flex:1;font-size:13px;font-weight:900}
+.program-status{min-width:90px;text-align:right;color:#9eafd0;font-size:9px;font-weight:900}
 
-.program-box {
-    max-width: 1000px;
-    margin: auto;
-    padding: 35px;
-    background: linear-gradient(145deg,#101f3c,#080f20);
-    border: 1px solid var(--luxury-border);
-    box-shadow: 0 0 25px rgba(30,70,150,.15);
-}
+/* CELESTIAL */
+.tron-section{display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at center,#14264a 0%,#081329 55%,#050914 100%)}
+.tron-content{max-width:950px;margin:auto}
+.tron-title{color:#e5edff;font-size:50px;letter-spacing:6px;margin-bottom:30px;text-shadow:0 0 20px rgba(100,150,255,.4)}
+.tron-text{color:#cbd8f0;font-size:19px;line-height:1.8;margin-bottom:30px}
+.tron-slogan{color:#a9c9ff;font-size:24px;font-weight:900;letter-spacing:4px}
+section:last-of-type{background:radial-gradient(ellipse at 50% 0%,#14264a 0%,transparent 65%),#050914}
 
-.program-live {
-    text-align: center;
-    margin-bottom: 35px;
+/* MAINTENANCE */
+.maintenance-overlay{
+display:none;position:fixed;inset:0;z-index:100000;
+background:rgba(5,9,20,.72);
+backdrop-filter:blur(8px);
+align-items:flex-start;justify-content:center;
+padding:25px 15px;overflow-y:auto
 }
+.maintenance-content{
+width:100%;max-width:650px;display:flex;flex-direction:column;
+align-items:center;gap:25px;margin:auto;position:relative;z-index:2
+}
+.maintenance-box{
+width:100%;max-width:600px;padding:35px 25px;text-align:center;
+background:linear-gradient(145deg,rgba(20,38,74,.94),rgba(8,15,32,.94));
+border:1px solid #668fff;box-shadow:0 0 45px rgba(65,105,225,.35)
+}
+.maintenance-box h1{color:#fff;font-size:32px;letter-spacing:3px;margin-bottom:20px}
+.maintenance-box p{color:#cbd8f0;font-size:17px;line-height:1.7;margin-bottom:15px}
+.maintenance-date{color:#8eb8ff!important;font-weight:900;letter-spacing:2px}
 
-.live-indicator {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 1px solid #8eb8ff;
-    color: #c9ddff;
-    font-weight: 900;
-    letter-spacing: 3px;
+/* POSTER */
+.maintenance-poster{
+width:min(100%,420px);aspect-ratio:1/1;position:relative;overflow:hidden;padding:22px;
+display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;
+background:radial-gradient(ellipse at 50% 42%,rgba(65,105,225,.55),transparent 55%),linear-gradient(145deg,#172d54,#050914 80%);
+border:1px solid #8eb8ff;box-shadow:0 0 35px rgba(65,105,225,.35)
 }
-
-.program-day {
-    margin-bottom: 40px;
-    border-left: 3px solid #668fff;
-    padding-left: 20px;
+.maintenance-poster::before{
+content:"";position:absolute;inset:0;
+background:linear-gradient(120deg,transparent 25%,rgba(142,184,255,.13) 50%,transparent 75%),radial-gradient(ellipse at 50% 100%,rgba(65,105,225,.3),transparent 60%);
+pointer-events:none
 }
-
-.program-day h3 {
-    color: #a9c9ff;
-    font-size: 27px;
-    margin-bottom: 18px;
-    letter-spacing: 4px;
+.poster-top{position:relative;z-index:3;color:#a9c9ff;font-size:12px;font-weight:900;letter-spacing:4px}
+.poster-silhouette{
+position:absolute;inset:15% 0 15%;
+background:radial-gradient(ellipse at 50% 25%,#02040a 0 10%,transparent 10.5%),radial-gradient(ellipse at 50% 75%,#02040a 0 27%,transparent 27.5%);
+filter:drop-shadow(0 0 18px rgba(0,0,0,.9));opacity:.96
 }
-
-.program-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 8px 12px;
-    margin-bottom: 7px;
-    background: #0b162b;
-    border: 1px solid #1d3155;
-    transition: .3s;
+.poster-silhouette::after{
+content:"";position:absolute;inset:0;
+background:linear-gradient(70deg,transparent 30%,rgba(142,184,255,.18) 50%,transparent 70%);
+clip-path:polygon(42% 20%,58% 20%,78% 100%,22% 100%)
 }
-
-.program-item:hover {
-    background: #142747;
-    border-color: #8eb8ff;
-}
-
-.program-time {
-    min-width: 60px;
-    color: #a9c9ff;
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.program-artist {
-    flex: 1;
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.program-status {
-    min-width: 90px;
-    text-align: right;
-    color: #9eafd0;
-    font-size: 9px;
-    font-weight: 900;
-}
-
-/* CELESTIAL ANGEL EDITION */
-.tron-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background:
-        radial-gradient(ellipse at center,#14264a 0%,#081329 55%,#050914 100%);
-}
-
-.tron-content {
-    max-width: 950px;
-    margin: auto;
-}
-
-.tron-title {
-    color: #e5edff;
-    font-size: 50px;
-    letter-spacing: 6px;
-    margin-bottom: 30px;
-    text-shadow: 0 0 20px rgba(100,150,255,.4);
-}
-
-.tron-text {
-    color: #cbd8f0;
-    font-size: 19px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-.tron-slogan {
-    color: #a9c9ff;
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 4px;
-}
-
-/* FINAL */
-section:last-of-type {
-    background:
-        radial-gradient(ellipse at 50% 0%,#14264a 0%,transparent 65%),
-        #050914;
-}
-
-/* MAINTENANCE MESSAGE + POSTER */
-.maintenance-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 100000;
-    background: #050914;
-    backdrop-filter: blur(15px);
-    align-items: flex-start;
-    justify-content: center;
-    padding: 25px 15px;
-    overflow-y: auto;
-}
-
-.maintenance-content {
-    width: 100%;
-    max-width: 650px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    margin: auto;
-}
-
-.maintenance-box {
-    width: 100%;
-    max-width: 600px;
-    padding: 35px 25px;
-    text-align: center;
-    background: linear-gradient(145deg,#14264a,#080f20);
-    border: 1px solid #668fff;
-    box-shadow: 0 0 45px rgba(65,105,225,.35);
-}
-
-.maintenance-box h1 {
-    color: #fff;
-    font-size: 32px;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-}
-
-.maintenance-box p {
-    color: #cbd8f0;
-    font-size: 17px;
-    line-height: 1.7;
-    margin-bottom: 15px;
-}
-
-.maintenance-date {
-    color: #8eb8ff !important;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-/* SQUARE MYSTERY ARTIST POSTER */
-.maintenance-poster {
-    width: min(100%, 420px);
-    aspect-ratio: 1 / 1;
-    position: relative;
-    overflow: hidden;
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    background:
-        radial-gradient(ellipse at 50% 42%,rgba(65,105,225,.55),transparent 55%),
-        linear-gradient(145deg,#172d54,#050914 80%);
-    border: 1px solid #8eb8ff;
-    box-shadow: 0 0 35px rgba(65,105,225,.35);
-}
-
-.maintenance-poster::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(120deg,transparent 25%,rgba(142,184,255,.13) 50%,transparent 75%),
-        radial-gradient(ellipse at 50% 100%,rgba(65,105,225,.3),transparent 60%);
-    pointer-events: none;
-}
-
-.poster-top {
-    position: relative;
-    z-index: 3;
-    color: #a9c9ff;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 4px;
-}
-
-/* Artist silhouette */
-.poster-silhouette {
-    position: absolute;
-    inset: 15% 0 15%;
-    background:
-        radial-gradient(ellipse at 50% 25%,#02040a 0 10%,transparent 10.5%),
-        radial-gradient(ellipse at 50% 75%,#02040a 0 27%,transparent 27.5%);
-    filter: drop-shadow(0 0 18px rgba(0,0,0,.9));
-    opacity: .96;
-}
-
-.poster-silhouette::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(70deg,transparent 30%,rgba(142,184,255,.18) 50%,transparent 70%);
-    clip-path: polygon(42% 20%,58% 20%,78% 100%,22% 100%);
-}
-
-.poster-title {
-    position: relative;
-    z-index: 3;
-    margin: auto 0;
-    text-shadow: 0 0 20px #000;
-}
-
-.poster-title h2 {
-    color: white;
-    font-size: clamp(25px,5vw,38px);
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-.poster-title p {
-    color: #c6dcff;
-    font-weight: 900;
-    letter-spacing: 5px;
-    margin-top: 8px;
-}
-
-.poster-countdown {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-}
-
-.poster-countdown h3 {
-    font-size: 12px;
-    color: #dce8ff;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-}
-
-.poster-timer {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-.poster-timer div {
-    min-width: 65px;
-    padding: 9px;
-    background: rgba(5,12,29,.92);
-    border: 1px solid #668fff;
-}
-
-.poster-timer span {
-    display: block;
-    color: white;
-    font-size: 25px;
-    font-weight: 900;
-}
-
-.poster-timer small {
-    color: #a9c9ff;
-    font-size: 9px;
-}
-
-.poster-countdown > p {
-    margin-top: 12px;
-    color: #a9c9ff;
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
+.poster-title{position:relative;z-index:3;margin:auto 0;text-shadow:0 0 20px #000}
+.poster-title h2{color:white;font-size:clamp(25px,5vw,38px);font-weight:900;letter-spacing:2px}
+.poster-title p{color:#c6dcff;font-weight:900;letter-spacing:5px;margin-top:8px}
+.poster-countdown{position:relative;z-index:3;width:100%}
+.poster-countdown h3{font-size:12px;color:#dce8ff;letter-spacing:2px;margin-bottom:12px}
+.poster-timer{display:flex;justify-content:center;gap:8px}
+.poster-timer div{min-width:65px;padding:9px;background:rgba(5,12,29,.92);border:1px solid #668fff}
+.poster-timer span{display:block;color:white;font-size:25px;font-weight:900}
+.poster-timer small{color:#a9c9ff;font-size:9px}
+.poster-countdown>p{margin-top:12px;color:#a9c9ff;font-size:10px;font-weight:900;letter-spacing:2px}
 
 /* MOBILE */
-@media(max-width:600px) {
-    .navbar {
-        height: 60px;
-        padding: 0 10px;
-    }
-
-    .logo {
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-
-    .menu {gap:8px;}
-
-    .menu a {
-        font-size: 9px;
-        letter-spacing: 1px;
-    }
-
-    .year-top {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-
-    .join-button {
-        padding: 7px 8px;
-        font-size: 8px;
-    }
-
-    .title {
-        font-size: 45px;
-        letter-spacing: 3px;
-    }
-
-    .subtitle {
-        font-size: 14px;
-        letter-spacing: 2px;
-    }
-
-    .section-title {font-size:32px;}
-
-    .artist {min-height:280px;}
-
-    .artist-festival {
-        font-size: 8px;
-        letter-spacing: 1px;
-    }
-
-    .countdown-box {
-        margin:25px 10px;
-        padding:25px 10px;
-    }
-
-    .countdown-title {
-        font-size:15px;
-        letter-spacing:2px;
-    }
-
-    #countdown {gap:8px;}
-
-    .countdown-item {
-        min-width:75px;
-        padding:15px 8px;
-    }
-
-    .countdown-item span {font-size:30px;}
-
-    .countdown-item small {
-        font-size:9px;
-        letter-spacing:1px;
-    }
-
-    .program-box {padding:20px 10px;}
-
-    .program-day {padding-left:10px;}
-
-    .program-item {
-        gap:7px;
-        padding:8px 6px;
-    }
-
-    .program-time {
-        min-width:48px;
-        font-size:10px;
-    }
-
-    .program-artist {font-size:10px;}
-
-    .program-status {
-        min-width:60px;
-        font-size:7px;
-    }
-
-    .tron-title {
-        font-size:30px;
-        letter-spacing:3px;
-    }
-
-    .tron-text {font-size:16px;}
-
-    .tron-slogan {
-        font-size:18px;
-        letter-spacing:2px;
-    }
-
-    .maintenance-overlay {
-        padding: 15px 10px;
-    }
-
-    .maintenance-content {
-        gap: 18px;
-    }
-
-    .maintenance-box {
-        padding: 28px 15px;
-    }
-
-    .maintenance-box h1 {
-        font-size: 23px;
-    }
-
-    .maintenance-box p {
-        font-size: 14px;
-    }
-
-    .maintenance-poster {
-        width: min(100%, 380px);
-        padding: 18px;
-    }
-
-    .poster-top {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
-
-    .poster-title h2 {
-        font-size: 27px;
-    }
-
-    .poster-title p {
-        font-size: 12px;
-    }
-
-    .poster-countdown h3 {
-        font-size: 10px;
-    }
-
-    .poster-timer div {
-        min-width: 55px;
-        padding: 8px 5px;
-    }
-
-    .poster-timer span {
-        font-size: 22px;
-    }
-
-    .poster-timer small {
-        font-size: 8px;
-    }
+@media(max-width:600px){
+.navbar{height:60px;padding:0 10px}
+.logo{font-size:14px;letter-spacing:1px}
+.menu{gap:8px}
+.menu a{font-size:9px;letter-spacing:1px}
+.year-top{font-size:12px;letter-spacing:2px}
+.join-button{padding:7px 8px;font-size:8px}
+.title{font-size:45px;letter-spacing:3px}
+.subtitle{font-size:14px;letter-spacing:2px}
+.section-title{font-size:32px}
+.artist{min-height:280px}
+.artist-festival{font-size:8px;letter-spacing:1px}
+.countdown-box{margin:25px 10px;padding:25px 10px}
+.countdown-title{font-size:15px;letter-spacing:2px}
+#countdown{gap:8px}
+.countdown-item{min-width:75px;padding:15px 8px}
+.countdown-item span{font-size:30px}
+.countdown-item small{font-size:9px;letter-spacing:1px}
+.program-box{padding:20px 10px}
+.program-day{padding-left:10px}
+.program-item{gap:7px;padding:8px 6px}
+.program-time{min-width:48px;font-size:10px}
+.program-artist{font-size:10px}
+.program-status{min-width:60px;font-size:7px}
+.tron-title{font-size:30px;letter-spacing:3px}
+.tron-text{font-size:16px}
+.tron-slogan{font-size:18px;letter-spacing:2px}
+.maintenance-overlay{padding:15px 10px}
+.maintenance-content{gap:18px}
+.maintenance-box{padding:28px 15px}
+.maintenance-box h1{font-size:23px}
+.maintenance-box p{font-size:14px}
+.maintenance-poster{width:min(100%,380px);padding:18px}
+.poster-top{font-size:10px;letter-spacing:3px}
+.poster-title h2{font-size:27px}
+.poster-title p{font-size:12px}
+.poster-countdown h3{font-size:10px}
+.poster-timer div{min-width:55px;padding:8px 5px}
+.poster-timer span{font-size:22px}
+.poster-timer small{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){
+.led-beam,body::after,.maintenance-poster,.maintenance-box,.ticket-card,.countdown-box,.program-box{animation:none}
 }
 </style>
 </head>
 
 <body>
 
-<!-- MAINTENANCE MESSAGE + POSTER -->
-<div class="maintenance-overlay" id="maintenanceOverlay">
-    <div class="maintenance-content">
-
-        <div class="maintenance-box">
-            <h1>RAVE FESTIVAL 2027</h1>
-            <p>WEBSITE UNDER MAINTENANCE</p>
-
-            <p>
-                We are currently working on our website
-                to prepare an amazing new experience.
-            </p>
-
-            <p class="maintenance-date">
-                NOVEMBER 7 – NOVEMBER 13, 2026
-            </p>
-
-            <p>THE WEBSITE WILL BE BACK ON NOVEMBER 14.</p>
-            <p>THANK YOU FOR YOUR PATIENCE!</p>
-        </div>
-
-        <!-- POSTER SUB MESAJ -->
-        <div class="maintenance-poster">
-            <div class="poster-top">RAVE FESTIVAL 2027</div>
-
-            <div class="poster-silhouette"></div>
-
-            <div class="poster-title">
-                <h2>A NEW ARTIST</h2>
-                <p>IS COMING</p>
-            </div>
-
-            <div class="poster-countdown">
-                <h3 id="maintenanceHeading">ARTIST ANNOUNCEMENT IN</h3>
-
-                <div class="poster-timer">
-                    <div>
-                        <span id="maintenanceHours">00</span>
-                        <small>ORE</small>
-                    </div>
-                    <div>
-                        <span id="maintenanceMinutes">00</span>
-                        <small>MINUTE</small>
-                    </div>
-                    <div>
-                        <span id="maintenanceSeconds">00</span>
-                        <small>SECUNDE</small>
-                    </div>
-                </div>
-
-                <p id="maintenanceFooter">TODAY • 22:40 • STAY TUNED</p>
-            </div>
-        </div>
-
-    </div>
+<!-- LED LIGHTS -->
+<div class="led-light-show">
+<div class="led-beam blue"></div>
+<div class="led-beam purple"></div>
+<div class="led-beam cyan"></div>
+<div class="led-beam white"></div>
 </div>
 
-<!-- MAIN MUSIC -->
-<video
-    id="mainMusic"
-    loop
-    playsinline
-    preload="auto"
-    style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left:0;bottom:0;"
->
-    <source src="./Video%20Project%201.mp4" type="video/mp4">
+<!-- MAINTENANCE -->
+<div class="maintenance-overlay" id="maintenanceOverlay">
+<div class="maintenance-content">
+<div class="maintenance-box">
+<h1>RAVE FESTIVAL 2027</h1>
+<p>WEBSITE UNDER MAINTENANCE</p>
+<p>We are currently working on our website to prepare an amazing new experience.</p>
+<p class="maintenance-date">NOVEMBER 7 – NOVEMBER 13, 2026</p>
+<p>THE WEBSITE WILL BE BACK ON NOVEMBER 14.</p>
+<p>THANK YOU FOR YOUR PATIENCE!</p>
+</div>
+
+<div class="maintenance-poster">
+<div class="poster-top">RAVE FESTIVAL 2027</div>
+<div class="poster-silhouette"></div>
+<div class="poster-title">
+<h2>A NEW ARTIST</h2>
+<p>IS COMING</p>
+</div>
+<div class="poster-countdown">
+<h3 id="maintenanceHeading">ARTIST ANNOUNCEMENT IN</h3>
+<div class="poster-timer">
+<div><span id="maintenanceHours">00</span><small>ORE</small></div>
+<div><span id="maintenanceMinutes">00</span><small>MINUTE</small></div>
+<div><span id="maintenanceSeconds">00</span><small>SECUNDE</small></div>
+</div>
+<p id="maintenanceFooter">TODAY • 22:40 • STAY TUNED</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MUSIC -->
+<video id="mainMusic" loop playsinline preload="auto"
+style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left:0;bottom:0">
+<source src="./Video%20Project%201.mp4" type="video/mp4">
 </video>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-    <div class="logo">RAVE FESTIVAL</div>
-
-    <ul class="menu">
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#tickets">BILETE</a></li>
-        <li><a href="#artists">ARTIȘTI</a></li>
-        <li><a href="#program">PROGRAM</a></li>
-        <li><a href="./RBL%20CHRISTMAS/index.html.html">RBL CHRISTMAS</a></li>
-    </ul>
-
-    <div class="nav-right">
-        <div class="year-top">2027</div>
-        <a href="join.html" class="join-button">JOIN RBL</a>
-    </div>
+<div class="logo">RAVE FESTIVAL</div>
+<ul class="menu">
+<li><a href="#home">HOME</a></li>
+<li><a href="#tickets">BILETE</a></li>
+<li><a href="#artists">ARTIȘTI</a></li>
+<li><a href="#program">PROGRAM</a></li>
+<li><a href="./RBL%20CHRISTMAS/index.html.html">RBL CHRISTMAS</a></li>
+</ul>
+<div class="nav-right">
+<div class="year-top">2027</div>
+<a href="join.html" class="join-button">JOIN RBL</a>
+</div>
 </nav>
 
 <!-- HOME -->
 <section class="home" id="home">
-    <div class="home-content">
-        <div class="year">2027</div>
-        <h1 class="title">RAVE FESTIVAL</h1>
-        <div class="subtitle">15–18 JULY 2027</div>
-        <div class="subtitle">THE FUTURE IS HERE</div>
-
-        <div class="home-buttons">
-            <a href="#tickets" class="home-button">BILETE</a>
-            <a href="#artists" class="home-button">ARTIȘTI</a>
-            <a href="#program" class="home-button">PROGRAM</a>
-        </div>
-    </div>
+<div class="home-content">
+<div class="year">2027</div>
+<h1 class="title">RAVE FESTIVAL</h1>
+<div class="subtitle">15–18 JULY 2027</div>
+<div class="subtitle">THE FUTURE IS HERE</div>
+<div class="home-buttons">
+<a href="#tickets" class="home-button">BILETE</a>
+<a href="#artists" class="home-button">ARTIȘTI</a>
+<a href="#program" class="home-button">PROGRAM</a>
+</div>
+</div>
 </section>
 
 <!-- COUNTDOWN -->
 <section class="countdown-section">
-    <div class="countdown-box">
-        <div class="countdown-title">
-            RAVE FESTIVAL 2027 STARTS IN
-        </div>
-
-        <div id="countdown">
-            <div class="countdown-item">
-                <span id="days">00</span>
-                <small>ZILE</small>
-            </div>
-            <div class="countdown-item">
-                <span id="hours">00</span>
-                <small>ORE</small>
-            </div>
-            <div class="countdown-item">
-                <span id="minutes">00</span>
-                <small>MINUTE</small>
-            </div>
-            <div class="countdown-item">
-                <span id="seconds">00</span>
-                <small>SECUNDE</small>
-            </div>
-        </div>
-    </div>
+<div class="countdown-box">
+<div class="countdown-title">RAVE FESTIVAL 2027 STARTS IN</div>
+<div id="countdown">
+<div class="countdown-item"><span id="days">00</span><small>ZILE</small></div>
+<div class="countdown-item"><span id="hours">00</span><small>ORE</small></div>
+<div class="countdown-item"><span id="minutes">00</span><small>MINUTE</small></div>
+<div class="countdown-item"><span id="seconds">00</span><small>SECUNDE</small></div>
+</div>
+</div>
 </section>
 
-<!-- BILETE -->
+<!-- TICKETS -->
 <section id="tickets">
-    <h2 class="section-title">BILETE</h2>
-
-    <div class="tickets">
-        <div class="ticket-card">
-            <h3>GENERAL ACCESS</h3>
-            <div class="price">249 LEI</div>
-            <a href="https://www.roblox.com/games/123235106040213/RBL-FESTIVAL#!/store"
-               class="home-button">CUMPĂRĂ</a>
-        </div>
-
-        <div class="ticket-card">
-            <h3>VIP</h3>
-            <div class="price">499 LEI</div>
-            <a href="https://www.roblox.com/games/123235106040213/RBL-FESTIVAL#!/store"
-               class="home-button">CUMPĂRĂ</a>
-        </div>
-    </div>
+<h2 class="section-title">BILETE</h2>
+<div class="tickets">
+<div class="ticket-card">
+<h3>GENERAL ACCESS</h3>
+<div class="price">249 LEI</div>
+<a href="https://www.roblox.com/games/123235106040213/RBL-FESTIVAL#!/store" class="home-button">CUMPĂRĂ</a>
+</div>
+<div class="ticket-card">
+<h3>VIP</h3>
+<div class="price">499 LEI</div>
+<a href="https://www.roblox.com/games/123235106040213/RBL-FESTIVAL#!/store" class="home-button">CUMPĂRĂ</a>
+</div>
+</div>
 </section>
 
-<!-- ARTISTI -->
+<!-- ARTISTS -->
 <section id="artists">
-    <h2 class="section-title">ARTIȘTI</h2>
-
-    <div class="artists">
-        <div class="artist artist-1"><span class="artist-name">MEDUZA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-2"><span class="artist-name">BABY GANG</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-3"><span class="artist-name">AZTECA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-4"><span class="artist-name">PETRE ȘTEFAN</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-5"><span class="artist-name">RAVA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-6"><span class="artist-name">ZARA LARSSON</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-7"><span class="artist-name">BORIS BREJCHA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-8"><span class="artist-name">FRED AGAIN..</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-9"><span class="artist-name">ANYMA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-        <div class="artist artist-10"><span class="artist-name">ANDRA</span></div>
-        <div class="artist artist-11"><span class="artist-name">IRINA RIMES</span></div>
-        <div class="artist artist-12"><span class="artist-name">ALBERT NBN</span></div>
-        <div class="artist artist-13"><span class="artist-name">SKRILLEX</span></div>
-        <div class="artist artist-14"><span class="artist-name">KISS FM</span></div>
-        <div class="artist artist-15"><span class="artist-name">HUGEL</span></div>
-        <div class="artist artist-16"><span class="artist-name">KÖLSCH</span></div>
-        <div class="artist artist-17"><span class="artist-name">DTF</span></div>
-        <div class="artist artist-18"><span class="artist-name">MARTIN GARRIX</span></div>
-        <div class="artist artist-19"><span class="artist-name">SAGUNA</span></div>
-        <div class="artist artist-20"><span class="artist-name">POST MALONE</span></div>
-        <div class="artist artist-21"><span class="artist-name">DENISA IOANA</span></div>
-        <div class="artist artist-22"><span class="artist-name">INDUSTRY BABY</span></div>
-        <div class="artist artist-23"><span class="artist-name">MIRA</span></div>
-        <div class="artist artist-24"><span class="artist-name">DON TOLIVER</span></div>
-    </div>
+<h2 class="section-title">ARTIȘTI</h2>
+<div class="artists">
+<div class="artist artist-1"><span class="artist-name">MEDUZA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-2"><span class="artist-name">BABY GANG</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-3"><span class="artist-name">AZTECA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-4"><span class="artist-name">PETRE ȘTEFAN</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-5"><span class="artist-name">RAVA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-6"><span class="artist-name">ZARA LARSSON</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-7"><span class="artist-name">BORIS BREJCHA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-8"><span class="artist-name">FRED AGAIN..</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-9"><span class="artist-name">ANYMA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-10"><span class="artist-name">ANDRA</span></div>
+<div class="artist artist-11"><span class="artist-name">IRINA RIMES</span></div>
+<div class="artist artist-12"><span class="artist-name">ALBERT NBN</span></div>
+<div class="artist artist-13"><span class="artist-name">SKRILLEX</span></div>
+<div class="artist artist-14"><span class="artist-name">KISS FM</span></div>
+<div class="artist artist-15"><span class="artist-name">HUGEL</span></div>
+<div class="artist artist-16"><span class="artist-name">KÖLSCH</span></div>
+<div class="artist artist-17"><span class="artist-name">DTF</span></div>
+<div class="artist artist-18"><span class="artist-name">MARTIN GARRIX</span></div>
+<div class="artist artist-19"><span class="artist-name">SAGUNA</span></div>
+<div class="artist artist-20"><span class="artist-name">POST MALONE</span></div>
+<div class="artist artist-21"><span class="artist-name">DENISA IOANA</span></div>
+<div class="artist artist-22"><span class="artist-name">INDUSTRY BABY</span></div>
+<div class="artist artist-23"><span class="artist-name">MIRA</span></div>
+<div class="artist artist-24"><span class="artist-name">DON TOLIVER</span></div>
+</div>
 </section>
 
 <!-- PROGRAM -->
 <section class="program-section" id="program">
-    <h2 class="section-title">PROGRAM LIVE</h2>
+<h2 class="section-title">PROGRAM LIVE</h2>
+<div class="program-box">
+<div class="program-live"><div class="live-indicator">• FESTIVAL PROGRAM</div></div>
 
-    <div class="program-box">
-        <div class="program-live">
-            <div class="live-indicator">• FESTIVAL PROGRAM</div>
-        </div>
+<div class="program-day">
+<h3>15 JUL</h3>
+<div class="program-item"><span class="program-time">18:00</span><span class="program-artist">OPENING</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">19:00</span><span class="program-artist">MEDUZA</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">20:00</span><span class="program-artist">BABY GANG</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">21:00</span><span class="program-artist">AZTECA</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">22:00</span><span class="program-artist">PETRE ȘTEFAN</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">23:30</span><span class="program-artist">RAVA</span><span class="program-status">UPCOMING</span></div>
+</div>
 
-        <div class="program-day">
-            <h3>15 JUL</h3>
-            <div class="program-item"><span class="program-time">18:00</span><span class="program-artist">OPENING</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">MEDUZA</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">20:00</span><span class="program-artist">BABY GANG</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">AZTECA</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">22:00</span><span class="program-artist">PETRE ȘTEFAN</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">23:30</span><span class="program-artist">RAVA</span><span class="program-status">UPCOMING</span></div>
-        </div>
+<div class="program-day">
+<h3>16 JUL</h3>
+<div class="program-item"><span class="program-time">19:00</span><span class="program-artist">ZARA LARSSON</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">21:00</span><span class="program-artist">BORIS BREJCHA</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">23:00</span><span class="program-artist">FRED AGAIN..</span><span class="program-status">UPCOMING</span></div>
+</div>
 
-        <div class="program-day">
-            <h3>16 JUL</h3>
-            <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">ZARA LARSSON</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">BORIS BREJCHA</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">23:00</span><span class="program-artist">FRED AGAIN..</span><span class="program-status">UPCOMING</span></div>
-        </div>
+<div class="program-day">
+<h3>17 JUL</h3>
+<div class="program-item"><span class="program-time">19:00</span><span class="program-artist">ANYMA</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">21:00</span><span class="program-artist">ANDRA</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">23:00</span><span class="program-artist">IRINA RIMES</span><span class="program-status">UPCOMING</span></div>
+</div>
 
-        <div class="program-day">
-            <h3>17 JUL</h3>
-            <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">ANYMA</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">ANDRA</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">23:00</span><span class="program-artist">IRINA RIMES</span><span class="program-status">UPCOMING</span></div>
-        </div>
-
-        <div class="program-day">
-            <h3>18 JUL</h3>
-            <div class="program-item"><span class="program-time">18:00</span><span class="program-artist">ALBERT NBN</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">19:30</span><span class="program-artist">SKRILLEX</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">KISS FM</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">22:00</span><span class="program-artist">HUGEL</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">23:00</span><span class="program-artist">MARTIN GARRIX</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">00:00</span><span class="program-artist">SAGUNA</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">01:00</span><span class="program-artist">POST MALONE</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">02:00</span><span class="program-artist">DENISA IOANA</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">03:00</span><span class="program-artist">INDUSTRY BABY</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">04:00</span><span class="program-artist">MIRA</span><span class="program-status">UPCOMING</span></div>
-            <div class="program-item"><span class="program-time">05:00</span><span class="program-artist">DON TOLIVER</span><span class="program-status">UPCOMING</span></div>
-        </div>
-    </div>
+<div class="program-day">
+<h3>18 JUL</h3>
+<div class="program-item"><span class="program-time">18:00</span><span class="program-artist">ALBERT NBN</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">19:30</span><span class="program-artist">SKRILLEX</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">21:00</span><span class="program-artist">KISS FM</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">22:00</span><span class="program-artist">HUGEL</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">23:00</span><span class="program-artist">MARTIN GARRIX</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">00:00</span><span class="program-artist">SAGUNA</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">01:00</span><span class="program-artist">POST MALONE</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">02:00</span><span class="program-artist">DENISA IOANA</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">03:00</span><span class="program-artist">INDUSTRY BABY</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">04:00</span><span class="program-artist">MIRA</span><span class="program-status">UPCOMING</span></div>
+<div class="program-item"><span class="program-time">05:00</span><span class="program-artist">DON TOLIVER</span><span class="program-status">UPCOMING</span></div>
+</div>
+</div>
 </section>
 
 <!-- CELESTIAL ANGEL EDITION -->
 <section class="tron-section">
-    <div class="tron-content">
-        <h2 class="tron-title">CELESTIAL ANGEL EDITION</h2>
-
-        <p class="tron-text">
-            RAVE FESTIVAL 2027 – Step into a breathtaking
-            celestial universe where heavenly angels,
-            divine light and electronic music come together.
-            Experience majestic angel gates, spectacular
-            visual effects and an unforgettable journey
-            through a world beyond imagination.
-        </p>
-
-        <p class="tron-slogan">
-            ENTER THE CELESTIAL WORLD • LIVE THE EXPERIENCE
-        </p>
-    </div>
+<div class="tron-content">
+<h2 class="tron-title">CELESTIAL ANGEL EDITION</h2>
+<p class="tron-text">
+RAVE FESTIVAL 2027 – Step into a breathtaking
+celestial universe where heavenly angels,
+divine light and electronic music come together.
+Experience majestic angel gates, spectacular
+visual effects and an unforgettable journey
+through a world beyond imagination.
+</p>
+<p class="tron-slogan">ENTER THE CELESTIAL WORLD • LIVE THE EXPERIENCE</p>
+</div>
 </section>
 
 <!-- FINAL -->
 <section>
-    <h2 class="section-title">RAVE FESTIVAL 2027</h2>
-    <div style="text-align:center">
-        <p class="subtitle">15–18 IULIE 2027</p>
-    </div>
+<h2 class="section-title">RAVE FESTIVAL 2027</h2>
+<div style="text-align:center"><p class="subtitle">15–18 IULIE 2027</p></div>
 </section>
 
-<!-- SCRIPTS -->
 <script>
-
 /* MAIN MUSIC */
-const mainMusic = document.getElementById("mainMusic");
-mainMusic.volume = 0.7;
+const mainMusic=document.getElementById("mainMusic");
+mainMusic.volume=.7;
 
-async function startMainMusic() {
-    if (!mainMusic.paused) return;
-
-    try {
-        await mainMusic.play();
-        console.log("Muzica RAVE FESTIVAL a pornit!");
-    } catch (error) {
-        console.log("Redarea muzicii a fost blocată sau fișierul nu poate fi redat:", error);
-    }
+async function startMainMusic(){
+if(!mainMusic.paused)return;
+try{
+await mainMusic.play();
+console.log("Muzica RAVE FESTIVAL a pornit!");
+}catch(error){
+console.log("Redarea muzicii a fost blocată sau fișierul nu poate fi redat:",error);
 }
-
+}
 startMainMusic();
+document.addEventListener("pointerdown",startMainMusic);
+document.addEventListener("keydown",startMainMusic);
+mainMusic.addEventListener("error",()=>console.error("Eroare la încărcarea fișierului Video Project 1.mp4"));
+mainMusic.addEventListener("canplay",()=>console.log("Fișierul video este pregătit pentru redare."));
 
-document.addEventListener("pointerdown", startMainMusic);
-document.addEventListener("keydown", startMainMusic);
+/* COUNTDOWN ARTIST */
+function updateMaintenanceCountdown(){
+const target=new Date("2026-11-07T22:40:00+02:00").getTime();
+const distance=Math.max(0,target-Date.now());
+const hours=Math.floor(distance/3600000);
+const minutes=Math.floor((distance%3600000)/60000);
+const seconds=Math.floor((distance%60000)/1000);
 
-mainMusic.addEventListener("error", function() {
-    console.error("Eroare la încărcarea fișierului Video Project 1.mp4");
-});
+document.getElementById("maintenanceHours").textContent=String(hours).padStart(2,"0");
+document.getElementById("maintenanceMinutes").textContent=String(minutes).padStart(2,"0");
+document.getElementById("maintenanceSeconds").textContent=String(seconds).padStart(2,"0");
 
-mainMusic.addEventListener("canplay", function() {
-    console.log("Fișierul video este pregătit pentru redare.");
-});
-
-/* COUNTDOWN POSTER ARTIST MISTERIOS */
-function updateMaintenanceCountdown() {
-    const target = new Date(
-        "2026-11-07T22:40:00+02:00"
-    ).getTime();
-
-    const distance = Math.max(0, target - Date.now());
-
-    const hours = Math.floor(distance / 3600000);
-    const minutes = Math.floor((distance % 3600000) / 60000);
-    const seconds = Math.floor((distance % 60000) / 1000);
-
-    document.getElementById("maintenanceHours").textContent =
-        String(hours).padStart(2,"0");
-
-    document.getElementById("maintenanceMinutes").textContent =
-        String(minutes).padStart(2,"0");
-
-    document.getElementById("maintenanceSeconds").textContent =
-        String(seconds).padStart(2,"0");
-
-    if (distance <= 0) {
-        document.getElementById("maintenanceHeading").textContent =
-            "THE ANNOUNCEMENT IS HERE";
-
-        document.getElementById("maintenanceFooter").textContent =
-            "RAVE FESTIVAL 2027 • NEW ARTIST";
-    }
+if(distance<=0){
+document.getElementById("maintenanceHeading").textContent="THE ANNOUNCEMENT IS HERE";
+document.getElementById("maintenanceFooter").textContent="RAVE FESTIVAL 2027 • NEW ARTIST";
 }
-
+}
 updateMaintenanceCountdown();
-setInterval(updateMaintenanceCountdown, 1000);
+setInterval(updateMaintenanceCountdown,1000);
 
 /* FESTIVAL COUNTDOWN */
-const festivalDate =
-    new Date("2027-07-15T18:00:00+03:00").getTime();
-
-const timer = setInterval(function() {
-    const now = Date.now();
-    const distance = festivalDate - now;
-
-    if (distance <= 0) {
-        clearInterval(timer);
-
-        document.getElementById("countdown").innerHTML =
-            "<div style='color:#fff;font-size:30px;font-weight:900'>" +
-            "RAVE FESTIVAL A ÎNCEPUT!" +
-            "</div>";
-
-        return;
-    }
-
-    const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
-    );
-
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
-
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
-
-    const seconds = Math.floor(
-        (distance % (1000 * 60)) / 1000
-    );
-
-    document.getElementById("days").textContent =
-        String(days).padStart(2,"0");
-
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2,"0");
-
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2,"0");
-
-    document.getElementById("seconds").textContent =
-        String(seconds).padStart(2,"0");
-
-}, 1000);
+const festivalDate=new Date("2027-07-15T18:00:00+03:00").getTime();
+const timer=setInterval(function(){
+const distance=festivalDate-Date.now();
+if(distance<=0){
+clearInterval(timer);
+document.getElementById("countdown").innerHTML="<div style='color:#fff;font-size:30px;font-weight:900'>RAVE FESTIVAL A ÎNCEPUT!</div>";
+return;
+}
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+document.getElementById("days").textContent=String(days).padStart(2,"0");
+document.getElementById("hours").textContent=String(hours).padStart(2,"0");
+document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
+document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
+},1000);
 
 /* MAINTENANCE: NOVEMBER 7–13, 2026 */
-(function() {
-    const romaniaDate = new Date(
-        new Date().toLocaleString("en-US", {
-            timeZone: "Europe/Bucharest"
-        })
-    );
-
-    const year = romaniaDate.getFullYear();
-    const month = romaniaDate.getMonth();
-    const day = romaniaDate.getDate();
-
-    const maintenanceActive =
-        year === 2026 &&
-        month === 10 &&
-        day >= 7 &&
-        day <= 13;
-
-    if (maintenanceActive) {
-        document.getElementById("maintenanceOverlay").style.display = "flex";
-        document.body.style.overflow = "hidden";
-        mainMusic.pause();
-    }
+(function(){
+const romaniaDate=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"}));
+const year=romaniaDate.getFullYear();
+const month=romaniaDate.getMonth();
+const day=romaniaDate.getDate();
+const maintenanceActive=year===2026&&month===10&&day>=7&&day<=13;
+if(maintenanceActive){
+document.getElementById("maintenanceOverlay").style.display="flex";
+document.body.style.overflow="hidden";
+mainMusic.pause();
+}
 })();
-
 </script>
-
 </body>
 </html>
