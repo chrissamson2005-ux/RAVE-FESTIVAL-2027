@@ -402,11 +402,27 @@ html{scroll-behavior:auto}
 </div>
 </div>
 
-<!-- MUSIC VIDEO -->
-<video id="mainMusic" loop playsinline preload="auto"
-style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left:0;bottom:0">
-<source src="./Video%20Project%201.mp4" type="video/mp4">
-</video>
+<!-- RAVE FESTIVAL CASH OUT MUSIC -->
+<audio id="mainMusic" loop preload="auto">
+<source src="./cashout.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicButton" type="button" style="
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:100002;
+padding:14px 22px;
+background:#00eaff;
+color:#050914;
+border:1px solid white;
+border-radius:30px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 0 20px rgba(0,234,255,.5);
+">
+▶ PLAY MUSIC
+</button>
 
 <!-- NAVBAR -->
 <nav class="navbar">
@@ -622,30 +638,45 @@ through a world beyond imagination.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
-/* MAIN MUSIC */
-const mainMusic=document.getElementById("mainMusic");
-mainMusic.volume=.7;
+/* RAVE FESTIVAL CASH OUT MUSIC */
 
-async function startMainMusic(){
-    if(!mainMusic.paused)return;
-    try{
-        await mainMusic.play();
-        console.log("Muzica RAVE FESTIVAL a pornit!");
-    }catch(error){
-        console.log("Redarea automată poate fi blocată. Apasă pe pagină pentru a porni muzica.",error);
+const mainMusic = document.getElementById("mainMusic");
+const musicButton = document.getElementById("musicButton");
+
+mainMusic.volume = 0.7;
+
+musicButton.addEventListener("click", async function(){
+
+    if(mainMusic.paused){
+
+        try{
+            await mainMusic.play();
+            musicButton.textContent = "⏸ PAUSE MUSIC";
+        }catch(error){
+            musicButton.textContent = "▶ TRY AGAIN";
+            console.error("Music playback error:", error);
+        }
+
+    }else{
+
+        mainMusic.pause();
+        musicButton.textContent = "▶ PLAY MUSIC";
+
     }
-}
 
-startMainMusic();
-document.addEventListener("pointerdown",startMainMusic);
-document.addEventListener("keydown",startMainMusic);
-
-mainMusic.addEventListener("error",()=>{
-    console.error("Eroare la încărcarea fișierului Video Project 1.mp4");
 });
 
-mainMusic.addEventListener("canplay",()=>{
-    console.log("Fișierul video este pregătit pentru redare.");
+mainMusic.addEventListener("play",function(){
+    musicButton.textContent = "⏸ PAUSE MUSIC";
+});
+
+mainMusic.addEventListener("pause",function(){
+    musicButton.textContent = "▶ PLAY MUSIC";
+});
+
+mainMusic.addEventListener("error",function(){
+    musicButton.textContent = "MUSIC ERROR";
+    console.error("Nu s-a putut încărca cashout.mp3");
 });
 
 /* ROBLOX PROFILE */
