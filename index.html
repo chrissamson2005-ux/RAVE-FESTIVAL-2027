@@ -47,10 +47,61 @@ backdrop-filter:blur(15px);
 .nav-right{display:flex;align-items:center;gap:12px}
 .year-top{color:var(--luxury-light);font-size:21px;font-weight:900;letter-spacing:4px}
 
+/* MAP BUTTON */
+.map-button{
+display:flex;align-items:center;gap:8px;
+padding:12px 16px;color:#00eaff;
+font-size:12px;font-weight:900;letter-spacing:2px;
+background:linear-gradient(135deg,#10294a,#080f20);
+border:1px solid #00bfff;
+box-shadow:0 0 15px rgba(0,234,255,.2);
+cursor:pointer;transition:.3s
+}
+.map-button:hover{
+background:#123b60;
+box-shadow:0 0 22px rgba(0,234,255,.5)
+}
+
+/* GAME NAME NEXT TO MAP */
+.game-nav-info{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:5px;
+min-width:125px;
+}
+
+.game-nav-name{
+color:#fff;
+font-size:10px;
+font-weight:900;
+letter-spacing:1px;
+white-space:nowrap;
+}
+
+.game-nav-play{
+color:#00eaff;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+text-decoration:none;
+padding:6px 10px;
+border:1px solid #00bfff;
+background:#10294a;
+white-space:nowrap;
+transition:.3s;
+}
+
+.game-nav-play:hover{
+background:#087ca5;
+box-shadow:0 0 15px rgba(0,234,255,.5);
+}
+
 /* ROBLOX PROFILE CARD */
 .roblox-profile{
 display:flex;align-items:center;gap:10px;
-min-width:190px;padding:7px 12px;
+min-width:220px;padding:7px 12px;
 color:#fff;text-decoration:none;
 background:linear-gradient(135deg,#172b52,#080f20);
 border:1px solid #668fff;
@@ -62,16 +113,117 @@ background:#193b75;border-color:#a9c9ff;
 box-shadow:0 0 22px rgba(65,105,225,.55)
 }
 .roblox-avatar{
-width:38px;height:38px;display:flex;
+width:48px;height:48px;display:flex;
 align-items:center;justify-content:center;
 flex-shrink:0;background:linear-gradient(135deg,#4169e1,#8eb8ff);
 border:1px solid #c5dcff;border-radius:8px;
-font-size:20px;font-weight:900
+overflow:hidden;font-size:20px;font-weight:900
 }
-.roblox-profile-info{display:flex;flex-direction:column;gap:4px}
+.roblox-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.roblox-profile-info{display:flex;flex-direction:column;gap:4px;min-width:0}
 .roblox-profile-info strong{font-size:10px;letter-spacing:1px}
 .roblox-profile-info small{font-size:8px;color:#a9c9ff;letter-spacing:1px}
+.roblox-username{
+font-size:10px;color:#fff;font-weight:900;
+max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+.roblox-view{
+font-size:8px;color:#a9c9ff;font-weight:900;letter-spacing:1px
+}
 .roblox-arrow{margin-left:auto;font-size:25px;color:#a9c9ff}
+
+/* ROBLOX QR CODE */
+.roblox-qr-card{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:5px;
+padding:7px;
+min-width:88px;
+background:linear-gradient(135deg,#172b52,#080f20);
+border:1px solid #00bfff;
+box-shadow:0 0 15px rgba(0,234,255,.2);
+}
+
+.roblox-qr-title{
+color:#00eaff;
+font-size:9px;
+font-weight:900;
+letter-spacing:1px;
+white-space:nowrap;
+}
+
+#robloxQRCode{
+width:65px;
+height:65px;
+padding:3px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+}
+
+#robloxQRCode img,
+#robloxQRCode canvas{
+width:59px!important;
+height:59px!important;
+display:block;
+}
+
+.roblox-qr-caption{
+color:#c2d4f5;
+font-size:7px;
+font-weight:900;
+letter-spacing:1px;
+text-align:center;
+}
+
+/* MAP WINDOW */
+.map-overlay{
+display:none;position:fixed;inset:0;z-index:100001;
+align-items:center;justify-content:center;padding:20px;
+background:rgba(0,3,12,.90);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px)
+}
+.map-overlay.active{display:flex}
+.map-window{
+width:100%;max-width:1100px;max-height:90vh;
+overflow:auto;padding:22px;
+background:linear-gradient(145deg,#102448,#050914);
+border:1px solid #00bfff;
+box-shadow:0 0 40px rgba(0,190,255,.3)
+}
+.map-header{
+display:flex;align-items:center;justify-content:space-between;
+gap:15px;margin-bottom:20px
+}
+.map-header h2{
+color:#00eaff;font-size:25px;letter-spacing:3px
+}
+.map-close{
+padding:9px 15px;color:white;
+background:#172b52;border:1px solid #8eb8ff;
+font-size:20px;cursor:pointer
+}
+.map-image-container{
+width:100%;min-height:300px;
+display:flex;align-items:center;justify-content:center;
+overflow:hidden;background:#081326;
+border:1px solid #4169e1
+}
+.map-image-container img{
+width:100%;height:auto;display:block;object-fit:contain
+}
+.map-placeholder{
+width:100%;padding:60px 20px;
+text-align:center;color:#a9c9ff
+}
+.map-placeholder h3{
+margin:15px 0;color:#fff;font-size:25px
+}
+.map-placeholder p{font-size:14px;line-height:1.7}
 
 /* HOME */
 .home{
@@ -264,10 +416,21 @@ border:1px solid #8eb8ff;box-shadow:0 0 35px rgba(65,105,225,.35)
 .menu a{font-size:10px;letter-spacing:1px}
 .nav-right{justify-content:center;flex-wrap:wrap}
 .year-top{font-size:14px;letter-spacing:2px}
+.map-button{padding:9px 12px;font-size:10px}
+.game-nav-info{min-width:auto}
+.game-nav-name{font-size:8px}
+.game-nav-play{font-size:8px;padding:5px 7px}
 .roblox-profile{min-width:170px;padding:6px 9px}
-.roblox-avatar{width:32px;height:32px}
+.roblox-avatar{width:38px;height:38px}
 .roblox-profile-info strong{font-size:9px}
 .roblox-profile-info small{font-size:7px}
+
+/* QR ON MOBILE */
+.roblox-qr-card{min-width:82px;padding:6px}
+#robloxQRCode{width:60px;height:60px}
+#robloxQRCode img,#robloxQRCode canvas{width:54px!important;height:54px!important}
+.roblox-qr-title{font-size:8px}
+
 .home{min-height:80vh;padding:65px 12px 45px}
 .year{font-size:18px;letter-spacing:4px}
 .title{font-size:clamp(32px,10vw,55px);letter-spacing:2px}
@@ -311,6 +474,11 @@ section,#tickets{padding:75px 12px 60px}
 .poster-timer div{min-width:55px;padding:8px 5px}
 .poster-timer span{font-size:22px}
 .poster-timer small{font-size:8px}
+.map-overlay{padding:10px}
+.map-window{padding:13px;max-height:95vh}
+.map-header h2{font-size:17px}
+.map-image-container{min-height:220px}
+.map-placeholder h3{font-size:20px}
 }
 
 @media(min-width:601px) and (max-width:1024px){
@@ -403,6 +571,7 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 <!-- NAVBAR -->
 <nav class="navbar">
 <div class="logo">RAVE FESTIVAL</div>
+
 <ul class="menu">
 <li><a href="#home">HOME</a></li>
 <li><a href="#tickets">BILETE</a></li>
@@ -412,18 +581,80 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 </ul>
 
 <div class="nav-right">
+
 <div class="year-top">2027</div>
 
-<a href="#" class="roblox-profile" id="robloxProfileLink">
-<div class="roblox-avatar" id="robloxAvatar">R</div>
-<div class="roblox-profile-info">
-<strong>CONNECT YOUR ACCOUNT</strong>
-<small id="robloxProfileStatus">ROBLOX • DIRECT PROFILE</small>
+<button class="map-button" id="openMapButton" type="button">
+🗺️ MAP
+</button>
+
+<!-- ROBLOX GAME NAME AND PLAY BUTTON -->
+<div class="game-nav-info">
+<span class="game-nav-name">RAVE FESTIVAL 2027</span>
+
+<a
+class="game-nav-play"
+href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL"
+target="_blank"
+rel="noopener noreferrer"
+>▶ PLAY GAME</a>
 </div>
+
+<!-- ROBLOX PROFILE -->
+<a href="#" class="roblox-profile" id="robloxProfileLink">
+<div class="roblox-avatar" id="robloxAvatar">
+<img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4117F37BBB2715EF990D94E-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Roblox Avatar">
+</div>
+
+<div class="roblox-profile-info">
+<strong id="robloxUsername">CONNECT YOUR ACCOUNT</strong>
+<small id="robloxProfileStatus">ROBLOX • NOT CONNECTED</small>
+<span class="roblox-username" id="robloxProfileName"></span>
+<span class="roblox-view" id="robloxView">CONNECT PROFILE</span>
+</div>
+
 <span class="roblox-arrow">›</span>
 </a>
+
+<!-- QR CODE NEXT TO ROBLOX PROFILE -->
+<div class="roblox-qr-card">
+<div class="roblox-qr-title">SCAN TO PLAY</div>
+<div id="robloxQRCode" aria-label="QR Code pentru jocul RAVE FESTIVAL"></div>
+<div class="roblox-qr-caption">RAVE FESTIVAL</div>
+</div>
+
 </div>
 </nav>
+
+<!-- RAVE FESTIVAL GAME MAP -->
+<div class="map-overlay" id="mapOverlay">
+<div class="map-window">
+
+<div class="map-header">
+<h2>RAVE FESTIVAL MAP</h2>
+<button class="map-close" id="closeMapButton" type="button">✕</button>
+</div>
+
+<div class="map-image-container">
+<img
+src="./rave-festival-map.png"
+alt="RAVE FESTIVAL Roblox Game Map"
+onerror="this.style.display='none';document.getElementById('mapPlaceholder').style.display='block';"
+>
+
+<div class="map-placeholder" id="mapPlaceholder" style="display:none">
+<div style="font-size:55px">🗺️</div>
+<h3>RAVE FESTIVAL GAME MAP</h3>
+<p>
+THE OFFICIAL GAME MAP IS COMING SOON
+<br>
+HARTA JOCULUI ROBLOX VA APĂREA AICI.
+</p>
+</div>
+</div>
+
+</div>
+</div>
 
 <!-- HOME -->
 <section class="home" id="home">
@@ -432,6 +663,7 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 <h1 class="title">RAVE FESTIVAL</h1>
 <div class="subtitle">15–18 JULY 2027</div>
 <div class="subtitle">THE FUTURE IS HERE</div>
+
 <div class="home-buttons">
 <a href="#tickets" class="home-button">BILETE</a>
 <a href="#artists" class="home-button">ARTIȘTI</a>
@@ -445,6 +677,7 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 <div class="countdown-layout">
 <div class="countdown-box">
 <div class="countdown-title">RAVE FESTIVAL 2027 STARTS IN</div>
+
 <div id="countdown">
 <div class="countdown-item"><span id="days">00</span><small>ZILE</small></div>
 <div class="countdown-item"><span id="hours">00</span><small>ORE</small></div>
@@ -458,16 +691,18 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 <!-- TICKETS -->
 <section id="tickets">
 <h2 class="section-title">BILETE</h2>
+
 <div class="tickets">
 <div class="ticket-card">
 <h3>GENERAL ACCESS</h3>
 <div class="price">249 LEI</div>
-<a href="https://www.roblox.com/games/123235106040213/RBL-FESTIVAL#!/store" class="home-button">CUMPĂRĂ</a>
+<a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button">CUMPĂRĂ</a>
 </div>
+
 <div class="ticket-card">
 <h3>VIP</h3>
 <div class="price">499 LEI</div>
-<a href="https://www.roblox.com/games/123235106040213/RBL-FESTIVAL#!/store" class="home-button">CUMPĂRĂ</a>
+<a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button">CUMPĂRĂ</a>
 </div>
 </div>
 </section>
@@ -475,6 +710,7 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 <!-- ARTISTS -->
 <section id="artists">
 <h2 class="section-title">ARTIȘTI</h2>
+
 <div class="artists">
 <div class="artist artist-1"><span class="artist-name">MEDUZA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
 <div class="artist artist-2"><span class="artist-name">BABY GANG</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
@@ -506,8 +742,11 @@ style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;left
 <!-- PROGRAM -->
 <section class="program-section" id="program">
 <h2 class="section-title">PROGRAM LIVE</h2>
+
 <div class="program-box">
-<div class="program-live"><div class="live-indicator">• FESTIVAL PROGRAM</div></div>
+<div class="program-live">
+<div class="live-indicator">• FESTIVAL PROGRAM</div>
+</div>
 
 <div class="program-day">
 <h3>15 JUL</h3>
@@ -569,8 +808,13 @@ through a world beyond imagination.
 <!-- FINAL -->
 <section>
 <h2 class="section-title">RAVE FESTIVAL 2027</h2>
-<div style="text-align:center"><p class="subtitle">15–18 IULIE 2027</p></div>
+<div style="text-align:center">
+<p class="subtitle">15–18 IULIE 2027</p>
+</div>
 </section>
+
+<!-- QR CODE LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
 /* MAIN MUSIC */
@@ -599,51 +843,156 @@ mainMusic.addEventListener("canplay",()=>{
     console.log("Fișierul video este pregătit pentru redare.");
 });
 
-/* ROBLOX PROFILE - FIECARE VIZITATOR */
+/* ROBLOX PROFILE - AVATAR + USERNAME */
+
 const robloxProfileLink=document.getElementById("robloxProfileLink");
 const robloxProfileStatus=document.getElementById("robloxProfileStatus");
 const robloxAvatar=document.getElementById("robloxAvatar");
+const robloxUsername=document.getElementById("robloxUsername");
+const robloxProfileName=document.getElementById("robloxProfileName");
+const robloxView=document.getElementById("robloxView");
 
-/* Profilul tău este valoarea inițială */
-const defaultRobloxProfile="https://www.roblox.com/users/6086630546/profile";
+const storageKey="raveFestivalRobloxProfile";
 
-const savedRobloxProfile=localStorage.getItem("raveFestivalRobloxProfile");
+const defaultRobloxAvatar=
+"https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4117F37BBB2715EF990D94E-Png/150/150/AvatarHeadshot/Webp/noFilter";
 
 function isValidRobloxProfile(link){
     try{
         const url=new URL(link);
+
         return url.protocol==="https:" &&
-        (url.hostname==="www.roblox.com" || url.hostname==="roblox.com") &&
+        (url.hostname==="www.roblox.com" ||
+         url.hostname==="roblox.com") &&
         /^\/users\/\d+\/profile\/?$/.test(url.pathname);
+
     }catch(error){
         return false;
     }
 }
 
-function updateRobloxCard(profile){
+function getRobloxUserId(link){
+    const match=link.match(/\/users\/(\d+)\/profile\/?$/);
+    return match ? match[1] : null;
+}
+
+function showDefaultRobloxCard(){
+    const avatarImage=document.createElement("img");
+    avatarImage.src=defaultRobloxAvatar;
+    avatarImage.alt="Roblox Avatar";
+
+    robloxAvatar.replaceChildren(avatarImage);
+
+    robloxUsername.textContent="CONNECT YOUR ACCOUNT";
+    robloxProfileStatus.textContent="ROBLOX • NOT CONNECTED";
+    robloxProfileName.textContent="";
+    robloxView.textContent="CONNECT PROFILE";
+    robloxProfileLink.href="#";
+
+    robloxProfileLink.removeAttribute("target");
+    robloxProfileLink.removeAttribute("rel");
+}
+
+async function loadRobloxProfile(profile){
+
+    if(!isValidRobloxProfile(profile)){
+        showDefaultRobloxCard();
+        return;
+    }
+
+    const userId=getRobloxUserId(profile);
+
     robloxProfileLink.href=profile;
     robloxProfileLink.target="_blank";
     robloxProfileLink.rel="noopener noreferrer";
-    robloxProfileStatus.textContent="ROBLOX • PROFILE CONNECTED";
-    robloxAvatar.textContent="R";
+
+    robloxUsername.textContent="LOADING PROFILE...";
+    robloxProfileStatus.textContent="ROBLOX • CONNECTING";
+    robloxView.textContent="VIEW PROFILE";
+
+    try{
+        const userResponse=await fetch(
+            "https://users.roblox.com/v1/users/"+userId
+        );
+
+        if(!userResponse.ok){
+            throw new Error("Roblox user API unavailable");
+        }
+
+        const userData=await userResponse.json();
+
+        robloxUsername.textContent=userData.displayName || userData.name;
+        robloxProfileName.textContent="@"+userData.name;
+
+        const avatarResponse=await fetch(
+            "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="+
+            userId+"&size=150x150&format=Png&isCircular=false"
+        );
+
+        if(!avatarResponse.ok){
+            throw new Error("Roblox avatar API unavailable");
+        }
+
+        const avatarData=await avatarResponse.json();
+
+        if(avatarData.data && avatarData.data.length>0 &&
+           avatarData.data[0].imageUrl){
+
+            const avatarImage=document.createElement("img");
+            avatarImage.src=avatarData.data[0].imageUrl;
+            avatarImage.alt="Roblox avatar";
+
+            robloxAvatar.replaceChildren(avatarImage);
+        }
+
+        robloxProfileStatus.textContent="ROBLOX • PROFILE CONNECTED";
+        robloxView.textContent="VIEW PROFILE";
+
+    }catch(error){
+        console.error("Roblox profile error:",error);
+        robloxUsername.textContent="ROBLOX PROFILE";
+        robloxProfileStatus.textContent="PROFILE LINK SAVED";
+        robloxProfileName.textContent="ID: "+userId;
+        robloxView.textContent="VIEW PROFILE";
+    }
 }
 
-/* Dacă vizitatorul are deja un profil salvat */
+/* LOAD PROFILE SAVED IN THIS BROWSER */
+
+const savedRobloxProfile=localStorage.getItem(storageKey);
+
 if(savedRobloxProfile && isValidRobloxProfile(savedRobloxProfile)){
-    updateRobloxCard(savedRobloxProfile);
+    loadRobloxProfile(savedRobloxProfile);
 }else{
-    updateRobloxCard(defaultRobloxProfile);
+    showDefaultRobloxCard();
 }
 
-/* Click pe card */
+/* CONNECT OR CHANGE PROFILE */
+
 robloxProfileLink.addEventListener("click",function(event){
+
     event.preventDefault();
 
-    const currentProfile=localStorage.getItem("raveFestivalRobloxProfile");
+    const currentProfile=localStorage.getItem(storageKey);
+
+    if(currentProfile && isValidRobloxProfile(currentProfile)){
+        const changeProfile=confirm(
+            "PROFILUL TĂU ROBLOX ESTE CONECTAT.\n\n"+
+            "OK = SCHIMBĂ PROFILUL\n"+
+            "CANCEL = DESCHIDE PROFILUL"
+        );
+
+        if(!changeProfile){
+            window.open(currentProfile,"_blank","noopener,noreferrer");
+            return;
+        }
+    }
 
     const enteredProfile=prompt(
-        "CONNECT YOUR ROBLOX ACCOUNT\n\nIntrodu linkul profilului tău Roblox:",
-        currentProfile || defaultRobloxProfile
+        "RAVE FESTIVAL 2027\n\n"+
+        "CONNECT YOUR ROBLOX PROFILE\n\n"+
+        "Introdu linkul profilului tău Roblox:",
+        currentProfile || ""
     );
 
     if(enteredProfile===null)return;
@@ -655,10 +1004,57 @@ robloxProfileLink.addEventListener("click",function(event){
         return;
     }
 
-    localStorage.setItem("raveFestivalRobloxProfile",cleanProfile);
-    updateRobloxCard(cleanProfile);
+    localStorage.setItem(storageKey,cleanProfile);
+
+    loadRobloxProfile(cleanProfile);
 
     window.open(cleanProfile,"_blank","noopener,noreferrer");
+});
+
+/* RAVE FESTIVAL QR CODE */
+
+const robloxGameUrl=
+"https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL";
+
+const qrContainer=document.getElementById("robloxQRCode");
+
+if(typeof QRCode!=="undefined" && qrContainer){
+    new QRCode(qrContainer,{
+        text:robloxGameUrl,
+        width:59,
+        height:59,
+        colorDark:"#050914",
+        colorLight:"#ffffff",
+        correctLevel:QRCode.CorrectLevel.H
+    });
+}else{
+    qrContainer.textContent="QR ERROR";
+}
+
+/* RAVE FESTIVAL GAME MAP */
+
+const mapOverlay=document.getElementById("mapOverlay");
+const openMapButton=document.getElementById("openMapButton");
+const closeMapButton=document.getElementById("closeMapButton");
+
+openMapButton.addEventListener("click",function(){
+    mapOverlay.classList.add("active");
+});
+
+closeMapButton.addEventListener("click",function(){
+    mapOverlay.classList.remove("active");
+});
+
+mapOverlay.addEventListener("click",function(event){
+    if(event.target===mapOverlay){
+        mapOverlay.classList.remove("active");
+    }
+});
+
+document.addEventListener("keydown",function(event){
+    if(event.key==="Escape"){
+        mapOverlay.classList.remove("active");
+    }
 });
 
 /* COUNTDOWN ARTIST */
