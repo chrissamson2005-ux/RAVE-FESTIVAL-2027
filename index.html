@@ -247,7 +247,7 @@ animation:confettiFall linear forwards;
 100%{transform:translateY(110vh) rotate(900deg);opacity:0}
 }
 
-.artist-announced .maintenance-poster{
+.artist-announced{
 border-color:#00eaff;
 box-shadow:0 0 45px rgba(0,234,255,.65);
 }
@@ -904,34 +904,66 @@ function launchAnnouncementConfetti(){
     },10000);
 }
 
+/* A$AP ROCKY - FOTOGRAFIA DOAR PE POSTER */
 function revealNewArtist(){
+
     if(artistAlreadyRevealed)return;
     artistAlreadyRevealed=true;
 
-    document.body.style.background=
-    'linear-gradient(rgba(5,9,20,.25),rgba(5,9,20,.35)),url("./891288836_4784079731821693_4256196259621737418_n.png") center center/cover fixed no-repeat';
+    const poster=document.querySelector(".maintenance-poster");
 
+    if(!poster)return;
+
+    /* Fotografia se aplică numai pe poster */
+    poster.style.backgroundImage=
+    'linear-gradient(rgba(5,9,20,.20),rgba(5,9,20,.35)),url("./891288836_4784079731821693_4256196259621737418_n.png.jpg")';
+
+    poster.style.backgroundPosition="center";
+    poster.style.backgroundSize="cover";
+    poster.style.backgroundRepeat="no-repeat";
+
+    /* Titlul anunțului */
     const posterTitle=document.querySelector(".poster-title h2");
     const posterArtist=document.querySelector(".poster-title p");
 
-    posterTitle.textContent="ARTIST ANNOUNCED";
-    posterArtist.textContent="A$AP ROCKY";
+    if(posterTitle){
+        posterTitle.textContent="ARTIST ANNOUNCED";
+    }
 
-    document.getElementById("maintenanceHeading").textContent=
-    "THE ANNOUNCEMENT IS HERE";
+    if(posterArtist){
+        posterArtist.textContent="A$AP ROCKY";
+    }
 
-    document.getElementById("maintenanceFooter").textContent=
-    "RAVE FESTIVAL 2027 • A$AP ROCKY";
+    /* Mesajele de sub poster */
+    const heading=document.getElementById("maintenanceHeading");
+    const footer=document.getElementById("maintenanceFooter");
 
-    document.querySelector(".maintenance-poster")
-        .classList.add("artist-announced");
+    if(heading){
+        heading.textContent="THE ANNOUNCEMENT IS HERE";
+    }
 
-    document.querySelector(".poster-countdown").style.display="none";
+    if(footer){
+        footer.textContent="RAVE FESTIVAL 2027 • A$AP ROCKY";
+    }
+
+    /* Efect vizual */
+    poster.classList.add("artist-announced");
+
+    const silhouette=document.querySelector(".poster-silhouette");
+    if(silhouette){
+        silhouette.style.display="none";
+    }
+
+    const countdown=document.querySelector(".poster-countdown");
+    if(countdown){
+        countdown.style.display="none";
+    }
 
     launchAnnouncementConfetti();
 }
 
 function updateMaintenanceCountdown(){
+
     const distance=artistAnnouncementDate-Date.now();
 
     if(distance<=0){
