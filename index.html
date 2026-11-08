@@ -9,7 +9,6 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;width:100%;overflow-x:hidden}
-
 :root{
 --luxury-bg:#050914;
 --luxury-dark:#080f20;
@@ -19,7 +18,6 @@ html{scroll-behavior:smooth;width:100%;overflow-x:hidden}
 --luxury-white:#f4f7ff;
 --luxury-border:rgba(100,150,255,.35)
 }
-
 body{
 min-height:100vh;
 width:100%;
@@ -28,8 +26,61 @@ color:var(--luxury-white);
 font-family:Arial,Helvetica,sans-serif;
 overflow-x:hidden
 }
-
 img,video,iframe{max-width:100%}
+
+/* CEAS */
+.site-clock{
+position:fixed;bottom:20px;left:20px;z-index:9997;
+min-width:190px;padding:10px 16px;text-align:center;
+background:rgba(5,12,29,.88);border:1px solid #8eb8ff;
+box-shadow:0 0 18px rgba(142,184,255,.35);
+backdrop-filter:blur(12px);color:#fff;pointer-events:none
+}
+.site-clock-time{font-size:25px;font-weight:900;letter-spacing:3px;color:#fff;text-shadow:0 0 12px #8eb8ff}
+.site-clock-date{margin-top:4px;font-size:10px;font-weight:900;letter-spacing:1px;color:#c5dcff}
+
+/* LUMINA ALBA */
+#nightWhiteLight{
+position:fixed;inset:0;z-index:9990;pointer-events:none;display:none;
+background:
+radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.24),transparent 65%),
+radial-gradient(ellipse at 0% 50%,rgba(255,255,255,.17),transparent 60%),
+radial-gradient(ellipse at 100% 50%,rgba(255,255,255,.17),transparent 60%),
+radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.22),transparent 65%);
+box-shadow:inset 0 0 160px rgba(255,255,255,.42);
+mix-blend-mode:screen;transition:opacity 2s ease;opacity:0
+}
+body.white-light-on #nightWhiteLight{display:block;opacity:1}
+
+/* LUMINI COLORATE IN MISCARE */
+#movingFestivalLights{
+position:fixed;inset:0;z-index:9989;overflow:hidden;
+pointer-events:none;mix-blend-mode:screen;opacity:.8
+}
+.festival-beam{
+position:absolute;top:-35%;width:22vw;height:150vh;
+filter:blur(22px);transform-origin:top center;opacity:.65
+}
+.festival-beam:nth-child(1){
+left:10%;background:linear-gradient(90deg,transparent,rgba(0,234,255,.55),transparent);
+animation:beamBlue 7s ease-in-out infinite alternate
+}
+.festival-beam:nth-child(2){
+left:35%;background:linear-gradient(90deg,transparent,rgba(160,50,255,.55),transparent);
+animation:beamPurple 9s ease-in-out infinite alternate
+}
+.festival-beam:nth-child(3){
+left:60%;background:linear-gradient(90deg,transparent,rgba(255,0,180,.5),transparent);
+animation:beamPink 8s ease-in-out infinite alternate
+}
+.festival-beam:nth-child(4){
+left:80%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
+animation:beamWhite 6s ease-in-out infinite alternate
+}
+@keyframes beamBlue{from{transform:rotate(-35deg)}to{transform:rotate(35deg)}}
+@keyframes beamPurple{from{transform:rotate(30deg)}to{transform:rotate(-40deg)}}
+@keyframes beamPink{from{transform:rotate(-30deg)}to{transform:rotate(40deg)}}
+@keyframes beamWhite{from{transform:rotate(35deg)}to{transform:rotate(-35deg)}}
 
 /* NAVBAR */
 .navbar{
@@ -38,8 +89,7 @@ display:flex;align-items:center;justify-content:space-between;
 padding:0 45px;background:rgba(5,12,29,.88);
 border-bottom:1px solid var(--luxury-border);
 box-shadow:0 5px 30px rgba(30,80,180,.18);
-backdrop-filter:blur(15px);
--webkit-backdrop-filter:blur(15px);z-index:9998
+backdrop-filter:blur(15px);z-index:9998
 }
 .logo{color:#fff;font-size:24px;font-weight:900;letter-spacing:3px;text-shadow:0 0 15px rgba(100,160,255,.5)}
 .menu{display:flex;gap:30px;list-style:none}
@@ -47,8 +97,6 @@ backdrop-filter:blur(15px);
 .menu a:hover{color:var(--luxury-light);text-shadow:0 0 12px #4169e1}
 .nav-right{display:flex;align-items:center;gap:12px}
 .year-top{color:var(--luxury-light);font-size:21px;font-weight:900;letter-spacing:4px}
-
-/* MAP BUTTON */
 .map-button{
 display:flex;align-items:center;gap:8px;padding:12px 16px;
 color:#00eaff;font-size:12px;font-weight:900;letter-spacing:2px;
@@ -57,146 +105,85 @@ border:1px solid #00bfff;box-shadow:0 0 15px rgba(0,234,255,.2);
 cursor:pointer;transition:.3s
 }
 .map-button:hover{background:#123b60;box-shadow:0 0 22px rgba(0,234,255,.5)}
-
-/* GAME NAME */
-.game-nav-info{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:125px}
+.game-nav-info{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:125px}
 .game-nav-name{color:#fff;font-size:10px;font-weight:900;letter-spacing:1px;white-space:nowrap}
-.game-nav-play{color:#00eaff;font-size:9px;font-weight:900;letter-spacing:1px;text-decoration:none;padding:6px 10px;border:1px solid #00bfff;background:#10294a;white-space:nowrap;transition:.3s}
-.game-nav-play:hover{background:#087ca5;box-shadow:0 0 15px rgba(0,234,255,.5)}
-
-/* ROBLOX PROFILE */
+.game-nav-play{color:#00eaff;font-size:9px;font-weight:900;letter-spacing:1px;text-decoration:none;padding:6px 10px;border:1px solid #00bfff;background:#10294a;white-space:nowrap}
 .roblox-profile{
 display:flex;align-items:center;gap:10px;min-width:220px;padding:7px 12px;
 color:#fff;text-decoration:none;background:linear-gradient(135deg,#172b52,#080f20);
-border:1px solid #668fff;box-shadow:0 0 15px rgba(65,105,225,.25);
-transition:.3s;cursor:pointer
+border:1px solid #668fff;box-shadow:0 0 15px rgba(65,105,225,.25);cursor:pointer
 }
-.roblox-profile:hover{background:#193b75;border-color:#a9c9ff;box-shadow:0 0 22px rgba(65,105,225,.55)}
-.roblox-avatar{width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:linear-gradient(135deg,#4169e1,#8eb8ff);border:1px solid #c5dcff;border-radius:8px;overflow:hidden;font-size:20px;font-weight:900}
-.roblox-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.roblox-avatar{width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:#4169e1;border:1px solid #c5dcff;border-radius:8px;overflow:hidden}
+.roblox-avatar img{width:100%;height:100%;object-fit:cover}
 .roblox-profile-info{display:flex;flex-direction:column;gap:4px;min-width:0}
 .roblox-profile-info strong{font-size:10px;letter-spacing:1px}
-.roblox-profile-info small{font-size:8px;color:#a9c9ff;letter-spacing:1px}
-.roblox-username{font-size:10px;color:#fff;font-weight:900;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.roblox-view{font-size:8px;color:#a9c9ff;font-weight:900;letter-spacing:1px}
+.roblox-profile-info small{font-size:8px;color:#a9c9ff}
+.roblox-username{font-size:10px;color:#fff;font-weight:900}
+.roblox-view{font-size:8px;color:#a9c9ff;font-weight:900}
 .roblox-arrow{margin-left:auto;font-size:25px;color:#a9c9ff}
-
-/* ROBLOX QR */
-.roblox-qr-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:7px;min-width:88px;background:linear-gradient(135deg,#172b52,#080f20);border:1px solid #00bfff;box-shadow:0 0 15px rgba(0,234,255,.2)}
-.roblox-qr-title{color:#00eaff;font-size:9px;font-weight:900;letter-spacing:1px;white-space:nowrap}
+.roblox-qr-card{display:flex;flex-direction:column;align-items:center;gap:5px;padding:7px;background:#102448;border:1px solid #00bfff}
+.roblox-qr-title{color:#00eaff;font-size:9px;font-weight:900}
 #robloxQRCode{width:65px;height:65px;padding:3px;display:flex;align-items:center;justify-content:center;background:#fff}
-#robloxQRCode img,#robloxQRCode canvas{width:59px!important;height:59px!important;display:block}
-.roblox-qr-caption{color:#c2d4f5;font-size:7px;font-weight:900;letter-spacing:1px;text-align:center}
+#robloxQRCode img,#robloxQRCode canvas{width:59px!important;height:59px!important}
+.roblox-qr-caption{color:#c2d4f5;font-size:7px;font-weight:900}
 
-/* MAP WINDOW */
-.map-overlay{display:none;position:fixed;inset:0;z-index:100001;align-items:center;justify-content:center;padding:20px;background:rgba(0,3,12,.90);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+/* MAP */
+.map-overlay{
+display:none;position:fixed;inset:0;z-index:100001;
+align-items:center;justify-content:center;padding:20px;
+background:rgba(0,3,12,.90);backdrop-filter:blur(10px)
+}
 .map-overlay.active{display:flex}
-.map-window{width:100%;max-width:1100px;max-height:90vh;overflow:auto;padding:22px;background:linear-gradient(145deg,#102448,#050914);border:1px solid #00bfff;box-shadow:0 0 40px rgba(0,190,255,.3)}
-.map-header{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}
-.map-header h2{color:#00eaff;font-size:25px;letter-spacing:3px}
+.map-window{width:100%;max-width:1100px;max-height:90vh;overflow:auto;padding:22px;background:linear-gradient(145deg,#102448,#050914);border:1px solid #00bfff}
+.map-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.map-header h2{color:#00eaff;font-size:25px}
 .map-close{padding:9px 15px;color:white;background:#172b52;border:1px solid #8eb8ff;font-size:20px;cursor:pointer}
-.map-image-container{width:100%;min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#081326;border:1px solid #4169e1}
-.map-image-container img{width:100%;height:auto;display:block;object-fit:contain}
+.map-image-container{width:100%;min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#081326}
+.map-image-container img{width:100%;height:auto;object-fit:contain}
 .map-placeholder{width:100%;padding:60px 20px;text-align:center;color:#a9c9ff}
-.map-placeholder h3{margin:15px 0;color:#fff;font-size:25px}
-.map-placeholder p{font-size:14px;line-height:1.7}
 
-/* VIRTUAL PHONE */
+/* PHONE */
 .phone-launcher{
 position:fixed;bottom:20px;right:20px;z-index:100002;
 width:65px;height:65px;border-radius:20px;
 background:linear-gradient(145deg,#00eaff,#4169e1);
-border:2px solid white;color:#fff;font-size:30px;
-cursor:pointer;box-shadow:0 0 25px rgba(0,234,255,.6);
-transition:.3s
+border:2px solid white;color:#fff;font-size:30px;cursor:pointer;
+box-shadow:0 0 25px rgba(0,234,255,.6)
 }
-.phone-launcher:hover{transform:scale(1.08);box-shadow:0 0 35px #00eaff}
 .phone-overlay{
 display:none;position:fixed;inset:0;z-index:100004;
-align-items:center;justify-content:center;
-background:rgba(0,3,12,.85);backdrop-filter:blur(10px);
-padding:15px
+align-items:center;justify-content:center;background:rgba(0,3,12,.85);
+backdrop-filter:blur(10px);padding:15px
 }
 .phone-overlay.active{display:flex}
 .phone-device{
-width:320px;height:620px;max-height:90vh;
-padding:12px;border-radius:38px;
+width:320px;height:620px;max-height:90vh;padding:12px;border-radius:38px;
 background:linear-gradient(145deg,#253c63,#050914 55%,#172b52);
-border:3px solid #8eb8ff;
-box-shadow:0 0 45px rgba(0,234,255,.4);
+border:3px solid #8eb8ff;box-shadow:0 0 45px rgba(0,234,255,.4);
 position:relative;overflow:hidden
 }
-.phone-screen{
-height:100%;width:100%;border-radius:27px;overflow:hidden;
-position:relative;
-background:linear-gradient(160deg,#10294a,#071020 55%,#172b52);
-display:flex;flex-direction:column
-}
-.phone-top{
-height:35px;display:flex;align-items:center;justify-content:space-between;
-padding:0 17px;color:white;font-size:11px;font-weight:bold;
-background:rgba(0,0,0,.25)
-}
+.phone-screen{height:100%;width:100%;border-radius:27px;overflow:hidden;position:relative;background:linear-gradient(160deg,#10294a,#071020 55%,#172b52);display:flex;flex-direction:column}
+.phone-top{height:35px;display:flex;align-items:center;justify-content:space-between;padding:0 17px;color:white;font-size:11px;font-weight:bold;background:rgba(0,0,0,.25)}
 .phone-status{display:flex;gap:7px}
-.phone-home{
-flex:1;padding:22px 15px 15px;
-display:flex;flex-direction:column
-}
-.phone-clock{text-align:center;margin:10px 0 4px;font-size:43px;font-weight:300;color:#fff}
+.phone-home{flex:1;padding:22px 15px 15px;display:flex;flex-direction:column}
+.phone-clock{text-align:center;margin:10px 0 4px;font-size:43px;color:#fff}
 .phone-date{text-align:center;font-size:12px;color:#c5dcff;margin-bottom:28px}
-.phone-apps{
-display:grid;grid-template-columns:repeat(3,1fr);
-gap:22px 10px;justify-items:center
-}
-.phone-app{
-width:75px;display:flex;flex-direction:column;align-items:center;
-gap:7px;background:none;border:0;color:white;cursor:pointer
-}
-.phone-app-icon{
-width:53px;height:53px;border-radius:16px;
-display:flex;align-items:center;justify-content:center;
-font-size:25px;background:linear-gradient(145deg,#4169e1,#102448);
-border:1px solid rgba(255,255,255,.5);
-box-shadow:0 5px 15px rgba(0,0,0,.3);
-transition:.2s
-}
-.phone-app:hover .phone-app-icon{transform:scale(1.1);box-shadow:0 0 18px #00eaff}
+.phone-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 10px;justify-items:center}
+.phone-app{width:75px;display:flex;flex-direction:column;align-items:center;gap:7px;background:none;border:0;color:white;cursor:pointer}
+.phone-app-icon{width:53px;height:53px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:25px;background:linear-gradient(145deg,#4169e1,#102448);border:1px solid rgba(255,255,255,.5)}
 .phone-app span:last-child{font-size:10px;font-weight:bold}
-.phone-dock{
-margin-top:auto;padding:12px 10px;
-display:flex;justify-content:space-around;
-background:rgba(255,255,255,.10);border-radius:20px
-}
+.phone-dock{margin-top:auto;padding:12px 10px;display:flex;justify-content:space-around;background:rgba(255,255,255,.10);border-radius:20px}
 .phone-dock button{border:0;background:none;font-size:25px;cursor:pointer}
-.phone-page{
-display:none;position:absolute;inset:35px 0 0;
-padding:18px;background:linear-gradient(160deg,#10294a,#050914);
-color:white;overflow-y:auto
-}
+.phone-page{display:none;position:absolute;inset:35px 0 0;padding:18px;background:linear-gradient(160deg,#10294a,#050914);color:white;overflow-y:auto}
 .phone-page.active{display:block}
-.phone-page-header{
-display:flex;align-items:center;justify-content:space-between;
-margin-bottom:25px;padding-bottom:12px;border-bottom:1px solid #4169e1
-}
-.phone-page-header h2{font-size:17px;color:#00eaff;letter-spacing:1px}
+.phone-page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px;padding-bottom:12px;border-bottom:1px solid #4169e1}
+.phone-page-header h2{font-size:17px;color:#00eaff}
 .phone-back{padding:7px 12px;background:#172b52;color:white;border:1px solid #8eb8ff;border-radius:8px;cursor:pointer}
 .phone-page-content{text-align:center;padding:15px 5px}
 .phone-page-content h3{font-size:22px;margin:12px 0;color:#fff}
 .phone-page-content p{font-size:13px;color:#c2d4f5;line-height:1.7;margin:12px 0}
-.phone-action{
-display:inline-block;margin-top:15px;padding:12px 18px;
-color:#050914;background:#00eaff;border:0;border-radius:10px;
-font-weight:900;cursor:pointer;text-decoration:none
-}
-.phone-close{
-position:absolute;top:7px;right:10px;z-index:5;
-width:27px;height:27px;border:0;border-radius:50%;
-background:#263e66;color:white;font-size:17px;cursor:pointer
-}
-.phone-wallpaper{
-position:absolute;inset:0;z-index:-1;opacity:.25;
-background:url("./Celestial Angel Gate Portal.png") center/cover
-}
+.phone-action{display:inline-block;margin-top:15px;padding:12px 18px;color:#050914;background:#00eaff;border:0;border-radius:10px;font-weight:900;cursor:pointer;text-decoration:none}
+.phone-close{position:absolute;top:7px;right:10px;z-index:5;width:27px;height:27px;border:0;border-radius:50%;background:#263e66;color:white;font-size:17px;cursor:pointer}
 
 /* HOME */
 .home{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 60px;background:linear-gradient(rgba(0,5,20,.18),rgba(0,5,20,.42))}
@@ -205,17 +192,17 @@ background:url("./Celestial Angel Gate Portal.png") center/cover
 .title{font-size:clamp(50px,9vw,120px);font-weight:900;letter-spacing:8px;color:#fff;text-shadow:0 0 25px rgba(100,160,255,.5);overflow-wrap:anywhere}
 .subtitle{margin-top:20px;color:#d2ddf5;font-size:20px;letter-spacing:5px}
 .home-buttons{margin-top:40px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.home-button{display:inline-block;padding:16px 32px;color:#fff;text-decoration:none;font-weight:bold;letter-spacing:2px;border:1px solid #8eb8ff;background:linear-gradient(135deg,#172b52,#080f20);box-shadow:0 0 15px rgba(65,105,225,.2);transition:.3s}
-.home-button:hover{background:#4169e1;transform:translateY(-3px);box-shadow:0 0 25px rgba(65,105,225,.5)}
+.home-button{display:inline-block;padding:16px 32px;color:#fff;text-decoration:none;font-weight:bold;letter-spacing:2px;border:1px solid #8eb8ff;background:linear-gradient(135deg,#172b52,#080f20);transition:.3s}
+.home-button:hover{background:#4169e1;transform:translateY(-3px)}
 
 /* COUNTDOWN */
 .countdown-section{min-height:auto;padding:40px 20px;background:rgba(5,9,20,.35)}
-.countdown-layout{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:center;gap:22px}
-.countdown-box{flex:1;max-width:1000px;margin:auto;padding:35px 20px;text-align:center;background:linear-gradient(145deg,rgba(16,31,60,.88),rgba(8,15,32,.88));border:1px solid var(--luxury-border);box-shadow:0 0 30px rgba(35,80,180,.15);backdrop-filter:blur(5px)}
+.countdown-layout{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:center}
+.countdown-box{flex:1;max-width:1000px;margin:auto;padding:35px 20px;text-align:center;background:linear-gradient(145deg,rgba(16,31,60,.88),rgba(8,15,32,.88));border:1px solid var(--luxury-border);backdrop-filter:blur(5px)}
 .countdown-title{margin-bottom:25px;color:#dce8ff;font-size:22px;font-weight:900;letter-spacing:4px}
 #countdown{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
 .countdown-item{min-width:140px;padding:20px 15px;border:1px solid var(--luxury-border);background:rgba(19,38,75,.78)}
-.countdown-item span{display:block;color:#a9c9ff;font-size:48px;font-weight:900;line-height:1}
+.countdown-item span{display:block;color:#a9c9ff;font-size:48px;font-weight:900}
 .countdown-item small{display:block;margin-top:10px;color:#c2d4f5;font-size:13px;font-weight:900;letter-spacing:3px}
 
 /* SECTIONS */
@@ -224,23 +211,19 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 
 /* TICKETS */
 #tickets{min-height:100vh;background:rgba(5,12,29,.38);padding:120px 30px 100px}
-#tickets .section-title{color:#e5edff}
 .tickets{max-width:1000px;margin:auto;display:flex;justify-content:center;gap:25px;flex-wrap:wrap}
-.ticket-card{width:280px;padding:35px 25px;text-align:center;background:linear-gradient(145deg,rgba(23,45,84,.91),rgba(9,19,41,.91));border:1px solid #4269ad;box-shadow:0 10px 35px rgba(0,0,0,.3);transition:.3s;backdrop-filter:blur(5px)}
-.ticket-card:hover{transform:translateY(-8px);border-color:#9fc4ff;box-shadow:0 0 25px rgba(65,105,225,.35)}
+.ticket-card{width:280px;padding:35px 25px;text-align:center;background:linear-gradient(145deg,rgba(23,45,84,.91),rgba(9,19,41,.91));border:1px solid #4269ad;transition:.3s;backdrop-filter:blur(5px)}
+.ticket-card:hover{transform:translateY(-8px);border-color:#9fc4ff}
 .ticket-card h3{font-size:24px;margin-bottom:15px;color:#e8f0ff}
 .price{color:#a9c9ff;font-size:35px;margin-bottom:25px;font-weight:900}
-#tickets .home-button{background:linear-gradient(135deg,#254b91,#102448);border:1px solid #8eb8ff}
-#tickets .home-button:hover{background:#4169e1}
 
 /* ARTISTS */
 #artists{background:rgba(5,9,20,.32)}
 .artists{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 .artist{min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:25px;position:relative;overflow:hidden;border:1px solid var(--luxury-border);font-size:25px;font-weight:900;letter-spacing:2px;color:#fff;text-shadow:0 0 5px #000;background-size:cover;background-position:center;background-repeat:no-repeat;transition:.3s}
-.artist:hover{transform:scale(1.04);border-color:#8eb8ff;box-shadow:0 0 22px rgba(65,105,225,.3)}
+.artist:hover{transform:scale(1.04);border-color:#8eb8ff}
 .artist-name{position:relative;z-index:2;text-align:center}
-.artist-festival{position:relative;z-index:2;margin-top:9px;padding:7px 10px;color:#dceaff;background:rgba(8,20,45,.88);border:1px solid #8eb8ff;box-shadow:0 0 14px rgba(65,105,225,.5);font-size:10px;font-weight:900;letter-spacing:2px;text-align:center}
-
+.artist-festival{position:relative;z-index:2;margin-top:9px;padding:7px 10px;color:#dceaff;background:rgba(8,20,45,.88);border:1px solid #8eb8ff;font-size:10px;font-weight:900;letter-spacing:2px;text-align:center}
 .artist-1{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Meduza.png")}
 .artist-2{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Baby Gang.png")}
 .artist-3{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Azteca.png")}
@@ -268,13 +251,12 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 
 /* PROGRAM */
 .program-section{min-height:100vh;background:rgba(5,9,20,.35)}
-.program-box{max-width:1000px;margin:auto;padding:35px;background:linear-gradient(145deg,rgba(16,31,60,.91),rgba(8,15,32,.91));border:1px solid var(--luxury-border);box-shadow:0 0 25px rgba(30,70,150,.15);backdrop-filter:blur(5px)}
+.program-box{max-width:1000px;margin:auto;padding:35px;background:linear-gradient(145deg,rgba(16,31,60,.91),rgba(8,15,32,.91));border:1px solid var(--luxury-border);backdrop-filter:blur(5px)}
 .program-live{text-align:center;margin-bottom:35px}
 .live-indicator{display:inline-block;padding:10px 20px;border:1px solid #8eb8ff;color:#c9ddff;font-weight:900;letter-spacing:3px}
 .program-day{margin-bottom:40px;border-left:3px solid #668fff;padding-left:20px}
 .program-day h3{color:#a9c9ff;font-size:27px;margin-bottom:18px;letter-spacing:4px}
-.program-item{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 12px;margin-bottom:7px;background:rgba(11,22,43,.88);border:1px solid #1d3155;transition:.3s}
-.program-item:hover{background:rgba(20,39,71,.95);border-color:#8eb8ff}
+.program-item{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 12px;margin-bottom:7px;background:rgba(11,22,43,.88);border:1px solid #1d3155}
 .program-time{min-width:60px;color:#a9c9ff;font-size:13px;font-weight:900}
 .program-artist{flex:1;font-size:13px;font-weight:900}
 .program-status{min-width:90px;text-align:right;color:#9eafd0;font-size:9px;font-weight:900}
@@ -285,25 +267,20 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .tron-title{color:#e5edff;font-size:50px;letter-spacing:6px;margin-bottom:30px;text-shadow:0 0 20px rgba(100,150,255,.4)}
 .tron-text{color:#cbd8f0;font-size:19px;line-height:1.8;margin-bottom:30px}
 .tron-slogan{color:#a9c9ff;font-size:24px;font-weight:900;letter-spacing:4px}
-section:last-of-type{background:rgba(5,9,20,.35)}
 
 /* MAINTENANCE */
 .maintenance-overlay{display:none;position:fixed;inset:0;z-index:100000;background:rgba(5,9,20,.48);backdrop-filter:blur(3px);align-items:flex-start;justify-content:center;padding:25px 15px;overflow-y:auto}
 .maintenance-content{width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;gap:25px;margin:auto;position:relative;z-index:2}
-.maintenance-box{width:100%;max-width:850px;padding:35px 25px;display:flex;align-items:center;justify-content:space-between;gap:25px;text-align:center;background:linear-gradient(145deg,rgba(20,38,74,.88),rgba(8,15,32,.88));border:1px solid #668fff;box-shadow:0 0 45px rgba(65,105,225,.35);backdrop-filter:blur(5px)}
+.maintenance-box{width:100%;max-width:850px;padding:35px 25px;display:flex;align-items:center;justify-content:space-between;gap:25px;text-align:center;background:linear-gradient(145deg,rgba(20,38,74,.88),rgba(8,15,32,.88));border:1px solid #668fff}
 .maintenance-message{flex:1;min-width:0;text-align:center}
 .maintenance-message h1{color:#fff;font-size:32px;letter-spacing:3px;margin-bottom:20px}
 .maintenance-message p{color:#cbd8f0;font-size:17px;line-height:1.7;margin-bottom:15px}
 .maintenance-date{color:#8eb8ff!important;font-weight:900;letter-spacing:2px}
-.continue-button{display:none;flex-shrink:0;padding:18px 28px;color:#fff;background:linear-gradient(135deg,#4169e1,#172b52);border:1px solid #8eb8ff;font-size:15px;font-weight:900;letter-spacing:3px;cursor:pointer;white-space:nowrap;box-shadow:0 0 25px rgba(65,105,225,.5);transition:.3s}
-.continue-button:hover{background:#4169e1;box-shadow:0 0 35px #4169e1;transform:translateY(-3px)}
-
-/* POSTER */
-.maintenance-poster{width:min(100%,420px);aspect-ratio:1/1;position:relative;overflow:hidden;padding:22px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;background:radial-gradient(ellipse at 50% 42%,rgba(65,105,225,.55),transparent 55%),linear-gradient(145deg,#172d54,#050914 80%);border:1px solid #8eb8ff;box-shadow:0 0 35px rgba(65,105,225,.35)}
-.maintenance-poster::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(142,184,255,.13) 50%,transparent 75%),radial-gradient(ellipse at 50% 100%,rgba(65,105,225,.3),transparent 60%);pointer-events:none}
+.continue-button{display:none;flex-shrink:0;padding:18px 28px;color:#fff;background:linear-gradient(135deg,#4169e1,#172b52);border:1px solid #8eb8ff;font-size:15px;font-weight:900;letter-spacing:3px;cursor:pointer}
+.maintenance-poster{width:min(100%,420px);aspect-ratio:1/1;position:relative;overflow:hidden;padding:22px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;background:radial-gradient(ellipse at 50% 42%,rgba(65,105,225,.55),transparent 55%),linear-gradient(145deg,#172d54,#050914 80%);border:1px solid #8eb8ff}
+.maintenance-poster::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(142,184,255,.13) 50%,transparent 75%);pointer-events:none}
 .poster-top{position:relative;z-index:3;color:#a9c9ff;font-size:12px;font-weight:900;letter-spacing:4px}
-.poster-silhouette{position:absolute;inset:15% 0 15%;background:radial-gradient(ellipse at 50% 25%,#02040a 0 10%,transparent 10.5%),radial-gradient(ellipse at 50% 75%,#02040a 0 27%,transparent 27.5%);filter:drop-shadow(0 0 18px rgba(0,0,0,.9));opacity:.96}
-.poster-silhouette::after{content:"";position:absolute;inset:0;background:linear-gradient(70deg,transparent 30%,rgba(142,184,255,.18) 50%,transparent 70%);clip-path:polygon(42% 20%,58% 20%,78% 100%,22% 100%)}
+.poster-silhouette{position:absolute;inset:15% 0 15%;background:radial-gradient(ellipse at 50% 25%,#02040a 0 10%,transparent 10.5%),radial-gradient(ellipse at 50% 75%,#02040a 0 27%,transparent 27.5%);opacity:.96}
 .poster-title{position:relative;z-index:3;margin:auto 0}
 .poster-title h2{color:white;font-size:clamp(25px,5vw,38px);font-weight:900;letter-spacing:2px}
 .poster-title p{color:#c6dcff;font-weight:900;letter-spacing:5px;margin-top:8px}
@@ -316,12 +293,9 @@ section:last-of-type{background:rgba(5,9,20,.35)}
 .poster-countdown>p{margin-top:12px;color:#a9c9ff;font-size:10px;font-weight:900;letter-spacing:2px}
 
 /* CONFETTI */
-#announcementConfetti{position:fixed;inset:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:100003}
+#announcementConfetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100003}
 .confetti-piece{position:absolute;top:-25px;width:10px;height:16px;opacity:0;animation:confettiFall linear forwards}
-@keyframes confettiFall{
-0%{transform:translateY(-30px) rotate(0deg);opacity:1}
-100%{transform:translateY(110vh) rotate(900deg);opacity:0}
-}
+@keyframes confettiFall{0%{transform:translateY(-30px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(900deg);opacity:0}}
 .artist-announced{border-color:#00eaff;box-shadow:0 0 45px rgba(0,234,255,.65)}
 .artist-announced .poster-title p{color:#00eaff;font-size:clamp(24px,5vw,38px);text-shadow:0 0 20px #00eaff}
 
@@ -332,19 +306,15 @@ section:last-of-type{background:rgba(5,9,20,.35)}
 .menu{gap:10px;justify-content:center;flex-wrap:wrap}
 .menu a{font-size:10px;letter-spacing:1px}
 .nav-right{justify-content:center;flex-wrap:wrap}
-.year-top{font-size:14px;letter-spacing:2px}
+.year-top{font-size:14px}
 .map-button{padding:9px 12px;font-size:10px}
 .game-nav-info{min-width:auto}
-.game-nav-name{font-size:8px}
-.game-nav-play{font-size:8px;padding:5px 7px}
+.game-nav-name,.game-nav-play{font-size:8px}
 .roblox-profile{min-width:170px;padding:6px 9px}
 .roblox-avatar{width:38px;height:38px}
-.roblox-profile-info strong{font-size:9px}
-.roblox-profile-info small{font-size:7px}
 .roblox-qr-card{min-width:82px;padding:6px}
 #robloxQRCode{width:60px;height:60px}
 #robloxQRCode img,#robloxQRCode canvas{width:54px!important;height:54px!important}
-.roblox-qr-title{font-size:8px}
 .home{min-height:80vh;padding:65px 12px 45px}
 .year{font-size:18px;letter-spacing:4px}
 .title{font-size:clamp(32px,10vw,55px);letter-spacing:2px}
@@ -353,14 +323,14 @@ section:last-of-type{background:rgba(5,9,20,.35)}
 .home-button{padding:12px 16px;font-size:12px}
 .section-title{font-size:32px;letter-spacing:3px;margin-bottom:30px}
 .artists{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.artist{min-height:220px;padding:12px;font-size:16px;letter-spacing:1px}
-.artist-festival{font-size:7px;letter-spacing:1px;padding:6px}
+.artist{min-height:220px;padding:12px;font-size:16px}
+.artist-festival{font-size:7px;padding:6px}
 .countdown-box{margin:10px auto;padding:25px 10px}
 .countdown-title{font-size:15px;letter-spacing:2px}
 #countdown{gap:8px}
 .countdown-item{min-width:65px;padding:14px 6px}
 .countdown-item span{font-size:27px}
-.countdown-item small{font-size:8px;letter-spacing:1px}
+.countdown-item small{font-size:8px}
 section,#tickets{padding:75px 12px 60px}
 .ticket-card{width:100%;max-width:350px}
 .program-box{padding:20px 10px}
@@ -374,61 +344,49 @@ section,#tickets{padding:75px 12px 60px}
 .tron-text{font-size:16px}
 .tron-slogan{font-size:17px;letter-spacing:2px}
 .maintenance-overlay{padding:15px 10px}
-.maintenance-content{gap:18px}
 .maintenance-box{padding:28px 15px;flex-direction:column}
 .maintenance-message h1{font-size:23px}
 .maintenance-message p{font-size:14px}
-.maintenance-date{font-size:13px}
 .continue-button{display:none!important}
 .maintenance-poster{width:min(100%,380px);padding:18px}
-.poster-top{font-size:10px;letter-spacing:3px}
+.poster-top{font-size:10px}
 .poster-title h2{font-size:27px}
-.poster-title p{font-size:12px}
-.poster-countdown h3{font-size:10px}
 .poster-timer div{min-width:55px;padding:8px 5px}
 .poster-timer span{font-size:22px}
-.poster-timer small{font-size:8px}
 .map-overlay{padding:10px}
 .map-window{padding:13px;max-height:95vh}
 .map-header h2{font-size:17px}
 .map-image-container{min-height:220px}
-.map-placeholder h3{font-size:20px}
 .phone-device{width:300px;height:590px}
+.site-clock{bottom:12px;left:10px;min-width:145px;padding:7px 9px}
+.site-clock-time{font-size:19px}
+.site-clock-date{font-size:8px}
+.festival-beam{width:35vw;filter:blur(16px)}
 }
-
 @media(min-width:601px) and (max-width:1024px){
 .navbar{padding:12px 18px;gap:12px}
 .menu{gap:13px}
-.menu a{font-size:11px;letter-spacing:1px}
+.menu a{font-size:11px}
 .logo{font-size:18px}
 .year-top{font-size:16px}
 .roblox-profile{padding:7px 9px;min-width:165px}
-.roblox-profile-info strong{font-size:9px}
-.roblox-profile-info small{font-size:7px}
 .artists{grid-template-columns:repeat(3,minmax(0,1fr))}
 .artist{min-height:260px}
 .ticket-card{width:45%}
 .maintenance-box{flex-direction:column}
 .continue-button{display:none!important}
 }
-
 @media(min-width:1025px) and (hover:hover) and (pointer:fine){.continue-button{display:block}}
 @media(max-width:1024px),(pointer:coarse){.continue-button{display:none!important}}
-
 @media(min-width:1600px){
 .home-content,.tickets,.artists,.program-box,.tron-content{max-width:1500px}
 .title{font-size:130px}
 .section-title{font-size:60px}
 .navbar{padding-left:70px;padding-right:70px}
 }
-
-@media(orientation:landscape) and (max-height:500px){
-.home{min-height:100vh;padding-top:80px}
-.navbar{min-height:55px}
-}
-
 @media(prefers-reduced-motion:reduce){
 html{scroll-behavior:auto}
+.festival-beam{animation:none}
 .ticket-card,.artist,.home-button{transition:none}
 }
 </style>
@@ -436,10 +394,24 @@ html{scroll-behavior:auto}
 
 <body>
 
+<div id="nightWhiteLight"></div>
+
+<!-- LUMINI CARE SE MISCA -->
+<div id="movingFestivalLights">
+<div class="festival-beam"></div>
+<div class="festival-beam"></div>
+<div class="festival-beam"></div>
+<div class="festival-beam"></div>
+</div>
+
+<div class="site-clock">
+<div class="site-clock-time" id="siteClockTime">00:00:00</div>
+<div class="site-clock-date" id="siteClockDate">SE ÎNCARCĂ DATA...</div>
+</div>
+
 <!-- MAINTENANCE -->
 <div class="maintenance-overlay" id="maintenanceOverlay">
 <div class="maintenance-content">
-
 <div class="maintenance-box">
 <div class="maintenance-message">
 <h1>RAVE FESTIVAL 2027</h1>
@@ -469,25 +441,20 @@ html{scroll-behavior:auto}
 <p id="maintenanceFooter">TODAY • 23:45 • STAY TUNED</p>
 </div>
 </div>
-
 </div>
 </div>
 
-<!-- FESTIVAL MUSIC -->
 <audio id="mainMusic" loop preload="auto">
 <source src="./cashout.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PHONE LAUNCHER -->
 <button class="phone-launcher" id="openPhoneButton" type="button" aria-label="Open phone">📱</button>
 
-<!-- VIRTUAL PHONE -->
+<!-- TELEFON VIRTUAL -->
 <div class="phone-overlay" id="phoneOverlay">
 <div class="phone-device">
 <div class="phone-screen">
-<div class="phone-wallpaper"></div>
 <button class="phone-close" id="closePhoneButton" type="button">×</button>
-
 <div class="phone-top">
 <span id="phoneClock">21:00</span>
 <div class="phone-status"><span>●</span><span>Wi-Fi</span><span>100%</span></div>
@@ -496,7 +463,6 @@ html{scroll-behavior:auto}
 <div class="phone-home" id="phoneHome">
 <div class="phone-clock" id="phoneBigClock">21:00</div>
 <div class="phone-date" id="phoneDate">RAVE FESTIVAL 2027</div>
-
 <div class="phone-apps">
 <button class="phone-app" data-app="music"><span class="phone-app-icon">🎵</span><span>Music</span></button>
 <button class="phone-app" data-app="map"><span class="phone-app-icon">🗺️</span><span>Map</span></button>
@@ -511,12 +477,11 @@ html{scroll-behavior:auto}
 <button class="phone-app" data-app="browser"><span class="phone-app-icon">🌐</span><span>Browser</span></button>
 <button class="phone-app" data-app="about"><span class="phone-app-icon">ℹ️</span><span>About</span></button>
 </div>
-
 <div class="phone-dock">
-<button data-app="music" aria-label="Music">🎵</button>
-<button data-app="map" aria-label="Map">🗺️</button>
-<button data-app="roblox" aria-label="Roblox">🎮</button>
-<button data-app="browser" aria-label="Browser">🌐</button>
+<button data-app="music">🎵</button>
+<button data-app="map">🗺️</button>
+<button data-app="roblox">🎮</button>
+<button data-app="browser">🌐</button>
 </div>
 </div>
 
@@ -527,7 +492,6 @@ html{scroll-behavior:auto}
 </div>
 <div class="phone-page-content" id="phoneAppContent"></div>
 </div>
-
 </div>
 </div>
 </div>
@@ -535,7 +499,6 @@ html{scroll-behavior:auto}
 <!-- NAVBAR -->
 <nav class="navbar">
 <div class="logo">RAVE FESTIVAL</div>
-
 <ul class="menu">
 <li><a href="#home">HOME</a></li>
 <li><a href="#tickets">BILETE</a></li>
@@ -543,16 +506,13 @@ html{scroll-behavior:auto}
 <li><a href="#program">PROGRAM</a></li>
 <li><a href="./RBL%20CHRISTMAS/index.html.html">RBL CHRISTMAS</a></li>
 </ul>
-
 <div class="nav-right">
 <div class="year-top">2027</div>
 <button class="map-button" id="openMapButton" type="button">🗺️ MAP</button>
-
 <div class="game-nav-info">
 <span class="game-nav-name">RAVE FESTIVAL 2027</span>
 <a class="game-nav-play" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL" target="_blank" rel="noopener noreferrer">▶ PLAY GAME</a>
 </div>
-
 <a href="#" class="roblox-profile" id="robloxProfileLink">
 <div class="roblox-avatar" id="robloxAvatar">
 <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4117F37BBB2715EF990D94E-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Roblox Avatar">
@@ -565,7 +525,6 @@ html{scroll-behavior:auto}
 </div>
 <span class="roblox-arrow">›</span>
 </a>
-
 <div class="roblox-qr-card">
 <div class="roblox-qr-title">SCAN TO PLAY</div>
 <div id="robloxQRCode" aria-label="QR Code pentru jocul RAVE FESTIVAL"></div>
@@ -574,7 +533,7 @@ html{scroll-behavior:auto}
 </div>
 </nav>
 
-<!-- GAME MAP -->
+<!-- HARTA -->
 <div class="map-overlay" id="mapOverlay">
 <div class="map-window">
 <div class="map-header">
@@ -582,8 +541,7 @@ html{scroll-behavior:auto}
 <button class="map-close" id="closeMapButton" type="button">✕</button>
 </div>
 <div class="map-image-container">
-<img src="./rave-festival-map.png" alt="RAVE FESTIVAL Roblox Game Map"
-onerror="this.style.display='none';document.getElementById('mapPlaceholder').style.display='block';">
+<img src="./rave-festival-map.png" alt="RAVE FESTIVAL Roblox Game Map" onerror="this.style.display='none';document.getElementById('mapPlaceholder').style.display='block';">
 <div class="map-placeholder" id="mapPlaceholder" style="display:none">
 <div style="font-size:55px">🗺️</div>
 <h3>RAVE FESTIVAL GAME MAP</h3>
@@ -623,24 +581,24 @@ onerror="this.style.display='none';document.getElementById('mapPlaceholder').sty
 </div>
 </section>
 
-<!-- TICKETS -->
+<!-- BILETE -->
 <section id="tickets">
 <h2 class="section-title">BILETE</h2>
 <div class="tickets">
 <div class="ticket-card">
 <h3>GENERAL ACCESS</h3>
 <div class="price">249 LEI</div>
-<a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button">CUMPĂRĂ</a>
+<a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button" target="_blank" rel="noopener noreferrer">CUMPĂRĂ</a>
 </div>
 <div class="ticket-card">
 <h3>VIP</h3>
 <div class="price">499 LEI</div>
-<a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button">CUMPĂRĂ</a>
+<a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button" target="_blank" rel="noopener noreferrer">CUMPĂRĂ</a>
 </div>
 </div>
 </section>
 
-<!-- ARTISTS -->
+<!-- ARTISTI -->
 <section id="artists">
 <h2 class="section-title">ARTIȘTI</h2>
 <div class="artists">
@@ -715,11 +673,10 @@ onerror="this.style.display='none';document.getElementById('mapPlaceholder').sty
 <div class="program-item"><span class="program-time">04:00</span><span class="program-artist">MIRA</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">05:00</span><span class="program-artist">DON TOLIVER</span><span class="program-status">UPCOMING</span></div>
 </div>
-
 </div>
 </section>
 
-<!-- CELESTIAL ANGEL EDITION -->
+<!-- CELESTIAL -->
 <section class="tron-section">
 <div class="tron-content">
 <h2 class="tron-title">CELESTIAL ANGEL EDITION</h2>
@@ -735,7 +692,6 @@ through a world beyond imagination.
 </div>
 </section>
 
-<!-- FINAL -->
 <section>
 <h2 class="section-title">RAVE FESTIVAL 2027</h2>
 <div style="text-align:center">
@@ -746,35 +702,65 @@ through a world beyond imagination.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
-/* FESTIVAL MUSIC */
+/* CEAS SI LUMINA ALBA */
+const siteClockTime=document.getElementById("siteClockTime");
+const siteClockDate=document.getElementById("siteClockDate");
+
+function updateSiteClockAndLight(){
+const now=new Date();
+
+const timeParts=new Intl.DateTimeFormat("ro-RO",{
+timeZone:"Europe/Bucharest",
+hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"
+}).formatToParts(now);
+
+const getPart=type=>timeParts.find(part=>part.type===type)?.value||"00";
+const hour=Number(getPart("hour"));
+const minute=Number(getPart("minute"));
+const second=getPart("second");
+
+siteClockTime.textContent=
+String(hour).padStart(2,"0")+":"+
+String(minute).padStart(2,"0")+":"+second;
+
+const dateText=new Intl.DateTimeFormat("ro-RO",{
+timeZone:"Europe/Bucharest",
+weekday:"long",day:"numeric",month:"long",year:"numeric"
+}).format(now);
+
+siteClockDate.textContent=dateText.toLocaleUpperCase("ro-RO");
+
+const minutesNow=hour*60+minute;
+const lightOn=minutesNow>=17*60+30||minutesNow<8*60;
+document.body.classList.toggle("white-light-on",lightOn);
+}
+updateSiteClockAndLight();
+setInterval(updateSiteClockAndLight,1000);
+
+/* MUZICA */
 const mainMusic=document.getElementById("mainMusic");
 
-/* PHONE OPEN AND CLOSE */
+/* TELEFON */
 const phoneOverlay=document.getElementById("phoneOverlay");
 const phoneHome=document.getElementById("phoneHome");
 const phoneAppPage=document.getElementById("phoneAppPage");
 const phoneAppTitle=document.getElementById("phoneAppTitle");
 const phoneAppContent=document.getElementById("phoneAppContent");
 
-document.getElementById("openPhoneButton").addEventListener("click",function(){
+document.getElementById("openPhoneButton").addEventListener("click",()=>{
 phoneOverlay.classList.add("active");
 });
-
-document.getElementById("closePhoneButton").addEventListener("click",function(){
+document.getElementById("closePhoneButton").addEventListener("click",()=>{
 phoneOverlay.classList.remove("active");
 });
-
-phoneOverlay.addEventListener("click",function(event){
-if(event.target===phoneOverlay){
-phoneOverlay.classList.remove("active");
-}
+phoneOverlay.addEventListener("click",event=>{
+if(event.target===phoneOverlay)phoneOverlay.classList.remove("active");
 });
 
 function closePhoneApp(){
 phoneAppPage.classList.remove("active");
 phoneHome.style.display="flex";
 }
-
 document.getElementById("phoneBackButton").addEventListener("click",closePhoneApp);
 
 function openPhoneApp(name){
@@ -783,118 +769,52 @@ phoneAppPage.classList.add("active");
 
 const apps={
 music:{
-title:"MUSIC PLAYER",
-icon:"🎵",
-html:`
-<h3>RAVE FESTIVAL MUSIC</h3>
-<p>Listen to the official RAVE FESTIVAL music.</p>
-<button class="phone-action" id="phoneMusicButton">▶ PLAY MUSIC</button>
-`
+title:"MUSIC PLAYER",icon:"🎵",
+html:`<h3>RAVE FESTIVAL MUSIC</h3><p>Listen to the official RAVE FESTIVAL music.</p><button class="phone-action" id="phoneMusicButton">▶ PLAY MUSIC</button>`
 },
 map:{
-title:"FESTIVAL MAP",
-icon:"🗺️",
-html:`
-<h3>RAVE FESTIVAL MAP</h3>
-<p>Open the official festival game map.</p>
-<button class="phone-action" id="phoneMapButton">OPEN MAP</button>
-`
+title:"FESTIVAL MAP",icon:"🗺️",
+html:`<h3>RAVE FESTIVAL MAP</h3><p>Open the official festival game map.</p><button class="phone-action" id="phoneMapButton">OPEN MAP</button>`
 },
 tickets:{
-title:"TICKETS",
-icon:"🎟️",
-html:`
-<h3>GET YOUR TICKET</h3>
-<p>GENERAL ACCESS — 249 LEI</p>
-<p>VIP — 499 LEI</p>
-<a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" target="_blank" rel="noopener noreferrer">BUY TICKETS</a>
-`
+title:"TICKETS",icon:"🎟️",
+html:`<h3>GET YOUR TICKET</h3><p>GENERAL ACCESS — 249 LEI</p><p>VIP — 499 LEI</p><a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" target="_blank">BUY TICKETS</a>`
 },
 roblox:{
-title:"ROBLOX",
-icon:"🎮",
-html:`
-<h3>RAVE FESTIVAL 2027</h3>
-<p>Enter the official RAVE FESTIVAL Roblox game.</p>
-<a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL" target="_blank" rel="noopener noreferrer">PLAY GAME</a>
-`
+title:"ROBLOX",icon:"🎮",
+html:`<h3>RAVE FESTIVAL 2027</h3><p>Enter the official RAVE FESTIVAL Roblox game.</p><a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL" target="_blank">PLAY GAME</a>`
 },
 artists:{
-title:"ARTISTS",
-icon:"🎤",
-html:`
-<h3>FESTIVAL ARTISTS</h3>
-<p>MEDUZA • BABY GANG • AZTECA • RAVA</p>
-<p>ANYMA • SKRILLEX • MARTIN GARRIX</p>
-<p>POST MALONE • SAGUNA • HUGEL</p>
-<button class="phone-action" id="phoneArtistsButton">VIEW ARTISTS</button>
-`
+title:"ARTISTS",icon:"🎤",
+html:`<h3>FESTIVAL ARTISTS</h3><p>MEDUZA • BABY GANG • AZTECA • RAVA</p><p>ANYMA • SKRILLEX • MARTIN GARRIX</p><p>POST MALONE • SAGUNA • HUGEL</p><button class="phone-action" id="phoneArtistsButton">VIEW ARTISTS</button>`
 },
 program:{
-title:"PROGRAM",
-icon:"📅",
-html:`
-<h3>FESTIVAL PROGRAM</h3>
-<p>15–18 JULY 2027</p>
-<p>See the complete festival schedule.</p>
-<button class="phone-action" id="phoneProgramButton">OPEN PROGRAM</button>
-`
+title:"PROGRAM",icon:"📅",
+html:`<h3>FESTIVAL PROGRAM</h3><p>15–18 JULY 2027</p><p>See the complete festival schedule.</p><button class="phone-action" id="phoneProgramButton">OPEN PROGRAM</button>`
 },
 home:{
-title:"HOME",
-icon:"🏠",
-html:`
-<h3>RAVE FESTIVAL 2027</h3>
-<p>THE FUTURE IS HERE.</p>
-<button class="phone-action" id="phoneHomeButton">GO TO HOME</button>
-`
+title:"HOME",icon:"🏠",
+html:`<h3>RAVE FESTIVAL 2027</h3><p>THE FUTURE IS HERE.</p><button class="phone-action" id="phoneHomeButton">GO TO HOME</button>`
 },
 settings:{
-title:"SETTINGS",
-icon:"⚙️",
-html:`
-<h3>PHONE SETTINGS</h3>
-<p>RAVE FESTIVAL virtual phone.</p>
-<p>Theme: Celestial Blue</p>
-<p>System: RAVE OS</p>
-`
+title:"SETTINGS",icon:"⚙️",
+html:`<h3>PHONE SETTINGS</h3><p>RAVE FESTIVAL virtual phone.</p><p>Theme: Celestial Blue</p><p>System: RAVE OS</p>`
 },
 camera:{
-title:"CAMERA",
-icon:"📷",
-html:`
-<h3>CAMERA</h3>
-<p>Camera demo for RAVE FESTIVAL.</p>
-<p>This is a visual demonstration, not a real camera.</p>
-`
+title:"CAMERA",icon:"📷",
+html:`<h3>CAMERA</h3><p>Camera demo for RAVE FESTIVAL.</p><p>This is a visual demonstration, not a real camera.</p>`
 },
 gallery:{
-title:"GALLERY",
-icon:"🖼️",
-html:`
-<h3>GALLERY</h3>
-<p>RAVE FESTIVAL 2027</p>
-<p>Festival images and memories.</p>
-`
+title:"GALLERY",icon:"🖼️",
+html:`<h3>GALLERY</h3><p>RAVE FESTIVAL 2027</p><p>Festival images and memories.</p>`
 },
 browser:{
-title:"BROWSER",
-icon:"🌐",
-html:`
-<h3>WEB BROWSER</h3>
-<p>Open the web browser.</p>
-<a class="phone-action" href="https://www.google.com" target="_blank" rel="noopener noreferrer">OPEN GOOGLE</a>
-`
+title:"BROWSER",icon:"🌐",
+html:`<h3>WEB BROWSER</h3><p>Open the web browser.</p><a class="phone-action" href="https://www.google.com" target="_blank">OPEN GOOGLE</a>`
 },
 about:{
-title:"ABOUT",
-icon:"ℹ️",
-html:`
-<h3>RAVE OS</h3>
-<p>RAVE FESTIVAL 2027 virtual phone.</p>
-<p>15–18 JULY 2027</p>
-<p>THE FUTURE IS HERE.</p>
-`
+title:"ABOUT",icon:"ℹ️",
+html:`<h3>RAVE OS</h3><p>RAVE FESTIVAL 2027 virtual phone.</p><p>15–18 JULY 2027</p><p>THE FUTURE IS HERE.</p>`
 }
 };
 
@@ -904,45 +824,27 @@ if(!app)return;
 phoneAppTitle.textContent=app.icon+" "+app.title;
 phoneAppContent.innerHTML=app.html;
 
-/* MUSIC APP */
 if(name==="music"){
 const button=document.getElementById("phoneMusicButton");
-
 button.textContent=mainMusic.paused?"▶ PLAY MUSIC":"⏸ PAUSE MUSIC";
-
-button.addEventListener("click",async function(){
+button.addEventListener("click",async()=>{
 if(mainMusic.paused){
-try{
-await mainMusic.play();
-button.textContent="⏸ PAUSE MUSIC";
-}catch(error){
-button.textContent="▶ TRY AGAIN";
-console.error("Music playback error:",error);
-}
+try{await mainMusic.play();button.textContent="⏸ PAUSE MUSIC";}
+catch(error){button.textContent="▶ TRY AGAIN";console.error(error);}
 }else{
 mainMusic.pause();
 button.textContent="▶ PLAY MUSIC";
 }
 });
-
-mainMusic.addEventListener("play",function(){
-button.textContent="⏸ PAUSE MUSIC";
-});
-
-mainMusic.addEventListener("pause",function(){
-button.textContent="▶ PLAY MUSIC";
-});
 }
 
-/* MAP APP */
 if(name==="map"){
-document.getElementById("phoneMapButton").addEventListener("click",function(){
+document.getElementById("phoneMapButton").addEventListener("click",()=>{
 phoneOverlay.classList.remove("active");
 document.getElementById("mapOverlay").classList.add("active");
 });
 }
 
-/* OTHER PHONE APPS */
 const navigation={
 artists:["phoneArtistsButton","artists"],
 program:["phoneProgramButton","program"],
@@ -951,8 +853,7 @@ home:["phoneHomeButton","home"]
 
 if(navigation[name]){
 const [buttonId,sectionId]=navigation[name];
-
-document.getElementById(buttonId).addEventListener("click",function(){
+document.getElementById(buttonId).addEventListener("click",()=>{
 phoneOverlay.classList.remove("active");
 closePhoneApp();
 document.getElementById(sectionId).scrollIntoView({behavior:"smooth"});
@@ -960,44 +861,29 @@ document.getElementById(sectionId).scrollIntoView({behavior:"smooth"});
 }
 }
 
-/* PHONE APP BUTTONS */
-document.querySelectorAll("[data-app]").forEach(function(button){
-button.addEventListener("click",function(){
-openPhoneApp(button.dataset.app);
-});
+document.querySelectorAll("[data-app]").forEach(button=>{
+button.addEventListener("click",()=>openPhoneApp(button.dataset.app));
 });
 
-/* PHONE CLOCK */
+/* CEAS TELEFON */
 function updatePhoneClock(){
 const now=new Date();
-
-const time=now.toLocaleTimeString("ro-RO",{
-hour:"2-digit",
-minute:"2-digit"
-});
-
-const date=now.toLocaleDateString("ro-RO",{
-weekday:"long",
-day:"numeric",
-month:"long"
-});
-
+const time=now.toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"});
+const date=now.toLocaleDateString("ro-RO",{weekday:"long",day:"numeric",month:"long"});
 document.getElementById("phoneClock").textContent=time;
 document.getElementById("phoneBigClock").textContent=time;
 document.getElementById("phoneDate").textContent=date;
 }
-
 updatePhoneClock();
 setInterval(updatePhoneClock,1000);
 
-/* ROBLOX PROFILE */
+/* PROFIL ROBLOX */
 const robloxProfileLink=document.getElementById("robloxProfileLink");
 const robloxProfileStatus=document.getElementById("robloxProfileStatus");
 const robloxAvatar=document.getElementById("robloxAvatar");
 const robloxUsername=document.getElementById("robloxUsername");
 const robloxProfileName=document.getElementById("robloxProfileName");
 const robloxView=document.getElementById("robloxView");
-
 const storageKey="raveFestivalRobloxProfile";
 
 const defaultRobloxAvatar="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4117F37BBB2715EF990D94E-Png/150/150/AvatarHeadshot/Webp/noFilter";
@@ -1005,14 +891,10 @@ const defaultRobloxAvatar="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4
 function isValidRobloxProfile(link){
 try{
 const url=new URL(link);
-
-return url.protocol==="https:" &&
-(url.hostname==="www.roblox.com" || url.hostname==="roblox.com") &&
+return url.protocol==="https:"&&
+(url.hostname==="www.roblox.com"||url.hostname==="roblox.com")&&
 /^\/users\/\d+\/profile\/?$/.test(url.pathname);
-
-}catch(error){
-return false;
-}
+}catch(error){return false;}
 }
 
 function getRobloxUserId(link){
@@ -1024,7 +906,6 @@ function showDefaultRobloxCard(){
 const avatarImage=document.createElement("img");
 avatarImage.src=defaultRobloxAvatar;
 avatarImage.alt="Roblox Avatar";
-
 robloxAvatar.replaceChildren(avatarImage);
 robloxUsername.textContent="CONNECT YOUR ACCOUNT";
 robloxProfileStatus.textContent="ROBLOX • NOT CONNECTED";
@@ -1036,13 +917,9 @@ robloxProfileLink.removeAttribute("rel");
 }
 
 async function loadRobloxProfile(profile){
-if(!isValidRobloxProfile(profile)){
-showDefaultRobloxCard();
-return;
-}
+if(!isValidRobloxProfile(profile)){showDefaultRobloxCard();return;}
 
 const userId=getRobloxUserId(profile);
-
 robloxProfileLink.href=profile;
 robloxProfileLink.target="_blank";
 robloxProfileLink.rel="noopener noreferrer";
@@ -1052,33 +929,27 @@ robloxView.textContent="VIEW PROFILE";
 
 try{
 const userResponse=await fetch("https://users.roblox.com/v1/users/"+userId);
-
 if(!userResponse.ok)throw new Error("Roblox user API unavailable");
 
 const userData=await userResponse.json();
-
-robloxUsername.textContent=userData.displayName || userData.name;
+robloxUsername.textContent=userData.displayName||userData.name;
 robloxProfileName.textContent="@"+userData.name;
 
 const avatarResponse=await fetch(
 "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="+
 userId+"&size=150x150&format=Png&isCircular=false"
 );
-
 if(!avatarResponse.ok)throw new Error("Roblox avatar API unavailable");
 
 const avatarData=await avatarResponse.json();
-
-if(avatarData.data && avatarData.data.length>0 && avatarData.data[0].imageUrl){
+if(avatarData.data&&avatarData.data.length>0&&avatarData.data[0].imageUrl){
 const avatarImage=document.createElement("img");
 avatarImage.src=avatarData.data[0].imageUrl;
 avatarImage.alt="Roblox avatar";
 robloxAvatar.replaceChildren(avatarImage);
 }
-
 robloxProfileStatus.textContent="ROBLOX • PROFILE CONNECTED";
 robloxView.textContent="VIEW PROFILE";
-
 }catch(error){
 console.error("Roblox profile error:",error);
 robloxUsername.textContent="ROBLOX PROFILE";
@@ -1088,28 +959,22 @@ robloxView.textContent="VIEW PROFILE";
 }
 }
 
-/* LOAD SAVED PROFILE */
 const savedRobloxProfile=localStorage.getItem(storageKey);
-
-if(savedRobloxProfile && isValidRobloxProfile(savedRobloxProfile)){
+if(savedRobloxProfile&&isValidRobloxProfile(savedRobloxProfile)){
 loadRobloxProfile(savedRobloxProfile);
 }else{
 showDefaultRobloxCard();
 }
 
-/* CONNECT OR CHANGE PROFILE */
-robloxProfileLink.addEventListener("click",function(event){
+robloxProfileLink.addEventListener("click",event=>{
 event.preventDefault();
-
 const currentProfile=localStorage.getItem(storageKey);
 
-if(currentProfile && isValidRobloxProfile(currentProfile)){
+if(currentProfile&&isValidRobloxProfile(currentProfile)){
 const changeProfile=confirm(
 "PROFILUL TĂU ROBLOX ESTE CONECTAT.\n\n"+
-"OK = SCHIMBĂ PROFILUL\n"+
-"CANCEL = DESCHIDE PROFILUL"
+"OK = SCHIMBĂ PROFILUL\nCANCEL = DESCHIDE PROFILUL"
 );
-
 if(!changeProfile){
 window.open(currentProfile,"_blank","noopener,noreferrer");
 return;
@@ -1117,16 +982,12 @@ return;
 }
 
 const enteredProfile=prompt(
-"RAVE FESTIVAL 2027\n\n"+
-"CONNECT YOUR ROBLOX PROFILE\n\n"+
-"Introdu linkul profilului tău Roblox:",
-currentProfile || ""
+"RAVE FESTIVAL 2027\n\nCONNECT YOUR ROBLOX PROFILE\n\nIntrodu linkul profilului tău Roblox:",
+currentProfile||""
 );
-
 if(enteredProfile===null)return;
 
 const cleanProfile=enteredProfile.trim();
-
 if(!isValidRobloxProfile(cleanProfile)){
 alert("Link invalid! Introdu un link de profil Roblox valid.");
 return;
@@ -1137,11 +998,11 @@ loadRobloxProfile(cleanProfile);
 window.open(cleanProfile,"_blank","noopener,noreferrer");
 });
 
-/* ROBLOX QR CODE */
+/* QR CODE */
 const robloxGameUrl="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL";
 const qrContainer=document.getElementById("robloxQRCode");
 
-if(typeof QRCode!=="undefined" && qrContainer){
+if(typeof QRCode!=="undefined"&&qrContainer){
 new QRCode(qrContainer,{
 text:robloxGameUrl,
 width:59,
@@ -1154,129 +1015,87 @@ correctLevel:QRCode.CorrectLevel.H
 qrContainer.textContent="QR ERROR";
 }
 
-/* GAME MAP */
+/* HARTA */
 const mapOverlay=document.getElementById("mapOverlay");
-const openMapButton=document.getElementById("openMapButton");
-const closeMapButton=document.getElementById("closeMapButton");
-
-openMapButton.addEventListener("click",function(){
+document.getElementById("openMapButton").addEventListener("click",()=>{
 mapOverlay.classList.add("active");
 });
-
-closeMapButton.addEventListener("click",function(){
+document.getElementById("closeMapButton").addEventListener("click",()=>{
 mapOverlay.classList.remove("active");
 });
-
-mapOverlay.addEventListener("click",function(event){
-if(event.target===mapOverlay){
-mapOverlay.classList.remove("active");
-}
+mapOverlay.addEventListener("click",event=>{
+if(event.target===mapOverlay)mapOverlay.classList.remove("active");
 });
-
-document.addEventListener("keydown",function(event){
+document.addEventListener("keydown",event=>{
 if(event.key==="Escape"){
 mapOverlay.classList.remove("active");
 phoneOverlay.classList.remove("active");
 }
 });
 
-/* A$AP ROCKY ARTIST ANNOUNCEMENT */
-const artistAnnouncementDate=
-new Date("2026-11-07T23:45:00+02:00").getTime();
-
+/* ANUNT ARTIST */
+const artistAnnouncementDate=new Date("2026-11-07T23:45:00+02:00").getTime();
 let announcementConfettiStarted=false;
 let artistAlreadyRevealed=false;
 
 function launchAnnouncementConfetti(){
 if(announcementConfettiStarted)return;
-
 announcementConfettiStarted=true;
 
 const container=document.createElement("div");
 container.id="announcementConfetti";
 document.body.appendChild(container);
 
-const colors=[
-"#00eaff","#4169e1","#ffffff",
-"#ffd700","#ff00cc","#00ff99"
-];
+const colors=["#00eaff","#4169e1","#ffffff","#ffd700","#ff00cc","#00ff99"];
 
 for(let i=0;i<180;i++){
 const piece=document.createElement("div");
-
 piece.className="confetti-piece";
 piece.style.left=Math.random()*100+"%";
 piece.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
 piece.style.animationDuration=(3+Math.random()*5)+"s";
 piece.style.animationDelay=(Math.random()*2)+"s";
 piece.style.transform="rotate("+Math.random()*360+"deg)";
-
 container.appendChild(piece);
 }
 
-setTimeout(()=>{
-container.remove();
-},10000);
+setTimeout(()=>container.remove(),10000);
 }
 
-/* ARTIST ANNOUNCEMENT */
 function revealNewArtist(){
 if(artistAlreadyRevealed)return;
-
 artistAlreadyRevealed=true;
 
 const poster=document.querySelector(".maintenance-poster");
-
-/* AICI ESTE FOTOGRAFIA A$AP ROCKY */
 poster.style.background=
-'linear-gradient(rgba(5,9,20,.20),rgba(5,9,20,.35)),url("./891288836_4784079731821693_4256196259621737418_n.png") center center/cover no-repeat';
+'linear-gradient(rgba(5,9,20,.20),rgba(5,9,20,.35)),url("./891288836_4784079731821693_4256196259621737418_n.png.jpg") center center/cover no-repeat';
 
-const posterTitle=document.querySelector(".poster-title h2");
-const posterArtist=document.querySelector(".poster-title p");
-
-posterTitle.textContent="ARTIST ANNOUNCED";
-posterArtist.textContent="A$AP ROCKY";
-
-document.getElementById("maintenanceHeading").textContent=
-"THE ANNOUNCEMENT IS HERE";
-
-document.getElementById("maintenanceFooter").textContent=
-"RAVE FESTIVAL 2027 • A$AP ROCKY";
-
+document.querySelector(".poster-title h2").textContent="ARTIST ANNOUNCED";
+document.querySelector(".poster-title p").textContent="A$AP ROCKY";
+document.getElementById("maintenanceHeading").textContent="THE ANNOUNCEMENT IS HERE";
+document.getElementById("maintenanceFooter").textContent="RAVE FESTIVAL 2027 • A$AP ROCKY";
 poster.classList.add("artist-announced");
-
 document.querySelector(".poster-silhouette").style.display="none";
 document.querySelector(".poster-countdown").style.display="none";
-
 launchAnnouncementConfetti();
 }
 
 function updateMaintenanceCountdown(){
 const distance=artistAnnouncementDate-Date.now();
-
-if(distance<=0){
-revealNewArtist();
-return;
-}
+if(distance<=0){revealNewArtist();return;}
 
 const hours=Math.floor(distance/3600000);
 const minutes=Math.floor((distance%3600000)/60000);
 const seconds=Math.floor((distance%60000)/1000);
 
-document.getElementById("maintenanceHours").textContent=
-String(hours).padStart(2,"0");
-
-document.getElementById("maintenanceMinutes").textContent=
-String(minutes).padStart(2,"0");
-
-document.getElementById("maintenanceSeconds").textContent=
-String(seconds).padStart(2,"0");
+document.getElementById("maintenanceHours").textContent=String(hours).padStart(2,"0");
+document.getElementById("maintenanceMinutes").textContent=String(minutes).padStart(2,"0");
+document.getElementById("maintenanceSeconds").textContent=String(seconds).padStart(2,"0");
 }
-
 updateMaintenanceCountdown();
 setInterval(updateMaintenanceCountdown,1000);
 
-/* FESTIVAL COUNTDOWN */
+/* COUNTDOWN FESTIVAL */
 const festivalDate=new Date("2027-07-15T18:00:00+03:00").getTime();
 
 function updateFestivalCountdown(){
@@ -1298,22 +1117,19 @@ document.getElementById("hours").textContent=String(hours).padStart(2,"0");
 document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
 document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
 }
-
 updateFestivalCountdown();
 setInterval(updateFestivalCountdown,1000);
 
-/* MAINTENANCE: NOVEMBER 7–13, 2026 */
+/* MAINTENANCE: 7–13 NOIEMBRIE 2026 */
 (function(){
 const romaniaDate=new Date(
 new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"})
 );
-
 const year=romaniaDate.getFullYear();
 const month=romaniaDate.getMonth();
 const day=romaniaDate.getDate();
 
-const maintenanceActive=
-year===2026 && month===10 && day>=7 && day<=13;
+const maintenanceActive=year===2026&&month===10&&day>=7&&day<=13;
 
 if(maintenanceActive){
 document.getElementById("maintenanceOverlay").style.display="flex";
@@ -1322,12 +1138,12 @@ mainMusic.pause();
 }
 })();
 
-/* CONTINUE BUTTON */
-document.getElementById("continueButton").addEventListener("click",function(){
+/* CONTINUE */
+document.getElementById("continueButton").addEventListener("click",()=>{
 document.getElementById("maintenanceOverlay").style.display="none";
 document.body.style.overflow="";
 });
-
 </script>
+
 </body>
 </html>
