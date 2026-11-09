@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -224,8 +225,8 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .artist:hover{transform:scale(1.04);border-color:#8eb8ff}
 .artist-name{position:relative;z-index:2;text-align:center}
 .artist-festival{position:relative;z-index:2;margin-top:9px;padding:7px 10px;color:#dceaff;background:rgba(8,20,45,.88);border:1px solid #8eb8ff;font-size:10px;font-weight:900;letter-spacing:2px;text-align:center}
-.artist-1{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Meduza.png")}
-.artist-2{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Baby Gang.png")}
+.artist-1{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Meduza.png.png")}
+.artist-2{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Baby%20Gang.png.png")}
 .artist-3{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Azteca.png")}
 .artist-4{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./PetreStefan.png")}
 .artist-5{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Rava.png")}
@@ -396,7 +397,6 @@ html{scroll-behavior:auto}
 
 <div id="nightWhiteLight"></div>
 
-<!-- LUMINI CARE SE MISCA -->
 <div id="movingFestivalLights">
 <div class="festival-beam"></div>
 <div class="festival-beam"></div>
@@ -409,7 +409,6 @@ html{scroll-behavior:auto}
 <div class="site-clock-date" id="siteClockDate">SE ÎNCARCĂ DATA...</div>
 </div>
 
-<!-- MAINTENANCE -->
 <div class="maintenance-overlay" id="maintenanceOverlay">
 <div class="maintenance-content">
 <div class="maintenance-box">
@@ -450,7 +449,6 @@ html{scroll-behavior:auto}
 
 <button class="phone-launcher" id="openPhoneButton" type="button" aria-label="Open phone">📱</button>
 
-<!-- TELEFON VIRTUAL -->
 <div class="phone-overlay" id="phoneOverlay">
 <div class="phone-device">
 <div class="phone-screen">
@@ -496,7 +494,6 @@ html{scroll-behavior:auto}
 </div>
 </div>
 
-<!-- NAVBAR -->
 <nav class="navbar">
 <div class="logo">RAVE FESTIVAL</div>
 <ul class="menu">
@@ -533,7 +530,6 @@ html{scroll-behavior:auto}
 </div>
 </nav>
 
-<!-- HARTA -->
 <div class="map-overlay" id="mapOverlay">
 <div class="map-window">
 <div class="map-header">
@@ -551,7 +547,6 @@ html{scroll-behavior:auto}
 </div>
 </div>
 
-<!-- HOME -->
 <section class="home" id="home">
 <div class="home-content">
 <div class="year">2027</div>
@@ -566,7 +561,6 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<!-- COUNTDOWN -->
 <section class="countdown-section">
 <div class="countdown-layout">
 <div class="countdown-box">
@@ -581,7 +575,6 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<!-- BILETE -->
 <section id="tickets">
 <h2 class="section-title">BILETE</h2>
 <div class="tickets">
@@ -598,7 +591,6 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<!-- ARTISTI -->
 <section id="artists">
 <h2 class="section-title">ARTIȘTI</h2>
 <div class="artists">
@@ -629,7 +621,6 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<!-- PROGRAM -->
 <section class="program-section" id="program">
 <h2 class="section-title">PROGRAM LIVE</h2>
 <div class="program-box">
@@ -676,7 +667,6 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<!-- CELESTIAL -->
 <section class="tron-section">
 <div class="tron-content">
 <h2 class="tron-title">CELESTIAL ANGEL EDITION</h2>
@@ -893,7 +883,7 @@ try{
 const url=new URL(link);
 return url.protocol==="https:"&&
 (url.hostname==="www.roblox.com"||url.hostname==="roblox.com")&&
-/^\/users\/\d+\/profile\/?$/.test(url.pathname);
+/\/users\/\d+\/profile\/?$/.test(url.pathname);
 }catch(error){return false;}
 }
 
