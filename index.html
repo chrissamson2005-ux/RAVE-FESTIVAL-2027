@@ -56,7 +56,6 @@ body.white-light-on #nightWhiteLight{display:block;opacity:1}
 
 .navbar{position:fixed;top:0;left:0;width:100%;min-height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 45px;background:rgba(5,12,29,.88);border-bottom:1px solid var(--luxury-border);box-shadow:0 5px 30px rgba(30,80,180,.18);backdrop-filter:blur(15px);z-index:9998}
 
-/* RAVE FESTIVAL LOGO */
 .logo{
 display:flex;
 align-items:center;
@@ -115,7 +114,21 @@ display:block
 .phone-overlay{display:none;position:fixed;inset:0;z-index:100004;align-items:center;justify-content:center;background:rgba(0,3,12,.85);backdrop-filter:blur(10px);padding:15px}
 .phone-overlay.active{display:flex}
 .phone-device{width:320px;height:620px;max-height:90vh;padding:12px;border-radius:38px;background:linear-gradient(145deg,#253c63,#050914 55%,#172b52);border:3px solid #8eb8ff;box-shadow:0 0 45px rgba(0,234,255,.4);position:relative;overflow:hidden}
-.phone-screen{height:100%;width:100%;border-radius:27px;overflow:hidden;position:relative;background:linear-gradient(160deg,#10294a,#071020 55%,#172b52);display:flex;flex-direction:column}
+
+/* FUNDALUL TELEFONULUI VIRTUAL */
+.phone-screen{
+height:100%;
+width:100%;
+border-radius:27px;
+overflow:hidden;
+position:relative;
+background:
+linear-gradient(rgba(5,9,20,.35),rgba(5,9,20,.45)),
+url("./Celestial Angel Gate Portal.png") center center/cover no-repeat;
+display:flex;
+flex-direction:column
+}
+
 .phone-top{height:35px;display:flex;align-items:center;justify-content:space-between;padding:0 17px;color:white;font-size:11px;font-weight:bold;background:rgba(0,0,0,.25)}
 .phone-status{display:flex;gap:7px}
 .phone-home{flex:1;padding:22px 15px 15px;display:flex;flex-direction:column}
@@ -127,7 +140,20 @@ display:block
 .phone-app span:last-child{font-size:10px;font-weight:bold}
 .phone-dock{margin-top:auto;padding:12px 10px;display:flex;justify-content:space-around;background:rgba(255,255,255,.10);border-radius:20px}
 .phone-dock button{border:0;background:none;font-size:25px;cursor:pointer}
-.phone-page{display:none;position:absolute;inset:35px 0 0;padding:18px;background:linear-gradient(160deg,#10294a,#050914);color:white;overflow-y:auto}
+
+/* ACELAȘI FUNDAL ÎN TOATE APLICAȚIILE */
+.phone-page{
+display:none;
+position:absolute;
+inset:35px 0 0;
+padding:18px;
+background:
+linear-gradient(rgba(5,9,20,.45),rgba(5,9,20,.55)),
+url("./Celestial Angel Gate Portal.png") center center/cover no-repeat;
+color:white;
+overflow-y:auto
+}
+
 .phone-page.active{display:block}
 .phone-page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px;padding-bottom:12px;border-bottom:1px solid #4169e1}
 .phone-page-header h2{font-size:17px;color:#00eaff}
@@ -172,9 +198,9 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .artist-name{position:relative;z-index:2;text-align:center}
 .artist-festival{position:relative;z-index:2;margin-top:9px;padding:7px 10px;color:#dceaff;background:rgba(8,20,45,.88);border:1px solid #8eb8ff;font-size:10px;font-weight:900;letter-spacing:2px;text-align:center}
 .artist-1{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Meduza.png.png")}
-.artist-2{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Baby%20Gang.png.png")}
-.artist-3{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Azteca.png")}
-.artist-4{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./PetreStefan.png")}
+.artist-2{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./BABY%20GANG.png.png.png")}
+.artist-3{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./AZTECA.png.png")}
+.artist-4{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./PETRE-STEFAN.png")}
 .artist-5{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Rava.png")}
 .artist-6{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./ZaraLarsson.webp")}
 .artist-7{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Boris.png")}
@@ -415,7 +441,6 @@ html{scroll-behavior:auto}
 </div>
 </div></div></div>
 
-<!-- NAVBAR CU LOGO NOU -->
 <nav class="navbar">
 
 <div class="logo">
