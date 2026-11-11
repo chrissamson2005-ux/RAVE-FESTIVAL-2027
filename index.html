@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -5,12 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050914">
 
-<!-- RAVE FESTIVAL 2027 FAVICON -->
 <link rel="icon" type="image/png" sizes="48x48" href="./RAVE-FESTIVAL.png.png">
 <link rel="shortcut icon" type="image/png" href="./RAVE-FESTIVAL.png.png">
 <link rel="apple-touch-icon" href="./RAVE-FESTIVAL.png.png">
 
-<!-- GOOGLE / SOCIAL PREVIEW -->
 <meta property="og:title" content="RAVE FESTIVAL 2027">
 <meta property="og:description" content="15–18 JULY 2027 - THE FUTURE IS HERE">
 <meta property="og:image" content="https://chrissamson2005-ux.github.io/RBLFESTIVAL/RAVE-FESTIVAL.png.png">
@@ -43,7 +42,7 @@ img,video,iframe{max-width:100%}
 #nightWhiteLight{position:fixed;inset:0;z-index:9990;pointer-events:none;display:none;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.24),transparent 65%),radial-gradient(ellipse at 0% 50%,rgba(255,255,255,.17),transparent 60%),radial-gradient(ellipse at 100% 50%,rgba(255,255,255,.17),transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.22),transparent 65%);box-shadow:inset 0 0 160px rgba(255,255,255,.42);mix-blend-mode:screen;transition:opacity 2s ease;opacity:0}
 body.white-light-on #nightWhiteLight{display:block;opacity:1}
 
-#movingFestivalLights{position:fixed;inset:0;z-index:9989;overflow:hidden;pointer-events:none;mix-blend-mode:screen;opacity:.8}
+#movingFestivalLights{position:fixed;inset:0;z-index:9989;overflow:hidden;pointer-events:none;mix-blend-mode:screen;opacity:.8;transition:opacity 2s ease}
 .festival-beam{position:absolute;top:-35%;width:22vw;height:150vh;filter:blur(22px);transform-origin:top center;opacity:.65}
 .festival-beam:nth-child(1){left:10%;background:linear-gradient(90deg,transparent,rgba(0,234,255,.55),transparent);animation:beamBlue 7s ease-in-out infinite alternate}
 .festival-beam:nth-child(2){left:35%;background:linear-gradient(90deg,transparent,rgba(160,50,255,.55),transparent);animation:beamPurple 9s ease-in-out infinite alternate}
@@ -54,27 +53,46 @@ body.white-light-on #nightWhiteLight{display:block;opacity:1}
 @keyframes beamPink{from{transform:rotate(-30deg)}to{transform:rotate(40deg)}}
 @keyframes beamWhite{from{transform:rotate(35deg)}to{transform:rotate(-35deg)}}
 
+/* PROGRAM ACCES SITE */
+#siteAccessOverlay{
+position:fixed;inset:0;z-index:100005;
+display:none;align-items:center;justify-content:center;
+padding:20px;background:linear-gradient(rgba(5,9,20,.96),rgba(5,9,20,.98));
+backdrop-filter:blur(18px);text-align:center;
+opacity:1;transition:opacity 2s ease;
+}
+.site-access-box{
+width:100%;max-width:650px;padding:40px 25px;
+background:linear-gradient(145deg,#102448,#050914);
+border:1px solid #00eaff;
+box-shadow:0 0 45px rgba(0,234,255,.25);
+}
+.site-access-logo{
+font-size:clamp(28px,6vw,48px);font-weight:900;
+letter-spacing:4px;color:#fff;text-shadow:0 0 20px #4169e1;
+}
+.site-access-status{
+margin-top:25px;color:#00eaff;
+font-size:clamp(18px,4vw,25px);
+font-weight:900;letter-spacing:3px;
+}
+.site-access-message{
+margin-top:18px;color:#c5dcff;
+font-size:14px;line-height:1.8;
+}
+.site-access-clock{
+margin-top:25px;font-size:clamp(30px,7vw,48px);
+font-weight:900;letter-spacing:5px;color:#fff;
+text-shadow:0 0 15px #00eaff;
+}
+.site-access-footer{
+margin-top:25px;color:#8eb8ff;
+font-size:11px;font-weight:900;letter-spacing:3px;
+}
+
 .navbar{position:fixed;top:0;left:0;width:100%;min-height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 45px;background:rgba(5,12,29,.88);border-bottom:1px solid var(--luxury-border);box-shadow:0 5px 30px rgba(30,80,180,.18);backdrop-filter:blur(15px);z-index:9998}
-
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-color:#fff;
-font-size:24px;
-font-weight:900;
-letter-spacing:3px;
-text-shadow:0 0 15px rgba(100,160,255,.5);
-white-space:nowrap
-}
-.logo img{
-width:48px;
-height:48px;
-object-fit:contain;
-flex-shrink:0;
-display:block
-}
-
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-size:24px;font-weight:900;letter-spacing:3px;text-shadow:0 0 15px rgba(100,160,255,.5);white-space:nowrap}
+.logo img{width:48px;height:48px;object-fit:contain;flex-shrink:0;display:block}
 .menu{display:flex;gap:30px;list-style:none}
 .menu a{color:#e5edff;text-decoration:none;font-size:14px;font-weight:bold;letter-spacing:2px;transition:.3s}
 .menu a:hover{color:var(--luxury-light);text-shadow:0 0 12px #4169e1}
@@ -114,21 +132,7 @@ display:block
 .phone-overlay{display:none;position:fixed;inset:0;z-index:100004;align-items:center;justify-content:center;background:rgba(0,3,12,.85);backdrop-filter:blur(10px);padding:15px}
 .phone-overlay.active{display:flex}
 .phone-device{width:320px;height:620px;max-height:90vh;padding:12px;border-radius:38px;background:linear-gradient(145deg,#253c63,#050914 55%,#172b52);border:3px solid #8eb8ff;box-shadow:0 0 45px rgba(0,234,255,.4);position:relative;overflow:hidden}
-
-/* FUNDALUL TELEFONULUI VIRTUAL */
-.phone-screen{
-height:100%;
-width:100%;
-border-radius:27px;
-overflow:hidden;
-position:relative;
-background:
-linear-gradient(rgba(5,9,20,.35),rgba(5,9,20,.45)),
-url("./Celestial Angel Gate Portal.png") center center/cover no-repeat;
-display:flex;
-flex-direction:column
-}
-
+.phone-screen{height:100%;width:100%;border-radius:27px;overflow:hidden;position:relative;background:linear-gradient(rgba(5,9,20,.35),rgba(5,9,20,.45)),url("./Celestial Angel Gate Portal.png") center center/cover no-repeat;display:flex;flex-direction:column}
 .phone-top{height:35px;display:flex;align-items:center;justify-content:space-between;padding:0 17px;color:white;font-size:11px;font-weight:bold;background:rgba(0,0,0,.25)}
 .phone-status{display:flex;gap:7px}
 .phone-home{flex:1;padding:22px 15px 15px;display:flex;flex-direction:column}
@@ -141,19 +145,7 @@ flex-direction:column
 .phone-dock{margin-top:auto;padding:12px 10px;display:flex;justify-content:space-around;background:rgba(255,255,255,.10);border-radius:20px}
 .phone-dock button{border:0;background:none;font-size:25px;cursor:pointer}
 
-/* ACELAȘI FUNDAL ÎN TOATE APLICAȚIILE */
-.phone-page{
-display:none;
-position:absolute;
-inset:35px 0 0;
-padding:18px;
-background:
-linear-gradient(rgba(5,9,20,.45),rgba(5,9,20,.55)),
-url("./Celestial Angel Gate Portal.png") center center/cover no-repeat;
-color:white;
-overflow-y:auto
-}
-
+.phone-page{display:none;position:absolute;inset:35px 0 0;padding:18px;background:linear-gradient(rgba(5,9,20,.45),rgba(5,9,20,.55)),url("./Celestial Angel Gate Portal.png") center center/cover no-repeat;color:white;overflow-y:auto}
 .phone-page.active{display:block}
 .phone-page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px;padding-bottom:12px;border-bottom:1px solid #4169e1}
 .phone-page-header h2{font-size:17px;color:#00eaff}
@@ -163,6 +155,29 @@ overflow-y:auto
 .phone-page-content p{font-size:13px;color:#c2d4f5;line-height:1.7;margin:12px 0}
 .phone-action{display:inline-block;margin-top:15px;padding:12px 18px;color:#050914;background:#00eaff;border:0;border-radius:10px;font-weight:900;cursor:pointer;text-decoration:none}
 .phone-close{position:absolute;top:7px;right:10px;z-index:5;width:27px;height:27px;border:0;border-radius:50%;background:#263e66;color:white;font-size:17px;cursor:pointer}
+
+/* ROBLOX GIVEAWAY */
+.giveaway-card{padding:15px 10px;background:rgba(5,12,29,.82);border:1px solid #00eaff;border-radius:15px;box-shadow:0 0 20px rgba(0,234,255,.2)}
+.giveaway-icon{font-size:55px;margin-bottom:10px}
+.giveaway-label{color:#00eaff;font-size:10px;font-weight:900;letter-spacing:2px}
+.giveaway-card h3{color:#00eaff;font-size:19px;letter-spacing:1px;margin:12px 0}
+.giveaway-prize{margin:18px 0;color:#fff;font-size:38px;font-weight:900;text-shadow:0 0 15px #00eaff}
+.giveaway-rules{margin-top:20px;padding:13px;text-align:left;background:rgba(16,36,72,.85);border:1px solid #4169e1;border-radius:10px}
+.giveaway-rules strong{color:#00eaff;font-size:11px}
+.giveaway-rules p{font-size:11px;margin:9px 0}
+.giveaway-winner{margin-top:18px;padding:14px;background:rgba(0,234,255,.08);border:1px solid #00eaff;border-radius:10px}
+.giveaway-winner strong{color:#00eaff;font-size:11px}
+.giveaway-note{font-size:10px!important;color:#a9c9ff!important}
+
+.giveaway-input{display:block;width:100%;margin:18px auto 10px;padding:14px 12px;background:rgba(5,12,29,.95);border:1px solid #00eaff;border-radius:9px;color:#fff;font-size:14px;font-weight:900;text-align:center;outline:none}
+.giveaway-input::placeholder{color:#8ba6d1}
+.giveaway-input:focus{border-color:#fff;box-shadow:0 0 15px rgba(0,234,255,.35)}
+.giveaway-join{display:block;width:100%;padding:14px;margin:10px auto;color:#050914;background:linear-gradient(135deg,#00eaff,#8eb8ff);border:0;border-radius:9px;font-size:13px;font-weight:900;letter-spacing:2px;cursor:pointer}
+.giveaway-join:disabled{opacity:.5;cursor:not-allowed}
+.giveaway-status{min-height:35px;margin:10px 0;padding:9px;border-radius:8px;font-size:11px;font-weight:900;line-height:1.5}
+.giveaway-status:empty{display:none}
+.giveaway-status.success{color:#aaffd0;background:rgba(0,180,100,.12);border:1px solid #00c878}
+.giveaway-status.error{color:#ffb8c0;background:rgba(255,40,70,.12);border:1px solid #ff5268}
 
 .home{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 20px 60px;background:linear-gradient(rgba(0,5,20,.18),rgba(0,5,20,.42))}
 .home-content{max-width:1100px;width:100%}
@@ -330,8 +345,10 @@ section,#tickets{padding:75px 12px 60px}
 .site-clock-time{font-size:19px}
 .site-clock-date{font-size:8px}
 .festival-beam{width:35vw;filter:blur(16px)}
+.site-access-box{padding:30px 17px}
+.site-access-logo{letter-spacing:2px}
+.site-access-message{font-size:12px}
 }
-
 @media(min-width:601px) and (max-width:1024px){
 .navbar{padding:12px 18px;gap:12px}
 .menu{gap:13px}
@@ -364,10 +381,27 @@ html{scroll-behavior:auto}
 
 <body>
 
+<!-- ECRAN PROGRAM ACCES -->
+<div id="siteAccessOverlay" aria-live="polite">
+<div class="site-access-box">
+<div class="site-access-logo">RAVE FESTIVAL 2027</div>
+<div class="site-access-status" id="siteAccessStatus">WEBSITE CLOSED</div>
+<div class="site-access-message" id="siteAccessMessage">
+The website is currently closed.<br>
+Come back at 07:00.
+</div>
+<div class="site-access-clock" id="siteAccessClock">00:00:00</div>
+<div class="site-access-footer">THE FUTURE IS HERE</div>
+</div>
+</div>
+
 <div id="nightWhiteLight"></div>
 
 <div id="movingFestivalLights">
-<div class="festival-beam"></div><div class="festival-beam"></div><div class="festival-beam"></div><div class="festival-beam"></div>
+<div class="festival-beam"></div>
+<div class="festival-beam"></div>
+<div class="festival-beam"></div>
+<div class="festival-beam"></div>
 </div>
 
 <div class="site-clock">
@@ -406,16 +440,26 @@ html{scroll-behavior:auto}
 </div>
 </div>
 
-<audio id="mainMusic" loop preload="auto"><source src="./cashout.mp3" type="audio/mpeg"></audio>
+<audio id="mainMusic" loop preload="auto">
+<source src="./cashout.mp3" type="audio/mpeg">
+</audio>
 
 <button class="phone-launcher" id="openPhoneButton" type="button" aria-label="Open phone">📱</button>
 
 <div class="phone-overlay" id="phoneOverlay">
-<div class="phone-device"><div class="phone-screen">
+<div class="phone-device">
+<div class="phone-screen">
+
 <button class="phone-close" id="closePhoneButton" type="button">×</button>
-<div class="phone-top"><span id="phoneClock">21:00</span><div class="phone-status"><span>●</span><span>Wi-Fi</span><span>100%</span></div></div>
+
+<div class="phone-top">
+<span id="phoneClock">21:00</span>
+<div class="phone-status"><span>●</span><span>Wi-Fi</span><span>100%</span></div>
+</div>
+
 <div class="phone-home" id="phoneHome">
-<div class="phone-clock" id="phoneBigClock">21:00</div><div class="phone-date" id="phoneDate">RAVE FESTIVAL 2027</div>
+<div class="phone-clock" id="phoneBigClock">21:00</div>
+<div class="phone-date" id="phoneDate">RAVE FESTIVAL 2027</div>
 
 <div class="phone-apps">
 <button class="phone-app" data-app="music"><span class="phone-app-icon">🎵</span><span>Music</span></button>
@@ -430,19 +474,30 @@ html{scroll-behavior:auto}
 <button class="phone-app" data-app="gallery"><span class="phone-app-icon">🖼️</span><span>Gallery</span></button>
 <button class="phone-app" data-app="browser"><span class="phone-app-icon">🌐</span><span>Browser</span></button>
 <button class="phone-app" data-app="about"><span class="phone-app-icon">ℹ️</span><span>About</span></button>
+<button class="phone-app" data-app="giveaway"><span class="phone-app-icon">🎁</span><span>Giveaway</span></button>
 </div>
 
-<div class="phone-dock"><button data-app="music">🎵</button><button data-app="map">🗺️</button><button data-app="roblox">🎮</button><button data-app="browser">🌐</button></div>
+<div class="phone-dock">
+<button data-app="music">🎵</button>
+<button data-app="map">🗺️</button>
+<button data-app="roblox">🎮</button>
+<button data-app="browser">🌐</button>
+</div>
 </div>
 
 <div class="phone-page" id="phoneAppPage">
-<div class="phone-page-header"><h2 id="phoneAppTitle">APP</h2><button class="phone-back" id="phoneBackButton" type="button">← BACK</button></div>
+<div class="phone-page-header">
+<h2 id="phoneAppTitle">APP</h2>
+<button class="phone-back" id="phoneBackButton" type="button">← BACK</button>
+</div>
 <div class="phone-page-content" id="phoneAppContent"></div>
 </div>
-</div></div></div>
+
+</div>
+</div>
+</div>
 
 <nav class="navbar">
-
 <div class="logo">
 <img src="./RAVE-FESTIVAL.png.png" alt="RAVE FESTIVAL LOGO">
 <span>RAVE FESTIVAL</span>
@@ -459,12 +514,16 @@ html{scroll-behavior:auto}
 <div class="nav-right">
 <div class="year-top">2027</div>
 <button class="map-button" id="openMapButton" type="button">🗺️ MAP</button>
+
 <div class="game-nav-info">
 <span class="game-nav-name">RAVE FESTIVAL 2027</span>
 <a class="game-nav-play" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL" target="_blank" rel="noopener noreferrer">▶ PLAY GAME</a>
 </div>
+
 <a href="#" class="roblox-profile" id="robloxProfileLink">
-<div class="roblox-avatar" id="robloxAvatar"><img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4117F37BBB2715EF990D94E-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Roblox Avatar"></div>
+<div class="roblox-avatar" id="robloxAvatar">
+<img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4117F37BBB2715EF990D94E-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Roblox Avatar">
+</div>
 <div class="roblox-profile-info">
 <strong id="robloxUsername">CONNECT YOUR ACCOUNT</strong>
 <small id="robloxProfileStatus">ROBLOX • NOT CONNECTED</small>
@@ -473,6 +532,7 @@ html{scroll-behavior:auto}
 </div>
 <span class="roblox-arrow">›</span>
 </a>
+
 <div class="roblox-qr-card">
 <div class="roblox-qr-title">SCAN TO PLAY</div>
 <div id="robloxQRCode" aria-label="QR Code pentru jocul RAVE FESTIVAL"></div>
@@ -483,33 +543,68 @@ html{scroll-behavior:auto}
 
 <div class="map-overlay" id="mapOverlay">
 <div class="map-window">
-<div class="map-header"><h2>RAVE FESTIVAL MAP</h2><button class="map-close" id="closeMapButton" type="button">✕</button></div>
+<div class="map-header">
+<h2>RAVE FESTIVAL MAP</h2>
+<button class="map-close" id="closeMapButton" type="button">✕</button>
+</div>
 <div class="map-image-container">
 <img src="./rave-festival-map.png" alt="RAVE FESTIVAL Roblox Game Map" onerror="this.style.display='none';document.getElementById('mapPlaceholder').style.display='block';">
-<div class="map-placeholder" id="mapPlaceholder" style="display:none"><div style="font-size:55px">🗺️</div><h3>RAVE FESTIVAL GAME MAP</h3><p>THE OFFICIAL GAME MAP IS COMING SOON<br>HARTA JOCULUI ROBLOX VA APĂREA AICI.</p></div>
-</div></div></div>
+<div class="map-placeholder" id="mapPlaceholder" style="display:none">
+<div style="font-size:55px">🗺️</div>
+<h3>RAVE FESTIVAL GAME MAP</h3>
+<p>THE OFFICIAL GAME MAP IS COMING SOON<br>HARTA JOCULUI ROBLOX VA APĂREA AICI.</p>
+</div>
+</div>
+</div>
+</div>
 
-<section class="home" id="home"><div class="home-content">
-<div class="year">2027</div><h1 class="title">RAVE FESTIVAL</h1>
-<div class="subtitle">15–18 JULY 2027</div><div class="subtitle">THE FUTURE IS HERE</div>
-<div class="home-buttons"><a href="#tickets" class="home-button">BILETE</a><a href="#artists" class="home-button">ARTIȘTI</a><a href="#program" class="home-button">PROGRAM</a></div>
-</div></section>
+<section class="home" id="home">
+<div class="home-content">
+<div class="year">2027</div>
+<h1 class="title">RAVE FESTIVAL</h1>
+<div class="subtitle">15–18 JULY 2027</div>
+<div class="subtitle">THE FUTURE IS HERE</div>
+<div class="home-buttons">
+<a href="#tickets" class="home-button">BILETE</a>
+<a href="#artists" class="home-button">ARTIȘTI</a>
+<a href="#program" class="home-button">PROGRAM</a>
+</div>
+</div>
+</section>
 
-<section class="countdown-section"><div class="countdown-layout"><div class="countdown-box">
+<section class="countdown-section">
+<div class="countdown-layout">
+<div class="countdown-box">
 <div class="countdown-title">RAVE FESTIVAL 2027 STARTS IN</div>
 <div id="countdown">
 <div class="countdown-item"><span id="days">00</span><small>ZILE</small></div>
 <div class="countdown-item"><span id="hours">00</span><small>ORE</small></div>
 <div class="countdown-item"><span id="minutes">00</span><small>MINUTE</small></div>
 <div class="countdown-item"><span id="seconds">00</span><small>SECUNDE</small></div>
-</div></div></div></section>
+</div>
+</div>
+</div>
+</section>
 
-<section id="tickets"><h2 class="section-title">BILETE</h2><div class="tickets">
-<div class="ticket-card"><h3>GENERAL ACCESS</h3><div class="price">249 LEI</div><a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button" target="_blank" rel="noopener noreferrer">CUMPĂRĂ</a></div>
-<div class="ticket-card"><h3>VIP</h3><div class="price">499 LEI</div><a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button" target="_blank" rel="noopener noreferrer">CUMPĂRĂ</a></div>
-</div></section>
+<section id="tickets">
+<h2 class="section-title">BILETE</h2>
+<div class="tickets">
+<div class="ticket-card">
+<h3>GENERAL ACCESS</h3>
+<div class="price">249 LEI</div>
+<a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button" target="_blank" rel="noopener noreferrer">CUMPĂRĂ</a>
+</div>
+<div class="ticket-card">
+<h3>VIP</h3>
+<div class="price">499 LEI</div>
+<a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button" target="_blank" rel="noopener noreferrer">CUMPĂRĂ</a>
+</div>
+</div>
+</section>
 
-<section id="artists"><h2 class="section-title">ARTIȘTI</h2><div class="artists">
+<section id="artists">
+<h2 class="section-title">ARTIȘTI</h2>
+<div class="artists">
 <div class="artist artist-1"><span class="artist-name">MEDUZA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
 <div class="artist artist-2"><span class="artist-name">BABY GANG</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
 <div class="artist artist-3"><span class="artist-name">AZTECA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
@@ -534,12 +629,16 @@ html{scroll-behavior:auto}
 <div class="artist artist-22"><span class="artist-name">INDUSTRY BABY</span></div>
 <div class="artist artist-23"><span class="artist-name">MIRA</span></div>
 <div class="artist artist-24"><span class="artist-name">DON TOLIVER</span></div>
-</div></section>
+</div>
+</section>
 
-<section class="program-section" id="program"><h2 class="section-title">PROGRAM LIVE</h2><div class="program-box">
+<section class="program-section" id="program">
+<h2 class="section-title">PROGRAM LIVE</h2>
+<div class="program-box">
 <div class="program-live"><div class="live-indicator">• FESTIVAL PROGRAM</div></div>
 
-<div class="program-day"><h3>15 JUL</h3>
+<div class="program-day">
+<h3>15 JUL</h3>
 <div class="program-item"><span class="program-time">18:00</span><span class="program-artist">OPENING</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">MEDUZA</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">20:00</span><span class="program-artist">BABY GANG</span><span class="program-status">UPCOMING</span></div>
@@ -548,19 +647,22 @@ html{scroll-behavior:auto}
 <div class="program-item"><span class="program-time">23:30</span><span class="program-artist">RAVA</span><span class="program-status">UPCOMING</span></div>
 </div>
 
-<div class="program-day"><h3>16 JUL</h3>
+<div class="program-day">
+<h3>16 JUL</h3>
 <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">ZARA LARSSON</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">BORIS BREJCHA</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">23:00</span><span class="program-artist">FRED AGAIN..</span><span class="program-status">UPCOMING</span></div>
 </div>
 
-<div class="program-day"><h3>17 JUL</h3>
+<div class="program-day">
+<h3>17 JUL</h3>
 <div class="program-item"><span class="program-time">19:00</span><span class="program-artist">ANYMA</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">ANDRA</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">23:00</span><span class="program-artist">IRINA RIMES</span><span class="program-status">UPCOMING</span></div>
 </div>
 
-<div class="program-day"><h3>18 JUL</h3>
+<div class="program-day">
+<h3>18 JUL</h3>
 <div class="program-item"><span class="program-time">18:00</span><span class="program-artist">ALBERT NBN</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">19:30</span><span class="program-artist">SKRILLEX</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">21:00</span><span class="program-artist">KISS FM</span><span class="program-status">UPCOMING</span></div>
@@ -573,180 +675,696 @@ html{scroll-behavior:auto}
 <div class="program-item"><span class="program-time">04:00</span><span class="program-artist">MIRA</span><span class="program-status">UPCOMING</span></div>
 <div class="program-item"><span class="program-time">05:00</span><span class="program-artist">DON TOLIVER</span><span class="program-status">UPCOMING</span></div>
 </div>
-</div></section>
+</div>
+</section>
 
-<section class="tron-section"><div class="tron-content">
+<section class="tron-section">
+<div class="tron-content">
 <h2 class="tron-title">CELESTIAL ANGEL EDITION</h2>
 <p class="tron-text">RAVE FESTIVAL 2027 – Step into a breathtaking celestial universe where heavenly angels, divine light and electronic music come together. Experience majestic angel gates, spectacular visual effects and an unforgettable journey through a world beyond imagination.</p>
 <p class="tron-slogan">ENTER THE CELESTIAL WORLD • LIVE THE EXPERIENCE</p>
-</div></section>
+</div>
+</section>
 
-<section><h2 class="section-title">RAVE FESTIVAL 2027</h2><div style="text-align:center"><p class="subtitle">15–18 IULIE 2027</p></div></section>
+<section>
+<h2 class="section-title">RAVE FESTIVAL 2027</h2>
+<div style="text-align:center"><p class="subtitle">15–18 IULIE 2027</p></div>
+</section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
+/* CEAS, PROGRAM LUMINI SI ACCES SITE - ORA ROMANIEI */
+
 const siteClockTime=document.getElementById("siteClockTime");
 const siteClockDate=document.getElementById("siteClockDate");
 
+const siteAccessOverlay=document.getElementById("siteAccessOverlay");
+const siteAccessStatus=document.getElementById("siteAccessStatus");
+const siteAccessMessage=document.getElementById("siteAccessMessage");
+const siteAccessClock=document.getElementById("siteAccessClock");
+
+function getBucharestTime(){
+const parts=new Intl.DateTimeFormat("en-GB",{
+timeZone:"Europe/Bucharest",
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit",
+hourCycle:"h23"
+}).formatToParts(new Date());
+
+const getPart=type=>Number(parts.find(part=>part.type===type)?.value||0);
+
+return{
+hour:getPart("hour"),
+minute:getPart("minute"),
+second:getPart("second")
+};
+}
+
 function updateSiteClockAndLight(){
 const now=new Date();
-const timeParts=new Intl.DateTimeFormat("ro-RO",{timeZone:"Europe/Bucharest",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).formatToParts(now);
-const getPart=type=>timeParts.find(part=>part.type===type)?.value||"00";
-const hour=Number(getPart("hour")),minute=Number(getPart("minute")),second=getPart("second");
-siteClockTime.textContent=String(hour).padStart(2,"0")+":"+String(minute).padStart(2,"0")+":"+second;
-const dateText=new Intl.DateTimeFormat("ro-RO",{timeZone:"Europe/Bucharest",weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(now);
+const bucharest=getBucharestTime();
+
+const hour=bucharest.hour;
+const minute=bucharest.minute;
+const second=bucharest.second;
+
+const timeText=
+String(hour).padStart(2,"0")+":"+
+String(minute).padStart(2,"0")+":"+
+String(second).padStart(2,"0");
+
+siteClockTime.textContent=timeText;
+siteAccessClock.textContent=timeText;
+
+const dateText=new Intl.DateTimeFormat("ro-RO",{
+timeZone:"Europe/Bucharest",
+weekday:"long",
+day:"numeric",
+month:"long",
+year:"numeric"
+}).format(now);
+
 siteClockDate.textContent=dateText.toLocaleUpperCase("ro-RO");
+
+/* PROGRAM LUMINI:
+00:00–02:00 STINSE
+02:00–08:00 APRINSE
+08:00–17:30 STINSE
+17:30–00:00 APRINSE
+*/
+
 const minutesNow=hour*60+minute;
-document.body.classList.toggle("white-light-on",minutesNow>=17*60+30||minutesNow<8*60);
+
+const lightsOn=
+(minutesNow>=120&&minutesNow<480)||
+(minutesNow>=1050);
+
+document.body.classList.toggle("white-light-on",lightsOn);
+
+const movingLights=document.getElementById("movingFestivalLights");
+if(movingLights){
+movingLights.style.opacity=lightsOn?"0.8":"0";
 }
-updateSiteClockAndLight();setInterval(updateSiteClockAndLight,1000);
+
+/* PROGRAM ACCES SITE */
+
+const secondsNow=hour*3600+minute*60+second;
+
+const openingStart=7*3600;
+const fullyOpen=7*3600+60;
+const closingStart=23*3600+50*60;
+const midnight=24*3600;
+
+let accessOpen=false;
+let overlayOpacity=1;
+
+if(secondsNow<openingStart){
+accessOpen=false;
+overlayOpacity=1;
+
+siteAccessStatus.textContent="WEBSITE CLOSED";
+siteAccessMessage.innerHTML=
+"The website is currently closed.<br>Come back at 07:00.";
+}
+else if(secondsNow<fullyOpen){
+accessOpen=true;
+
+const progress=(secondsNow-openingStart)/(fullyOpen-openingStart);
+overlayOpacity=1-progress;
+
+siteAccessStatus.textContent="WEBSITE OPENING";
+siteAccessMessage.innerHTML=
+"RAVE FESTIVAL is opening gradually.<br>Welcome!";
+}
+else if(secondsNow<closingStart){
+accessOpen=true;
+overlayOpacity=0;
+
+siteAccessStatus.textContent="WEBSITE OPEN";
+siteAccessMessage.innerHTML=
+"Welcome to RAVE FESTIVAL 2027.<br>Enjoy the experience!";
+}
+else{
+accessOpen=false;
+
+const progress=(secondsNow-closingStart)/(midnight-closingStart);
+overlayOpacity=Math.min(1,progress);
+
+siteAccessStatus.textContent="WEBSITE CLOSING";
+siteAccessMessage.innerHTML=
+"The website is closing for today.<br>See you tomorrow at 07:00!";
+}
+
+/* AFISEAZA SAU ASCUNDE ECRANUL DE ACCES */
+
+if(accessOpen&&overlayOpacity<=0){
+siteAccessOverlay.style.display="none";
+document.body.style.overflowX="hidden";
+document.body.style.overflowY="";
+}else{
+siteAccessOverlay.style.display="flex";
+siteAccessOverlay.style.opacity=String(overlayOpacity);
+document.body.style.overflow="hidden";
+}
+}
+
+updateSiteClockAndLight();
+setInterval(updateSiteClockAndLight,1000);
+
+/* RESTUL FUNCTIILOR SITE-ULUI */
 
 const mainMusic=document.getElementById("mainMusic");
-const phoneOverlay=document.getElementById("phoneOverlay"),phoneHome=document.getElementById("phoneHome"),phoneAppPage=document.getElementById("phoneAppPage"),phoneAppTitle=document.getElementById("phoneAppTitle"),phoneAppContent=document.getElementById("phoneAppContent");
+const phoneOverlay=document.getElementById("phoneOverlay");
+const phoneHome=document.getElementById("phoneHome");
+const phoneAppPage=document.getElementById("phoneAppPage");
+const phoneAppTitle=document.getElementById("phoneAppTitle");
+const phoneAppContent=document.getElementById("phoneAppContent");
 
 document.getElementById("openPhoneButton").addEventListener("click",()=>phoneOverlay.classList.add("active"));
 document.getElementById("closePhoneButton").addEventListener("click",()=>phoneOverlay.classList.remove("active"));
 phoneOverlay.addEventListener("click",event=>{if(event.target===phoneOverlay)phoneOverlay.classList.remove("active")});
 
-function closePhoneApp(){phoneAppPage.classList.remove("active");phoneHome.style.display="flex"}
+function closePhoneApp(){
+phoneAppPage.classList.remove("active");
+phoneHome.style.display="flex";
+}
+
 document.getElementById("phoneBackButton").addEventListener("click",closePhoneApp);
 
 function openPhoneApp(name){
-phoneHome.style.display="none";phoneAppPage.classList.add("active");
+phoneHome.style.display="none";
+phoneAppPage.classList.add("active");
+
 const apps={
-music:{title:"MUSIC PLAYER",icon:"🎵",html:`<h3>RAVE FESTIVAL MUSIC</h3><p>Listen to the official RAVE FESTIVAL music.</p><button class="phone-action" id="phoneMusicButton">▶ PLAY MUSIC</button>`},
-map:{title:"FESTIVAL MAP",icon:"🗺️",html:`<h3>RAVE FESTIVAL MAP</h3><p>Open the official festival game map.</p><button class="phone-action" id="phoneMapButton">OPEN MAP</button>`},
-tickets:{title:"TICKETS",icon:"🎟️",html:`<h3>GET YOUR TICKET</h3><p>GENERAL ACCESS — 249 LEI</p><p>VIP — 499 LEI</p><a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" target="_blank">BUY TICKETS</a>`},
-roblox:{title:"ROBLOX",icon:"🎮",html:`<h3>RAVE FESTIVAL 2027</h3><p>Enter the official RAVE FESTIVAL Roblox game.</p><a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL" target="_blank">PLAY GAME</a>`},
-artists:{title:"ARTISTS",icon:"🎤",html:`<h3>FESTIVAL ARTISTS</h3><p>MEDUZA • BABY GANG • AZTECA • RAVA</p><p>ANYMA • SKRILLEX • MARTIN GARRIX</p><p>POST MALONE • SAGUNA • HUGEL</p><button class="phone-action" id="phoneArtistsButton">VIEW ARTISTS</button>`},
-program:{title:"PROGRAM",icon:"📅",html:`<h3>FESTIVAL PROGRAM</h3><p>15–18 JULY 2027</p><p>See the complete festival schedule.</p><button class="phone-action" id="phoneProgramButton">OPEN PROGRAM</button>`},
-home:{title:"HOME",icon:"🏠",html:`<h3>RAVE FESTIVAL 2027</h3><p>THE FUTURE IS HERE.</p><button class="phone-action" id="phoneHomeButton">GO TO HOME</button>`},
-settings:{title:"SETTINGS",icon:"⚙️",html:`<h3>PHONE SETTINGS</h3><p>RAVE FESTIVAL virtual phone.</p><p>Theme: Celestial Blue</p><p>System: RAVE OS</p>`},
-camera:{title:"CAMERA",icon:"📷",html:`<h3>CAMERA</h3><p>Camera demo for RAVE FESTIVAL.</p><p>This is a visual demonstration, not a real camera.</p>`},
-gallery:{title:"GALLERY",icon:"🖼️",html:`<h3>GALLERY</h3><p>RAVE FESTIVAL 2027</p><p>Festival images and memories.</p>`},
-browser:{title:"BROWSER",icon:"🌐",html:`<h3>WEB BROWSER</h3><p>Open the web browser.</p><a class="phone-action" href="https://www.google.com" target="_blank">OPEN GOOGLE</a>`},
-about:{title:"ABOUT",icon:"ℹ️",html:`<h3>RAVE OS</h3><p>RAVE FESTIVAL 2027 virtual phone.</p><p>15–18 JULY 2027</p><p>THE FUTURE IS HERE.</p>`}
+
+music:{
+title:"MUSIC PLAYER",
+icon:"🎵",
+html:`<h3>RAVE FESTIVAL MUSIC</h3><p>Listen to the official RAVE FESTIVAL music.</p><button class="phone-action" id="phoneMusicButton">▶ PLAY MUSIC</button>`
+},
+
+map:{
+title:"FESTIVAL MAP",
+icon:"🗺️",
+html:`<h3>RAVE FESTIVAL MAP</h3><p>Open the official festival game map.</p><button class="phone-action" id="phoneMapButton">OPEN MAP</button>`
+},
+
+tickets:{
+title:"TICKETS",
+icon:"🎟️",
+html:`<h3>GET YOUR TICKET</h3><p>GENERAL ACCESS — 249 LEI</p><p>VIP — 499 LEI</p><a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" target="_blank" rel="noopener noreferrer">BUY TICKETS</a>`
+},
+
+roblox:{
+title:"ROBLOX",
+icon:"🎮",
+html:`<h3>RAVE FESTIVAL 2027</h3><p>Enter the official RAVE FESTIVAL Roblox game.</p><a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL" target="_blank" rel="noopener noreferrer">PLAY GAME</a>`
+},
+
+artists:{
+title:"ARTISTS",
+icon:"🎤",
+html:`<h3>FESTIVAL ARTISTS</h3><p>MEDUZA • BABY GANG • AZTECA • RAVA</p><p>ANYMA • SKRILLEX • MARTIN GARRIX</p><p>POST MALONE • SAGUNA • HUGEL</p><button class="phone-action" id="phoneArtistsButton">VIEW ARTISTS</button>`
+},
+
+program:{
+title:"PROGRAM",
+icon:"📅",
+html:`<h3>FESTIVAL PROGRAM</h3><p>15–18 JULY 2027</p><p>See the complete festival schedule.</p><button class="phone-action" id="phoneProgramButton">OPEN PROGRAM</button>`
+},
+
+home:{
+title:"HOME",
+icon:"🏠",
+html:`<h3>RAVE FESTIVAL 2027</h3><p>THE FUTURE IS HERE.</p><button class="phone-action" id="phoneHomeButton">GO TO HOME</button>`
+},
+
+settings:{
+title:"SETTINGS",
+icon:"⚙️",
+html:`<h3>PHONE SETTINGS</h3><p>RAVE FESTIVAL virtual phone.</p><p>Theme: Celestial Blue</p><p>System: RAVE OS</p>`
+},
+
+camera:{
+title:"CAMERA",
+icon:"📷",
+html:`<h3>CAMERA</h3><p>Camera demo for RAVE FESTIVAL.</p><p>This is a visual demonstration, not a real camera.</p>`
+},
+
+gallery:{
+title:"GALLERY",
+icon:"🖼️",
+html:`<h3>GALLERY</h3><p>RAVE FESTIVAL 2027</p><p>Festival images and memories.</p>`
+},
+
+browser:{
+title:"BROWSER",
+icon:"🌐",
+html:`<h3>WEB BROWSER</h3><p>Open the web browser.</p><a class="phone-action" href="https://www.google.com" target="_blank" rel="noopener noreferrer">OPEN GOOGLE</a>`
+},
+
+about:{
+title:"ABOUT",
+icon:"ℹ️",
+html:`<h3>RAVE OS</h3><p>RAVE FESTIVAL 2027 virtual phone.</p><p>15–18 JULY 2027</p><p>THE FUTURE IS HERE.</p>`
+},
+
+giveaway:{
+title:"ROBLOX GIVEAWAY",
+icon:"🎁",
+html:`
+<div class="giveaway-card">
+<div class="giveaway-icon">🎁</div>
+<div class="giveaway-label">RAVE FESTIVAL 2027 PRESENTS</div>
+<h3>MONTHLY ROBUX GIVEAWAY</h3>
+<div class="giveaway-prize">50 ROBUX</div>
+<p>ONE WINNER EVERY MONTH</p>
+<input class="giveaway-input" id="giveawayUsername" type="text" maxlength="20" placeholder="YOUR ROBLOX USERNAME" autocomplete="off">
+<button class="giveaway-join" id="giveawayJoinButton" type="button">JOIN GIVEAWAY</button>
+<div class="giveaway-status" id="giveawayStatus" aria-live="polite"></div>
+<div class="giveaway-rules">
+<strong>OFFICIAL GIVEAWAY RULES</strong>
+<p>🎁 Prize: 50 Robux.</p>
+<p>🏆 One winner is selected every month.</p>
+<p>📢 The winner will be announced through official RAVE FESTIVAL channels.</p>
+<p>📋 Enter your correct Roblox username to participate.</p>
+<p>🔐 Never share your Roblox password, security codes or account cookies.</p>
+</div>
+<a class="phone-action" href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL" target="_blank" rel="noopener noreferrer">▶ OPEN RAVE FESTIVAL</a>
+<div class="giveaway-winner">
+<strong>THIS MONTH'S WINNER</strong>
+<p id="giveawayWinner">TO BE ANNOUNCED</p>
+</div>
+<p class="giveaway-note">Your entry is saved only in this browser. The website does not automatically send entries to the organizer or transfer Robux. The organizer must manage entries and winner selection separately.</p>
+</div>
+`
+}
+
 };
 
-const app=apps[name];if(!app)return;
-phoneAppTitle.textContent=app.icon+" "+app.title;phoneAppContent.innerHTML=app.html;
+const app=apps[name];
+if(!app)return;
+
+phoneAppTitle.textContent=app.icon+" "+app.title;
+phoneAppContent.innerHTML=app.html;
+
+if(name==="giveaway"){
+
+const giveawayInput=document.getElementById("giveawayUsername");
+const giveawayButton=document.getElementById("giveawayJoinButton");
+const giveawayStatus=document.getElementById("giveawayStatus");
+
+function showGiveawayMessage(message,type){
+giveawayStatus.textContent=message;
+giveawayStatus.className="giveaway-status "+type;
+}
+
+function getBucharestMonthKey(){
+const parts=new Intl.DateTimeFormat("en-US",{
+timeZone:"Europe/Bucharest",
+year:"numeric",
+month:"2-digit"
+}).formatToParts(new Date());
+
+const year=parts.find(part=>part.type==="year").value;
+const month=parts.find(part=>part.type==="month").value;
+
+return "raveFestivalGiveaway_"+year+"-"+month;
+}
+
+giveawayButton.addEventListener("click",()=>{
+
+const username=giveawayInput.value.trim();
+
+if(!/^[A-Za-z0-9_]{3,20}$/.test(username)){
+showGiveawayMessage("Please enter a valid Roblox username (3–20 characters).","error");
+return;
+}
+
+const giveawayKey=getBucharestMonthKey();
+
+let entries=[];
+
+try{
+entries=JSON.parse(localStorage.getItem(giveawayKey)||"[]");
+if(!Array.isArray(entries))entries=[];
+}catch(error){
+entries=[];
+}
+
+const alreadyJoined=entries.some(entry=>
+entry.username.toLowerCase()===username.toLowerCase()
+);
+
+if(alreadyJoined){
+showGiveawayMessage("This Roblox username has already entered this month's giveaway.","error");
+return;
+}
+
+entries.push({
+username:username,
+date:new Date().toISOString()
+});
+
+try{
+localStorage.setItem(giveawayKey,JSON.stringify(entries));
+showGiveawayMessage("SUCCESS! Your entry has been saved in this browser. Good luck!","success");
+giveawayInput.value="";
+giveawayButton.disabled=true;
+giveawayButton.textContent="ENTRY SAVED";
+}catch(error){
+showGiveawayMessage("Could not save your entry. Please check your browser storage.","error");
+}
+
+});
+
+giveawayInput.addEventListener("keydown",event=>{
+if(event.key==="Enter")giveawayButton.click();
+});
+
+}
 
 if(name==="music"){
-const button=document.getElementById("phoneMusicButton");button.textContent=mainMusic.paused?"▶ PLAY MUSIC":"⏸ PAUSE MUSIC";
-button.addEventListener("click",async()=>{if(mainMusic.paused){try{await mainMusic.play();button.textContent="⏸ PAUSE MUSIC"}catch(error){button.textContent="▶ TRY AGAIN";console.error(error)}}else{mainMusic.pause();button.textContent="▶ PLAY MUSIC"}});
+const button=document.getElementById("phoneMusicButton");
+button.textContent=mainMusic.paused?"▶ PLAY MUSIC":"⏸ PAUSE MUSIC";
+button.addEventListener("click",async()=>{
+if(mainMusic.paused){
+try{
+await mainMusic.play();
+button.textContent="⏸ PAUSE MUSIC";
+}catch(error){
+button.textContent="▶ TRY AGAIN";
+console.error(error);
+}
+}else{
+mainMusic.pause();
+button.textContent="▶ PLAY MUSIC";
+}
+});
 }
 
-if(name==="map")document.getElementById("phoneMapButton").addEventListener("click",()=>{phoneOverlay.classList.remove("active");document.getElementById("mapOverlay").classList.add("active")});
-
-const navigation={artists:["phoneArtistsButton","artists"],program:["phoneProgramButton","program"],home:["phoneHomeButton","home"]};
-if(navigation[name]){const [buttonId,sectionId]=navigation[name];document.getElementById(buttonId).addEventListener("click",()=>{phoneOverlay.classList.remove("active");closePhoneApp();document.getElementById(sectionId).scrollIntoView({behavior:"smooth"})})}
+if(name==="map"){
+document.getElementById("phoneMapButton").addEventListener("click",()=>{
+phoneOverlay.classList.remove("active");
+document.getElementById("mapOverlay").classList.add("active");
+});
 }
 
-document.querySelectorAll("[data-app]").forEach(button=>button.addEventListener("click",()=>openPhoneApp(button.dataset.app)));
+const navigation={
+artists:["phoneArtistsButton","artists"],
+program:["phoneProgramButton","program"],
+home:["phoneHomeButton","home"]
+};
+
+if(navigation[name]){
+const [buttonId,sectionId]=navigation[name];
+document.getElementById(buttonId).addEventListener("click",()=>{
+phoneOverlay.classList.remove("active");
+closePhoneApp();
+document.getElementById(sectionId).scrollIntoView({behavior:"smooth"});
+});
+}
+}
+
+document.querySelectorAll("[data-app]").forEach(button=>{
+button.addEventListener("click",()=>openPhoneApp(button.dataset.app));
+});
 
 function updatePhoneClock(){
-const now=new Date(),time=now.toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"}),date=now.toLocaleDateString("ro-RO",{weekday:"long",day:"numeric",month:"long"});
-document.getElementById("phoneClock").textContent=time;document.getElementById("phoneBigClock").textContent=time;document.getElementById("phoneDate").textContent=date;
+const now=new Date();
+const time=now.toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"});
+const date=now.toLocaleDateString("ro-RO",{weekday:"long",day:"numeric",month:"long"});
+document.getElementById("phoneClock").textContent=time;
+document.getElementById("phoneBigClock").textContent=time;
+document.getElementById("phoneDate").textContent=date;
 }
-updatePhoneClock();setInterval(updatePhoneClock,1000);
+updatePhoneClock();
+setInterval(updatePhoneClock,1000);
 
-const robloxProfileLink=document.getElementById("robloxProfileLink"),robloxProfileStatus=document.getElementById("robloxProfileStatus"),robloxAvatar=document.getElementById("robloxAvatar"),robloxUsername=document.getElementById("robloxUsername"),robloxProfileName=document.getElementById("robloxProfileName"),robloxView=document.getElementById("robloxView");
+const robloxProfileLink=document.getElementById("robloxProfileLink");
+const robloxProfileStatus=document.getElementById("robloxProfileStatus");
+const robloxAvatar=document.getElementById("robloxAvatar");
+const robloxUsername=document.getElementById("robloxUsername");
+const robloxProfileName=document.getElementById("robloxProfileName");
+const robloxView=document.getElementById("robloxView");
 
-const storageKey="raveFestivalRobloxProfile",defaultRobloxAvatar="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4117F37BBB2715EF990D94E-Png/150/150/AvatarHeadshot/Webp/noFilter";
+const storageKey="raveFestivalRobloxProfile";
+const defaultRobloxAvatar="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-E9543871E4117F37BBB2715EF990D94E-Png/150/150/AvatarHeadshot/Webp/noFilter";
 
-function isValidRobloxProfile(link){try{const url=new URL(link);return url.protocol==="https:"&&(url.hostname==="www.roblox.com"||url.hostname==="roblox.com")&&/\/users\/\d+\/profile\/?$/.test(url.pathname)}catch(error){return false}}
-function getRobloxUserId(link){const match=link.match(/\/users\/(\d+)\/profile\/?$/);return match?match[1]:null}
+function isValidRobloxProfile(link){
+try{
+const url=new URL(link);
+return url.protocol==="https:"&&(url.hostname==="www.roblox.com"||url.hostname==="roblox.com")&&/\/users\/\d+\/profile\/?$/.test(url.pathname);
+}catch(error){
+return false;
+}
+}
+
+function getRobloxUserId(link){
+const match=link.match(/\/users\/(\d+)\/profile\/?$/);
+return match?match[1]:null;
+}
 
 function showDefaultRobloxCard(){
-const avatarImage=document.createElement("img");avatarImage.src=defaultRobloxAvatar;avatarImage.alt="Roblox Avatar";robloxAvatar.replaceChildren(avatarImage);
-robloxUsername.textContent="CONNECT YOUR ACCOUNT";robloxProfileStatus.textContent="ROBLOX • NOT CONNECTED";robloxProfileName.textContent="";robloxView.textContent="CONNECT PROFILE";robloxProfileLink.href="#";robloxProfileLink.removeAttribute("target");robloxProfileLink.removeAttribute("rel");
+const avatarImage=document.createElement("img");
+avatarImage.src=defaultRobloxAvatar;
+avatarImage.alt="Roblox Avatar";
+robloxAvatar.replaceChildren(avatarImage);
+robloxUsername.textContent="CONNECT YOUR ACCOUNT";
+robloxProfileStatus.textContent="ROBLOX • NOT CONNECTED";
+robloxProfileName.textContent="";
+robloxView.textContent="CONNECT PROFILE";
+robloxProfileLink.href="#";
+robloxProfileLink.removeAttribute("target");
+robloxProfileLink.removeAttribute("rel");
 }
 
 async function loadRobloxProfile(profile){
-if(!isValidRobloxProfile(profile)){showDefaultRobloxCard();return}
-const userId=getRobloxUserId(profile);robloxProfileLink.href=profile;robloxProfileLink.target="_blank";robloxProfileLink.rel="noopener noreferrer";robloxUsername.textContent="LOADING PROFILE...";robloxProfileStatus.textContent="ROBLOX • CONNECTING";robloxView.textContent="VIEW PROFILE";
+if(!isValidRobloxProfile(profile)){
+showDefaultRobloxCard();
+return;
+}
+
+const userId=getRobloxUserId(profile);
+robloxProfileLink.href=profile;
+robloxProfileLink.target="_blank";
+robloxProfileLink.rel="noopener noreferrer";
+robloxUsername.textContent="LOADING PROFILE...";
+robloxProfileStatus.textContent="ROBLOX • CONNECTING";
+robloxView.textContent="VIEW PROFILE";
+
 try{
-const userResponse=await fetch("https://users.roblox.com/v1/users/"+userId);if(!userResponse.ok)throw new Error("Roblox user API unavailable");
-const userData=await userResponse.json();robloxUsername.textContent=userData.displayName||userData.name;
+const userResponse=await fetch("https://users.roblox.com/v1/users/"+userId);
+if(!userResponse.ok)throw new Error("Roblox user API unavailable");
+
+const userData=await userResponse.json();
+robloxUsername.textContent=userData.displayName||userData.name;
 robloxProfileName.textContent="@"+userData.name;
-const avatarResponse=await fetch("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="+userId+"&size=150x150&format=Png&isCircular=false");if(!avatarResponse.ok)throw new Error("Roblox avatar API unavailable");
-const avatarData=await avatarResponse.json();if(avatarData.data&&avatarData.data.length>0&&avatarData.data[0].imageUrl){const avatarImage=document.createElement("img");avatarImage.src=avatarData.data[0].imageUrl;avatarImage.alt="Roblox avatar";robloxAvatar.replaceChildren(avatarImage)}
-robloxProfileStatus.textContent="ROBLOX • PROFILE CONNECTED";robloxView.textContent="VIEW PROFILE";
-}catch(error){console.error("Roblox profile error:",error);robloxUsername.textContent="ROBLOX PROFILE";robloxProfileStatus.textContent="PROFILE LINK SAVED";robloxProfileName.textContent="ID: "+userId;robloxView.textContent="VIEW PROFILE"}
+
+const avatarResponse=await fetch("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="+userId+"&size=150x150&format=Png&isCircular=false");
+if(!avatarResponse.ok)throw new Error("Roblox avatar API unavailable");
+
+const avatarData=await avatarResponse.json();
+if(avatarData.data&&avatarData.data.length>0&&avatarData.data[0].imageUrl){
+const avatarImage=document.createElement("img");
+avatarImage.src=avatarData.data[0].imageUrl;
+avatarImage.alt="Roblox avatar";
+robloxAvatar.replaceChildren(avatarImage);
+}
+
+robloxProfileStatus.textContent="ROBLOX • PROFILE CONNECTED";
+robloxView.textContent="VIEW PROFILE";
+
+}catch(error){
+console.error("Roblox profile error:",error);
+robloxUsername.textContent="ROBLOX PROFILE";
+robloxProfileStatus.textContent="PROFILE LINK SAVED";
+robloxProfileName.textContent="ID: "+userId;
+robloxView.textContent="VIEW PROFILE";
+}
 }
 
 const savedRobloxProfile=localStorage.getItem(storageKey);
-if(savedRobloxProfile&&isValidRobloxProfile(savedRobloxProfile))loadRobloxProfile(savedRobloxProfile);else showDefaultRobloxCard();
+if(savedRobloxProfile&&isValidRobloxProfile(savedRobloxProfile)){
+loadRobloxProfile(savedRobloxProfile);
+}else{
+showDefaultRobloxCard();
+}
 
 robloxProfileLink.addEventListener("click",event=>{
-event.preventDefault();const currentProfile=localStorage.getItem(storageKey);
+event.preventDefault();
+const currentProfile=localStorage.getItem(storageKey);
+
 if(currentProfile&&isValidRobloxProfile(currentProfile)){
 const changeProfile=confirm("PROFILUL TĂU ROBLOX ESTE CONECTAT.\n\nOK = SCHIMBĂ PROFILUL\nCANCEL = DESCHIDE PROFILUL");
-if(!changeProfile){window.open(currentProfile,"_blank","noopener,noreferrer");return}
+if(!changeProfile){
+window.open(currentProfile,"_blank","noopener,noreferrer");
+return;
 }
+}
+
 const enteredProfile=prompt("RAVE FESTIVAL 2027\n\nCONNECT YOUR ROBLOX PROFILE\n\nIntrodu linkul profilului tău Roblox:",currentProfile||"");
-if(enteredProfile===null)return;const cleanProfile=enteredProfile.trim();
-if(!isValidRobloxProfile(cleanProfile)){alert("Link invalid! Introdu un link de profil Roblox valid.");return}
-localStorage.setItem(storageKey,cleanProfile);loadRobloxProfile(cleanProfile);window.open(cleanProfile,"_blank","noopener,noreferrer");
+if(enteredProfile===null)return;
+
+const cleanProfile=enteredProfile.trim();
+if(!isValidRobloxProfile(cleanProfile)){
+alert("Link invalid! Introdu un link de profil Roblox valid.");
+return;
+}
+
+localStorage.setItem(storageKey,cleanProfile);
+loadRobloxProfile(cleanProfile);
+window.open(cleanProfile,"_blank","noopener,noreferrer");
 });
 
-const robloxGameUrl="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL",qrContainer=document.getElementById("robloxQRCode");
-if(typeof QRCode!=="undefined"&&qrContainer)new QRCode(qrContainer,{text:robloxGameUrl,width:59,height:59,colorDark:"#050914",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});else qrContainer.textContent="QR ERROR";
+const robloxGameUrl="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL";
+const qrContainer=document.getElementById("robloxQRCode");
+
+if(typeof QRCode!=="undefined"&&qrContainer){
+new QRCode(qrContainer,{
+text:robloxGameUrl,
+width:59,
+height:59,
+colorDark:"#050914",
+colorLight:"#ffffff",
+correctLevel:QRCode.CorrectLevel.H
+});
+}else if(qrContainer){
+qrContainer.textContent="QR ERROR";
+}
 
 const mapOverlay=document.getElementById("mapOverlay");
-document.getElementById("openMapButton").addEventListener("click",()=>mapOverlay.classList.add("active"));
-document.getElementById("closeMapButton").addEventListener("click",()=>mapOverlay.classList.remove("active"));
-mapOverlay.addEventListener("click",event=>{if(event.target===mapOverlay)mapOverlay.classList.remove("active")});
 
-document.addEventListener("keydown",event=>{if(event.key==="Escape"){mapOverlay.classList.remove("active");phoneOverlay.classList.remove("active")}});
+document.getElementById("openMapButton").addEventListener("click",()=>{
+mapOverlay.classList.add("active");
+});
+
+document.getElementById("closeMapButton").addEventListener("click",()=>{
+mapOverlay.classList.remove("active");
+});
+
+mapOverlay.addEventListener("click",event=>{
+if(event.target===mapOverlay)mapOverlay.classList.remove("active");
+});
+
+document.addEventListener("keydown",event=>{
+if(event.key==="Escape"){
+mapOverlay.classList.remove("active");
+phoneOverlay.classList.remove("active");
+}
+});
 
 const artistAnnouncementDate=new Date("2026-11-07T23:45:00+02:00").getTime();
-let announcementConfettiStarted=false,artistAlreadyRevealed=false;
+let announcementConfettiStarted=false;
+let artistAlreadyRevealed=false;
 
 function launchAnnouncementConfetti(){
-if(announcementConfettiStarted)return;announcementConfettiStarted=true;
-const container=document.createElement("div");container.id="announcementConfetti";document.body.appendChild(container);
+if(announcementConfettiStarted)return;
+announcementConfettiStarted=true;
+
+const container=document.createElement("div");
+container.id="announcementConfetti";
+document.body.appendChild(container);
+
 const colors=["#00eaff","#4169e1","#ffffff","#ffd700","#ff00cc","#00ff99"];
-for(let i=0;i<180;i++){const piece=document.createElement("div");piece.className="confetti-piece";piece.style.left=Math.random()*100+"%";piece.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];piece.style.animationDuration=(3+Math.random()*5)+"s";piece.style.animationDelay=(Math.random()*2)+"s";piece.style.transform="rotate("+Math.random()*360+"deg)";container.appendChild(piece)}
+
+for(let i=0;i<180;i++){
+const piece=document.createElement("div");
+piece.className="confetti-piece";
+piece.style.left=Math.random()*100+"%";
+piece.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+piece.style.animationDuration=(3+Math.random()*5)+"s";
+piece.style.animationDelay=(Math.random()*2)+"s";
+piece.style.transform="rotate("+Math.random()*360+"deg)";
+container.appendChild(piece);
+}
+
 setTimeout(()=>container.remove(),10000);
 }
 
 function revealNewArtist(){
-if(artistAlreadyRevealed)return;artistAlreadyRevealed=true;
+if(artistAlreadyRevealed)return;
+artistAlreadyRevealed=true;
+
 const poster=document.querySelector(".maintenance-poster");
 poster.style.background='linear-gradient(rgba(5,9,20,.20),rgba(5,9,20,.35)),url("./891288836_4784079731821693_4256196259621737418_n.png.jpg") center center/cover no-repeat';
-document.querySelector(".poster-title h2").textContent="ARTIST ANNOUNCED";document.querySelector(".poster-title p").textContent="A$AP ROCKY";
-document.getElementById("maintenanceHeading").textContent="THE ANNOUNCEMENT IS HERE";document.getElementById("maintenanceFooter").textContent="RAVE FESTIVAL 2027 • A$AP ROCKY";
-poster.classList.add("artist-announced");document.querySelector(".poster-silhouette").style.display="none";document.querySelector(".poster-countdown").style.display="none";launchAnnouncementConfetti();
+
+document.querySelector(".poster-title h2").textContent="ARTIST ANNOUNCED";
+document.querySelector(".poster-title p").textContent="A$AP ROCKY";
+document.getElementById("maintenanceHeading").textContent="THE ANNOUNCEMENT IS HERE";
+document.getElementById("maintenanceFooter").textContent="RAVE FESTIVAL 2027 • A$AP ROCKY";
+
+poster.classList.add("artist-announced");
+document.querySelector(".poster-silhouette").style.display="none";
+document.querySelector(".poster-countdown").style.display="none";
+
+launchAnnouncementConfetti();
 }
 
 function updateMaintenanceCountdown(){
-const distance=artistAnnouncementDate-Date.now();if(distance<=0){revealNewArtist();return}
-const hours=Math.floor(distance/3600000),minutes=Math.floor((distance%3600000)/60000),seconds=Math.floor((distance%60000)/1000);
-document.getElementById("maintenanceHours").textContent=String(hours).padStart(2,"0");document.getElementById("maintenanceMinutes").textContent=String(minutes).padStart(2,"0");document.getElementById("maintenanceSeconds").textContent=String(seconds).padStart(2,"0");
+const distance=artistAnnouncementDate-Date.now();
+
+if(distance<=0){
+revealNewArtist();
+return;
 }
-updateMaintenanceCountdown();setInterval(updateMaintenanceCountdown,1000);
+
+const hours=Math.floor(distance/3600000);
+const minutes=Math.floor((distance%3600000)/60000);
+const seconds=Math.floor((distance%60000)/1000);
+
+document.getElementById("maintenanceHours").textContent=String(hours).padStart(2,"0");
+document.getElementById("maintenanceMinutes").textContent=String(minutes).padStart(2,"0");
+document.getElementById("maintenanceSeconds").textContent=String(seconds).padStart(2,"0");
+}
+
+updateMaintenanceCountdown();
+setInterval(updateMaintenanceCountdown,1000);
 
 const festivalDate=new Date("2027-07-15T18:00:00+03:00").getTime();
 
 function updateFestivalCountdown(){
 const distance=festivalDate-Date.now();
-if(distance<=0){document.getElementById("countdown").innerHTML="<div style='color:#fff;font-size:30px;font-weight:900'>RAVE FESTIVAL A ÎNCEPUT!</div>";return}
-const days=Math.floor(distance/(1000*60*60*24)),hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60)),minutes=Math.floor((distance%(1000*60*60))/(1000*60)),seconds=Math.floor((distance%(1000*60))/1000);
-document.getElementById("days").textContent=String(days).padStart(2,"0");document.getElementById("hours").textContent=String(hours).padStart(2,"0");document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
+
+if(distance<=0){
+document.getElementById("countdown").innerHTML="<div style='color:#fff;font-size:30px;font-weight:900'>RAVE FESTIVAL A ÎNCEPUT!</div>";
+return;
 }
-updateFestivalCountdown();setInterval(updateFestivalCountdown,1000);
+
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").textContent=String(days).padStart(2,"0");
+document.getElementById("hours").textContent=String(hours).padStart(2,"0");
+document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
+document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
+}
+
+updateFestivalCountdown();
+setInterval(updateFestivalCountdown,1000);
 
 (function(){
 const romaniaDate=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"}));
-const year=romaniaDate.getFullYear(),month=romaniaDate.getMonth(),day=romaniaDate.getDate();
+const year=romaniaDate.getFullYear();
+const month=romaniaDate.getMonth();
+const day=romaniaDate.getDate();
+
 const maintenanceActive=year===2026&&month===10&&day>=7&&day<=13;
-if(maintenanceActive){document.getElementById("maintenanceOverlay").style.display="flex";document.body.style.overflow="hidden";mainMusic.pause()}
+
+if(maintenanceActive){
+document.getElementById("maintenanceOverlay").style.display="flex";
+document.body.style.overflow="hidden";
+mainMusic.pause();
+}
 })();
 
 document.getElementById("continueButton").addEventListener("click",()=>{
-document.getElementById("maintenanceOverlay").style.display="none";document.body.style.overflow="";
+document.getElementById("maintenanceOverlay").style.display="none";
+document.body.style.overflow="";
 });
 </script>
 
