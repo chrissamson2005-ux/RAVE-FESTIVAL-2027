@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -53,41 +52,134 @@ body.white-light-on #nightWhiteLight{display:block;opacity:1}
 @keyframes beamPink{from{transform:rotate(-30deg)}to{transform:rotate(40deg)}}
 @keyframes beamWhite{from{transform:rotate(35deg)}to{transform:rotate(-35deg)}}
 
-/* PROGRAM ACCES SITE */
+/* ECRAN WEBSITE CLOSED - ANIMATIE COSMICA */
 #siteAccessOverlay{
 position:fixed;inset:0;z-index:100005;
 display:none;align-items:center;justify-content:center;
-padding:20px;background:linear-gradient(rgba(5,9,20,.96),rgba(5,9,20,.98));
-backdrop-filter:blur(18px);text-align:center;
-opacity:1;transition:opacity 2s ease;
+padding:20px;
+background:linear-gradient(rgba(5,9,20,.98),rgba(5,9,20,.99));
+backdrop-filter:blur(18px);
+text-align:center;
+opacity:1;
+transition:opacity 2s ease;
+overflow:hidden;
+isolation:isolate;
+}
+#siteAccessOverlay::before{
+content:"";
+position:absolute;
+inset:-30%;
+z-index:-2;
+background:
+radial-gradient(ellipse at 50% 35%,rgba(0,234,255,.19),transparent 35%),
+radial-gradient(ellipse at 20% 70%,rgba(65,105,225,.25),transparent 40%),
+radial-gradient(ellipse at 80% 70%,rgba(150,80,255,.20),transparent 40%);
+animation:cosmicGlow 8s ease-in-out infinite alternate;
+}
+#siteAccessOverlay::after{
+content:"";
+position:absolute;
+inset:0;
+z-index:-1;
+background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.09) 50%,transparent 75%);
+transform:translateX(-100%);
+animation:cosmicSweep 7s ease-in-out infinite;
+pointer-events:none;
+}
+@keyframes cosmicGlow{
+0%{transform:scale(.85);opacity:.45;filter:brightness(.7)}
+100%{transform:scale(1.15);opacity:1;filter:brightness(1.5)}
+}
+@keyframes cosmicSweep{
+0%,30%{transform:translateX(-100%)}
+70%,100%{transform:translateX(100%)}
 }
 .site-access-box{
-width:100%;max-width:650px;padding:40px 25px;
-background:linear-gradient(145deg,#102448,#050914);
+width:100%;max-width:650px;
+padding:40px 25px;
+background:linear-gradient(145deg,rgba(16,36,72,.86),rgba(5,9,20,.91));
 border:1px solid #00eaff;
-box-shadow:0 0 45px rgba(0,234,255,.25);
+box-shadow:0 0 45px rgba(0,234,255,.25),inset 0 0 35px rgba(65,105,225,.12);
+position:relative;
+overflow:hidden;
+}
+.site-access-logo-image{
+width:clamp(85px,18vw,145px);
+height:clamp(85px,18vw,145px);
+object-fit:contain;
+display:block;
+margin:0 auto 12px;
+filter:drop-shadow(0 0 18px #00eaff);
+animation:logoDrop 1.8s cubic-bezier(.2,.8,.2,1) both;
 }
 .site-access-logo{
-font-size:clamp(28px,6vw,48px);font-weight:900;
-letter-spacing:4px;color:#fff;text-shadow:0 0 20px #4169e1;
+font-size:clamp(28px,6vw,48px);
+font-weight:900;
+letter-spacing:4px;
+color:#fff;
+text-shadow:0 0 20px #4169e1,0 0 35px #00eaff;
+animation:titleDrop 2s cubic-bezier(.2,.8,.2,1) both;
 }
 .site-access-status{
-margin-top:25px;color:#00eaff;
+margin-top:25px;
+color:#00eaff;
 font-size:clamp(18px,4vw,25px);
-font-weight:900;letter-spacing:3px;
+font-weight:900;
+letter-spacing:3px;
+opacity:0;
+animation:fadeUp 1.3s ease 1.1s forwards;
 }
 .site-access-message{
-margin-top:18px;color:#c5dcff;
-font-size:14px;line-height:1.8;
+margin-top:18px;
+color:#c5dcff;
+font-size:14px;
+line-height:1.8;
+opacity:0;
+animation:fadeUp 1.4s ease 1.5s forwards;
 }
 .site-access-clock{
-margin-top:25px;font-size:clamp(30px,7vw,48px);
-font-weight:900;letter-spacing:5px;color:#fff;
+margin-top:25px;
+font-size:clamp(30px,7vw,48px);
+font-weight:900;
+letter-spacing:5px;
+color:#fff;
 text-shadow:0 0 15px #00eaff;
+opacity:0;
+animation:clockReveal 1.5s ease 1.9s forwards;
 }
 .site-access-footer{
-margin-top:25px;color:#8eb8ff;
-font-size:11px;font-weight:900;letter-spacing:3px;
+margin-top:25px;
+color:#8eb8ff;
+font-size:11px;
+font-weight:900;
+letter-spacing:3px;
+opacity:0;
+animation:footerRise 1.6s cubic-bezier(.2,.8,.2,1) 2.2s forwards;
+}
+@keyframes logoDrop{
+0%{transform:translateY(-180px);opacity:0}
+100%{transform:translateY(0);opacity:1}
+}
+@keyframes titleDrop{
+0%{transform:translateY(-100px);opacity:0}
+100%{transform:translateY(0);opacity:1}
+}
+@keyframes fadeUp{
+0%{transform:translateY(25px);opacity:0}
+100%{transform:translateY(0);opacity:1}
+}
+@keyframes clockReveal{
+0%{transform:scale(.7);opacity:0;filter:blur(8px)}
+100%{transform:scale(1);opacity:1;filter:blur(0)}
+}
+@keyframes footerRise{
+0%{transform:translateY(100px);opacity:0}
+100%{transform:translateY(0);opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+.site-access-logo-image,.site-access-logo,.site-access-status,.site-access-message,.site-access-clock,.site-access-footer,#siteAccessOverlay::before,#siteAccessOverlay::after{
+animation:none!important;opacity:1!important;transform:none!important;filter:none!important
+}
 }
 
 .navbar{position:fixed;top:0;left:0;width:100%;min-height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 45px;background:rgba(5,12,29,.88);border-bottom:1px solid var(--luxury-border);box-shadow:0 5px 30px rgba(30,80,180,.18);backdrop-filter:blur(15px);z-index:9998}
@@ -168,7 +260,6 @@ font-size:11px;font-weight:900;letter-spacing:3px;
 .giveaway-winner{margin-top:18px;padding:14px;background:rgba(0,234,255,.08);border:1px solid #00eaff;border-radius:10px}
 .giveaway-winner strong{color:#00eaff;font-size:11px}
 .giveaway-note{font-size:10px!important;color:#a9c9ff!important}
-
 .giveaway-input{display:block;width:100%;margin:18px auto 10px;padding:14px 12px;background:rgba(5,12,29,.95);border:1px solid #00eaff;border-radius:9px;color:#fff;font-size:14px;font-weight:900;text-align:center;outline:none}
 .giveaway-input::placeholder{color:#8ba6d1}
 .giveaway-input:focus{border-color:#fff;box-shadow:0 0 15px rgba(0,234,255,.35)}
@@ -381,9 +472,10 @@ html{scroll-behavior:auto}
 
 <body>
 
-<!-- ECRAN PROGRAM ACCES -->
+<!-- ECRAN WEBSITE CLOSED -->
 <div id="siteAccessOverlay" aria-live="polite">
 <div class="site-access-box">
+<img class="site-access-logo-image" src="./RAVE-FESTIVAL.png.png" alt="RAVE FESTIVAL logo">
 <div class="site-access-logo">RAVE FESTIVAL 2027</div>
 <div class="site-access-status" id="siteAccessStatus">WEBSITE CLOSED</div>
 <div class="site-access-message" id="siteAccessMessage">
@@ -391,7 +483,7 @@ The website is currently closed.<br>
 Come back at 07:00.
 </div>
 <div class="site-access-clock" id="siteAccessClock">00:00:00</div>
-<div class="site-access-footer">THE FUTURE IS HERE</div>
+<div class="site-access-footer">TEAM RAVE FESTIVAL</div>
 </div>
 </div>
 
@@ -748,13 +840,6 @@ year:"numeric"
 
 siteClockDate.textContent=dateText.toLocaleUpperCase("ro-RO");
 
-/* PROGRAM LUMINI:
-00:00–02:00 STINSE
-02:00–08:00 APRINSE
-08:00–17:30 STINSE
-17:30–00:00 APRINSE
-*/
-
 const minutesNow=hour*60+minute;
 
 const lightsOn=
@@ -775,7 +860,6 @@ const secondsNow=hour*3600+minute*60+second;
 const openingStart=7*3600;
 const fullyOpen=7*3600+60;
 const closingStart=23*3600+50*60;
-const midnight=24*3600;
 
 let accessOpen=false;
 let overlayOpacity=1;
@@ -783,17 +867,14 @@ let overlayOpacity=1;
 if(secondsNow<openingStart){
 accessOpen=false;
 overlayOpacity=1;
-
 siteAccessStatus.textContent="WEBSITE CLOSED";
 siteAccessMessage.innerHTML=
 "The website is currently closed.<br>Come back at 07:00.";
 }
 else if(secondsNow<fullyOpen){
 accessOpen=true;
-
 const progress=(secondsNow-openingStart)/(fullyOpen-openingStart);
 overlayOpacity=1-progress;
-
 siteAccessStatus.textContent="WEBSITE OPENING";
 siteAccessMessage.innerHTML=
 "RAVE FESTIVAL is opening gradually.<br>Welcome!";
@@ -801,23 +882,18 @@ siteAccessMessage.innerHTML=
 else if(secondsNow<closingStart){
 accessOpen=true;
 overlayOpacity=0;
-
 siteAccessStatus.textContent="WEBSITE OPEN";
 siteAccessMessage.innerHTML=
 "Welcome to RAVE FESTIVAL 2027.<br>Enjoy the experience!";
 }
 else{
 accessOpen=false;
-
-const progress=(secondsNow-closingStart)/(midnight-closingStart);
+const progress=(secondsNow-closingStart)/(24*3600-closingStart);
 overlayOpacity=Math.min(1,progress);
-
 siteAccessStatus.textContent="WEBSITE CLOSING";
 siteAccessMessage.innerHTML=
 "The website is closing for today.<br>See you tomorrow at 07:00!";
 }
-
-/* AFISEAZA SAU ASCUNDE ECRANUL DE ACCES */
 
 if(accessOpen&&overlayOpacity<=0){
 siteAccessOverlay.style.display="none";
@@ -1347,6 +1423,7 @@ document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
 updateFestivalCountdown();
 setInterval(updateFestivalCountdown,1000);
 
+/* MENTENANTA - DATA ROMANIEI */
 (function(){
 const romaniaDate=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Bucharest"}));
 const year=romaniaDate.getFullYear();
