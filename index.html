@@ -87,7 +87,7 @@ body.white-light-on #nightWhiteLight{display:block;opacity:1}
 @keyframes beamPink{from{transform:rotate(-30deg)}to{transform:rotate(40deg)}}
 @keyframes beamWhite{from{transform:rotate(35deg)}to{transform:rotate(-35deg)}}
 
-/* ECRAN WEBSITE CLOSED */
+/* ECRAN WEBSITE CLOSED - ANIMATIE COSMICA */
 #siteAccessOverlay{
 position:fixed;inset:0;z-index:100005;
 display:none;align-items:center;justify-content:center;
@@ -191,13 +191,30 @@ letter-spacing:3px;
 opacity:0;
 animation:footerRise 1.6s cubic-bezier(.2,.8,.2,1) 2.2s forwards;
 }
-@keyframes logoDrop{0%{transform:translateY(-180px);opacity:0}100%{transform:translateY(0);opacity:1}}
-@keyframes titleDrop{0%{transform:translateY(-100px);opacity:0}100%{transform:translateY(0);opacity:1}}
-@keyframes fadeUp{0%{transform:translateY(25px);opacity:0}100%{transform:translateY(0);opacity:1}}
-@keyframes clockReveal{0%{transform:scale(.7);opacity:0;filter:blur(8px)}100%{transform:scale(1);opacity:1;filter:blur(0)}}
-@keyframes footerRise{0%{transform:translateY(100px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes logoDrop{
+0%{transform:translateY(-180px);opacity:0}
+100%{transform:translateY(0);opacity:1}
+}
+@keyframes titleDrop{
+0%{transform:translateY(-100px);opacity:0}
+100%{transform:translateY(0);opacity:1}
+}
+@keyframes fadeUp{
+0%{transform:translateY(25px);opacity:0}
+100%{transform:translateY(0);opacity:1}
+}
+@keyframes clockReveal{
+0%{transform:scale(.7);opacity:0;filter:blur(8px)}
+100%{transform:scale(1);opacity:1;filter:blur(0)}
+}
+@keyframes footerRise{
+0%{transform:translateY(100px);opacity:0}
+100%{transform:translateY(0);opacity:1}
+}
 @media(prefers-reduced-motion:reduce){
-.site-access-logo-image,.site-access-logo,.site-access-status,.site-access-message,.site-access-clock,.site-access-footer,#siteAccessOverlay::before,#siteAccessOverlay::after{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
+.site-access-logo-image,.site-access-logo,.site-access-status,.site-access-message,.site-access-clock,.site-access-footer,#siteAccessOverlay::before,#siteAccessOverlay::after{
+animation:none!important;opacity:1!important;transform:none!important;filter:none!important
+}
 }
 
 .navbar{position:fixed;top:0;left:0;width:100%;min-height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 45px;background:rgba(5,12,29,.88);border-bottom:1px solid var(--luxury-border);box-shadow:0 5px 30px rgba(30,80,180,.18);backdrop-filter:blur(15px);z-index:9998}
@@ -345,8 +362,6 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .artist-22{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./IndustryBaby.png")}
 .artist-23{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Mira.png")}
 .artist-24{background:linear-gradient(135deg,#14264a,#050914)}
-.artist-25{background:linear-gradient(135deg,#14264a,#050914)}
-.artist-26{background:linear-gradient(135deg,#203c70,#050914)}
 
 .program-section{min-height:100vh;background:rgba(5,9,20,.35)}
 .program-box{max-width:1000px;margin:auto;padding:35px;background:linear-gradient(145deg,rgba(16,31,60,.91),rgba(8,15,32,.91));border:1px solid var(--luxury-border);backdrop-filter:blur(5px)}
@@ -373,6 +388,25 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .maintenance-message p{color:#cbd8f0;font-size:17px;line-height:1.7;margin-bottom:15px}
 .maintenance-date{color:#8eb8ff!important;font-weight:900;letter-spacing:2px}
 .continue-button{display:none;flex-shrink:0;padding:18px 28px;color:#fff;background:linear-gradient(135deg,#4169e1,#172b52);border:1px solid #8eb8ff;font-size:15px;font-weight:900;letter-spacing:3px;cursor:pointer}
+.maintenance-poster{width:min(100%,420px);aspect-ratio:1/1;position:relative;overflow:hidden;padding:22px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;background:radial-gradient(ellipse at 50% 42%,rgba(65,105,225,.55),transparent 55%),linear-gradient(145deg,#172d54,#050914 80%);border:1px solid #8eb8ff}
+.maintenance-poster::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(142,184,255,.13) 50%,transparent 75%);pointer-events:none}
+.poster-top{position:relative;z-index:3;color:#a9c9ff;font-size:12px;font-weight:900;letter-spacing:4px}
+.poster-silhouette{position:absolute;inset:15% 0 15%;background:radial-gradient(ellipse at 50% 25%,#02040a 0 10%,transparent 10.5%),radial-gradient(ellipse at 50% 75%,#02040a 0 27%,transparent 27.5%);opacity:.96}
+.poster-title{position:relative;z-index:3;margin:auto 0}
+.poster-title h2{color:white;font-size:clamp(25px,5vw,38px);font-weight:900;letter-spacing:2px}
+.poster-title p{color:#c6dcff;font-weight:900;letter-spacing:5px;margin-top:8px}
+.poster-countdown{position:relative;z-index:3;width:100%}
+.poster-countdown h3{font-size:12px;color:#dce8ff;letter-spacing:2px;margin-bottom:12px}
+.poster-timer{display:flex;justify-content:center;gap:8px}
+.poster-timer div{min-width:65px;padding:9px;background:rgba(5,12,29,.92);border:1px solid #668fff}
+.poster-timer span{display:block;color:white;font-size:25px;font-weight:900}
+.poster-timer small{color:#a9c9ff;font-size:9px}
+.poster-countdown>p{margin-top:12px;color:#a9c9ff;font-size:10px;font-weight:900;letter-spacing:2px}
+#announcementConfetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100003}
+.confetti-piece{position:absolute;top:-25px;width:10px;height:16px;opacity:0;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{transform:translateY(-30px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(900deg);opacity:0}}
+.artist-announced{border-color:#00eaff;box-shadow:0 0 45px rgba(0,234,255,.65)}
+.artist-announced .poster-title p{color:#00eaff;font-size:clamp(24px,5vw,38px);text-shadow:0 0 20px #00eaff}
 
 @media(max-width:600px){
 .navbar{position:relative;height:auto;min-height:60px;padding:12px 10px;flex-direction:column;gap:12px}
@@ -423,6 +457,11 @@ section,#tickets{padding:75px 12px 60px}
 .maintenance-message h1{font-size:23px}
 .maintenance-message p{font-size:14px}
 .continue-button{display:none!important}
+.maintenance-poster{width:min(100%,380px);padding:18px}
+.poster-top{font-size:10px}
+.poster-title h2{font-size:27px}
+.poster-timer div{min-width:55px;padding:8px 5px}
+.poster-timer span{font-size:22px}
 .map-overlay{padding:10px}
 .map-window{padding:13px;max-height:95vh}
 .map-header h2{font-size:17px}
@@ -497,7 +536,6 @@ Come back at 07:00.
 <div class="site-clock-date" id="siteClockDate">SE ÎNCARCĂ DATA...</div>
 </div>
 
-<!-- MENTENANTA -->
 <div class="maintenance-overlay" id="maintenanceOverlay">
 <div class="maintenance-content">
 <div class="maintenance-box">
@@ -511,6 +549,21 @@ Come back at 07:00.
 </div>
 <button class="continue-button" id="continueButton" type="button">CONTINUE →</button>
 </div>
+
+<div class="maintenance-poster">
+<div class="poster-top">RAVE FESTIVAL 2027</div>
+<div class="poster-silhouette"></div>
+<div class="poster-title"><h2>A NEW ARTIST</h2><p>IS COMING</p></div>
+<div class="poster-countdown">
+<h3 id="maintenanceHeading">ARTIST ANNOUNCEMENT IN</h3>
+<div class="poster-timer">
+<div><span id="maintenanceHours">00</span><small>ORE</small></div>
+<div><span id="maintenanceMinutes">00</span><small>MINUTE</small></div>
+<div><span id="maintenanceSeconds">00</span><small>SECUNDE</small></div>
+</div>
+<p id="maintenanceFooter">TODAY • 23:45 • STAY TUNED</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -523,6 +576,7 @@ Come back at 07:00.
 <div class="phone-overlay" id="phoneOverlay">
 <div class="phone-device">
 <div class="phone-screen">
+
 <button class="phone-close" id="closePhoneButton" type="button">×</button>
 
 <div class="phone-top">
@@ -565,6 +619,7 @@ Come back at 07:00.
 </div>
 <div class="phone-page-content" id="phoneAppContent"></div>
 </div>
+
 </div>
 </div>
 </div>
@@ -677,15 +732,15 @@ Come back at 07:00.
 <section id="artists">
 <h2 class="section-title">ARTIȘTI</h2>
 <div class="artists">
-<div class="artist artist-1"><span class="artist-name">MEDUZA</span></div>
-<div class="artist artist-2"><span class="artist-name">BABY GANG</span></div>
-<div class="artist artist-3"><span class="artist-name">AZTECA</span></div>
-<div class="artist artist-4"><span class="artist-name">PETRE ȘTEFAN</span></div>
-<div class="artist artist-5"><span class="artist-name">RAVA</span></div>
-<div class="artist artist-6"><span class="artist-name">ZARA LARSSON</span></div>
-<div class="artist artist-7"><span class="artist-name">BORIS BREJCHA</span></div>
-<div class="artist artist-8"><span class="artist-name">FRED AGAIN..</span></div>
-<div class="artist artist-9"><span class="artist-name">ANYMA</span></div>
+<div class="artist artist-1"><span class="artist-name">MEDUZA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-2"><span class="artist-name">BABY GANG</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-3"><span class="artist-name">AZTECA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-4"><span class="artist-name">PETRE ȘTEFAN</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-5"><span class="artist-name">RAVA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-6"><span class="artist-name">ZARA LARSSON</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-7"><span class="artist-name">BORIS BREJCHA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-8"><span class="artist-name">FRED AGAIN..</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-9"><span class="artist-name">ANYMA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
 <div class="artist artist-10"><span class="artist-name">ANDRA</span></div>
 <div class="artist artist-11"><span class="artist-name">IRINA RIMES</span></div>
 <div class="artist artist-12"><span class="artist-name">ALBERT NBN</span></div>
@@ -701,8 +756,6 @@ Come back at 07:00.
 <div class="artist artist-22"><span class="artist-name">INDUSTRY BABY</span></div>
 <div class="artist artist-23"><span class="artist-name">MIRA</span></div>
 <div class="artist artist-24"><span class="artist-name">DON TOLIVER</span></div>
-<div class="artist artist-25"><span class="artist-name">A$AP ROCKY</span></div>
-<div class="artist artist-26"><span class="artist-name">ALAN WALKER</span></div>
 </div>
 </section>
 
@@ -796,47 +849,45 @@ second:getPart("second")
 };
 }
 
-function getBucharestDateParts(){
-const parts=new Intl.DateTimeFormat("en-GB",{
-timeZone:"Europe/Bucharest",
-year:"numeric",
-month:"2-digit",
-day:"2-digit"
-}).formatToParts(new Date());
-
-return{
-year:Number(parts.find(part=>part.type==="year").value),
-month:Number(parts.find(part=>part.type==="month").value),
-day:Number(parts.find(part=>part.type==="day").value)
-};
-}
-
-/* FUNDALURI AUTOMATE */
+/* FUNDALURI AUTOMATE:
+   00:00–07:00 GALAXY STARS
+   07:00–07:01 TRANZITIE SPRE CELESTIAL
+   07:01–23:50 CELESTIAL
+   23:50–00:00 TRANZITIE SPRE GALAXY STARS
+*/
 function updateFestivalBackground(hour,minute,second){
 const secondsNow=hour*3600+minute*60+second;
 
 const morningStart=7*3600;
 const morningEnd=7*3600+60;
+
 const eveningStart=23*3600+50*60;
+const midnight=24*3600;
 
 let galaxyOpacity=1;
 let celestialOpacity=0;
 
+/* 07:00–07:01: GALAXY SE ESTOMPEAZA, CELESTIAL APARE */
 if(secondsNow>=morningStart&&secondsNow<morningEnd){
 const progress=(secondsNow-morningStart)/(morningEnd-morningStart);
 celestialOpacity=progress;
 galaxyOpacity=1-progress;
 }
+
+/* 07:01–23:50: CELESTIAL RAMANE VIZIBIL */
 else if(secondsNow>=morningEnd&&secondsNow<eveningStart){
 celestialOpacity=1;
 galaxyOpacity=0;
 }
+
+/* 23:50–00:00: CELESTIAL SE ESTOMPEAZA, GALAXY REVINE */
 else if(secondsNow>=eveningStart){
-const progress=(secondsNow-eveningStart)/(24*3600-eveningStart);
+const progress=(secondsNow-eveningStart)/(midnight-eveningStart);
 celestialOpacity=1-progress;
 galaxyOpacity=progress;
 }
 
+/* APLICAM TRANSPARENTA FUNDALURILOR */
 document.documentElement.style.setProperty("--galaxy-opacity",String(galaxyOpacity));
 document.documentElement.style.setProperty("--celestial-opacity",String(celestialOpacity));
 }
@@ -844,7 +895,6 @@ document.documentElement.style.setProperty("--celestial-opacity",String(celestia
 function updateSiteClockAndLight(){
 const now=new Date();
 const bucharest=getBucharestTime();
-const dateParts=getBucharestDateParts();
 
 const hour=bucharest.hour;
 const minute=bucharest.minute;
@@ -893,29 +943,10 @@ const openingStart=7*3600;
 const fullyOpen=7*3600+60;
 const closingStart=23*3600+50*60;
 
-const announcementDay=
-dateParts.year===2026&&dateParts.month===11&&dateParts.day===14;
-
 let accessOpen=false;
 let overlayOpacity=1;
 
-if(announcementDay){
-if(secondsNow<closingStart){
-accessOpen=true;
-overlayOpacity=0;
-siteAccessStatus.textContent="WEBSITE OPEN";
-siteAccessMessage.innerHTML=
-"THE WEBSITE IS NOW OPEN!<br>Welcome to RAVE FESTIVAL 2027.";
-}else{
-accessOpen=false;
-const progress=(secondsNow-closingStart)/(24*3600-closingStart);
-overlayOpacity=Math.min(1,progress);
-siteAccessStatus.textContent="WEBSITE CLOSING";
-siteAccessMessage.innerHTML=
-"The website is closing for today.<br>See you tomorrow at 07:00!";
-}
-}
-else if(secondsNow<openingStart){
+if(secondsNow<openingStart){
 accessOpen=false;
 overlayOpacity=1;
 siteAccessStatus.textContent="WEBSITE CLOSED";
@@ -1013,17 +1044,7 @@ html:`<h3>RAVE FESTIVAL 2027</h3><p>Enter the official RAVE FESTIVAL Roblox game
 artists:{
 title:"ARTISTS",
 icon:"🎤",
-html:`
-<h3>ALL 26 FESTIVAL ARTISTS</h3>
-<p>MEDUZA • BABY GANG • AZTECA • PETRE ȘTEFAN</p>
-<p>RAVA • ZARA LARSSON • BORIS BREJCHA</p>
-<p>FRED AGAIN.. • ANYMA • ANDRA • IRINA RIMES</p>
-<p>ALBERT NBN • SKRILLEX • KISS FM • HUGEL</p>
-<p>KÖLSCH • DTF • MARTIN GARRIX • SAGUNA</p>
-<p>POST MALONE • DENISA IOANA • INDUSTRY BABY</p>
-<p>MIRA • DON TOLIVER • A$AP ROCKY • ALAN WALKER</p>
-<button class="phone-action" id="phoneArtistsButton">VIEW ARTISTS</button>
-`
+html:`<h3>FESTIVAL ARTISTS</h3><p>MEDUZA • BABY GANG • AZTECA • RAVA</p><p>ANYMA • SKRILLEX • MARTIN GARRIX</p><p>POST MALONE • SAGUNA • HUGEL</p><button class="phone-action" id="phoneArtistsButton">VIEW ARTISTS</button>`
 },
 
 program:{
@@ -1393,7 +1414,73 @@ phoneOverlay.classList.remove("active");
 }
 });
 
-/* COUNTDOWN PENTRU FESTIVAL */
+const artistAnnouncementDate=new Date("2026-11-07T23:45:00+02:00").getTime();
+let announcementConfettiStarted=false;
+let artistAlreadyRevealed=false;
+
+function launchAnnouncementConfetti(){
+if(announcementConfettiStarted)return;
+announcementConfettiStarted=true;
+
+const container=document.createElement("div");
+container.id="announcementConfetti";
+document.body.appendChild(container);
+
+const colors=["#00eaff","#4169e1","#ffffff","#ffd700","#ff00cc","#00ff99"];
+
+for(let i=0;i<180;i++){
+const piece=document.createElement("div");
+piece.className="confetti-piece";
+piece.style.left=Math.random()*100+"%";
+piece.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+piece.style.animationDuration=(3+Math.random()*5)+"s";
+piece.style.animationDelay=(Math.random()*2)+"s";
+piece.style.transform="rotate("+Math.random()*360+"deg)";
+container.appendChild(piece);
+}
+
+setTimeout(()=>container.remove(),10000);
+}
+
+function revealNewArtist(){
+if(artistAlreadyRevealed)return;
+artistAlreadyRevealed=true;
+
+const poster=document.querySelector(".maintenance-poster");
+poster.style.background='linear-gradient(rgba(5,9,20,.20),rgba(5,9,20,.35)),url("./891288836_4784079731821693_4256196259621737418_n.png.jpg") center center/cover no-repeat';
+
+document.querySelector(".poster-title h2").textContent="ARTIST ANNOUNCED";
+document.querySelector(".poster-title p").textContent="A$AP ROCKY";
+document.getElementById("maintenanceHeading").textContent="THE ANNOUNCEMENT IS HERE";
+document.getElementById("maintenanceFooter").textContent="RAVE FESTIVAL 2027 • A$AP ROCKY";
+
+poster.classList.add("artist-announced");
+document.querySelector(".poster-silhouette").style.display="none";
+document.querySelector(".poster-countdown").style.display="none";
+
+launchAnnouncementConfetti();
+}
+
+function updateMaintenanceCountdown(){
+const distance=artistAnnouncementDate-Date.now();
+
+if(distance<=0){
+revealNewArtist();
+return;
+}
+
+const hours=Math.floor(distance/3600000);
+const minutes=Math.floor((distance%3600000)/60000);
+const seconds=Math.floor((distance%60000)/1000);
+
+document.getElementById("maintenanceHours").textContent=String(hours).padStart(2,"0");
+document.getElementById("maintenanceMinutes").textContent=String(minutes).padStart(2,"0");
+document.getElementById("maintenanceSeconds").textContent=String(seconds).padStart(2,"0");
+}
+
+updateMaintenanceCountdown();
+setInterval(updateMaintenanceCountdown,1000);
+
 const festivalDate=new Date("2027-07-15T18:00:00+03:00").getTime();
 
 function updateFestivalCountdown(){
@@ -1438,7 +1525,6 @@ document.getElementById("continueButton").addEventListener("click",()=>{
 document.getElementById("maintenanceOverlay").style.display="none";
 document.body.style.overflow="";
 });
-
 </script>
 
 </body>
