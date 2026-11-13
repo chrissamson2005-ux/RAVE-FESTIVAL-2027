@@ -87,7 +87,7 @@ body.white-light-on #nightWhiteLight{display:block;opacity:1}
 @keyframes beamPink{from{transform:rotate(-30deg)}to{transform:rotate(40deg)}}
 @keyframes beamWhite{from{transform:rotate(35deg)}to{transform:rotate(-35deg)}}
 
-/* ECRAN WEBSITE CLOSED - ANIMATIE COSMICA */
+/* ECRAN WEBSITE CLOSED */
 #siteAccessOverlay{
 position:fixed;inset:0;z-index:100005;
 display:none;align-items:center;justify-content:center;
@@ -191,30 +191,13 @@ letter-spacing:3px;
 opacity:0;
 animation:footerRise 1.6s cubic-bezier(.2,.8,.2,1) 2.2s forwards;
 }
-@keyframes logoDrop{
-0%{transform:translateY(-180px);opacity:0}
-100%{transform:translateY(0);opacity:1}
-}
-@keyframes titleDrop{
-0%{transform:translateY(-100px);opacity:0}
-100%{transform:translateY(0);opacity:1}
-}
-@keyframes fadeUp{
-0%{transform:translateY(25px);opacity:0}
-100%{transform:translateY(0);opacity:1}
-}
-@keyframes clockReveal{
-0%{transform:scale(.7);opacity:0;filter:blur(8px)}
-100%{transform:scale(1);opacity:1;filter:blur(0)}
-}
-@keyframes footerRise{
-0%{transform:translateY(100px);opacity:0}
-100%{transform:translateY(0);opacity:1}
-}
+@keyframes logoDrop{0%{transform:translateY(-180px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes titleDrop{0%{transform:translateY(-100px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes fadeUp{0%{transform:translateY(25px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes clockReveal{0%{transform:scale(.7);opacity:0;filter:blur(8px)}100%{transform:scale(1);opacity:1;filter:blur(0)}}
+@keyframes footerRise{0%{transform:translateY(100px);opacity:0}100%{transform:translateY(0);opacity:1}}
 @media(prefers-reduced-motion:reduce){
-.site-access-logo-image,.site-access-logo,.site-access-status,.site-access-message,.site-access-clock,.site-access-footer,#siteAccessOverlay::before,#siteAccessOverlay::after{
-animation:none!important;opacity:1!important;transform:none!important;filter:none!important
-}
+.site-access-logo-image,.site-access-logo,.site-access-status,.site-access-message,.site-access-clock,.site-access-footer,#siteAccessOverlay::before,#siteAccessOverlay::after{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
 }
 
 .navbar{position:fixed;top:0;left:0;width:100%;min-height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 45px;background:rgba(5,12,29,.88);border-bottom:1px solid var(--luxury-border);box-shadow:0 5px 30px rgba(30,80,180,.18);backdrop-filter:blur(15px);z-index:9998}
@@ -314,6 +297,219 @@ animation:none!important;opacity:1!important;transform:none!important;filter:non
 .home-button{display:inline-block;padding:16px 32px;color:#fff;text-decoration:none;font-weight:bold;letter-spacing:2px;border:1px solid #8eb8ff;background:linear-gradient(135deg,#172b52,#080f20);transition:.3s}
 .home-button:hover{background:#4169e1;transform:translateY(-3px)}
 
+/* ARTIST ANNOUNCEMENT - DOAR PE MENTENANTA */
+.artist-announcement{
+display:block;
+width:min(100%,850px);
+margin:0 auto;
+padding:28px 20px;
+position:relative;
+overflow:hidden;
+text-align:center;
+background:
+radial-gradient(ellipse at 50% 35%,rgba(0,234,255,.20),transparent 45%),
+linear-gradient(145deg,rgba(5,9,20,.99),rgba(8,15,32,.99) 55%,rgba(16,36,72,.98));
+border:1px solid #00eaff;
+box-shadow:0 0 35px rgba(0,234,255,.30),inset 0 0 35px rgba(65,105,225,.18);
+animation:announcementReveal 1.4s ease both;
+}
+.artist-announcement::before{
+content:"";
+position:absolute;
+inset:0;
+pointer-events:none;
+background:linear-gradient(120deg,transparent 20%,rgba(142,184,255,.16) 50%,transparent 80%);
+animation:announcementShine 5s ease-in-out infinite;
+}
+.artist-announcement-label{
+position:relative;
+z-index:2;
+color:#c5dcff;
+font-size:clamp(17px,3vw,25px);
+font-weight:900;
+letter-spacing:5px;
+text-shadow:0 0 15px #4169e1;
+}
+.artist-announcement-name{
+position:relative;
+z-index:2;
+margin:15px 0 5px;
+color:#fff;
+font-size:clamp(35px,7vw,68px);
+font-weight:900;
+letter-spacing:3px;
+text-shadow:0 0 15px #4169e1,0 0 30px #00eaff;
+overflow-wrap:anywhere;
+}
+.artist-announcement-coming{
+position:relative;
+z-index:2;
+margin:5px 0 15px;
+color:#00eaff;
+font-size:clamp(20px,5vw,42px);
+font-weight:900;
+letter-spacing:3px;
+text-shadow:0 0 18px rgba(0,234,255,.8);
+}
+.artist-announcement-timer-label{
+position:relative;
+z-index:2;
+margin-top:20px;
+color:#a9c9ff;
+font-size:12px;
+font-weight:900;
+letter-spacing:3px;
+}
+.artist-announcement-timer{
+position:relative;
+z-index:2;
+margin-top:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+gap:12px;
+color:#fff;
+font-variant-numeric:tabular-nums;
+}
+.announcement-time-item{
+min-width:105px;
+padding:12px 15px;
+background:rgba(5,12,29,.88);
+border:1px solid #00eaff;
+box-shadow:0 0 15px rgba(0,234,255,.22);
+}
+.announcement-time-item span{
+display:block;
+color:#fff;
+font-size:clamp(30px,5vw,45px);
+font-weight:900;
+text-shadow:0 0 18px #00eaff;
+}
+.announcement-time-item small{
+display:block;
+margin-top:6px;
+color:#a9c9ff;
+font-size:11px;
+font-weight:900;
+letter-spacing:2px;
+}
+.artist-announcement-footer{
+position:relative;
+z-index:2;
+margin-top:18px;
+color:#fff;
+font-size:11px;
+font-weight:900;
+letter-spacing:2px;
+}
+@keyframes announcementReveal{
+0%{opacity:0;transform:translateY(35px) scale(.96);filter:blur(8px)}
+100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+@keyframes announcementShine{
+0%,100%{transform:translateX(-100%)}
+50%{transform:translateX(100%)}
+}
+
+/* COUNTDOWN FINAL 10 SECUNDE */
+#announcementFinalCountdown{
+display:none;
+position:fixed;
+inset:0;
+z-index:100007;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+gap:20px;
+padding:20px;
+text-align:center;
+background:rgba(3,8,22,.97);
+}
+#announcementFinalCountdown.active{display:flex}
+.final-countdown-label{
+color:#8eb8ff;
+font-size:clamp(16px,3vw,25px);
+font-weight:900;
+letter-spacing:5px;
+}
+.final-countdown-number{
+color:#fff;
+font-size:clamp(120px,30vw,300px);
+font-weight:900;
+line-height:1;
+text-shadow:0 0 25px #00eaff,0 0 65px #4169e1;
+animation:finalNumberPulse .85s ease-in-out infinite alternate;
+font-variant-numeric:tabular-nums;
+}
+.final-countdown-footer{
+color:#00eaff;
+font-size:clamp(12px,2vw,17px);
+font-weight:900;
+letter-spacing:4px;
+}
+@keyframes finalNumberPulse{
+from{transform:scale(.88);opacity:.75}
+to{transform:scale(1.08);opacity:1}
+}
+
+/* REVEAL FULL SCREEN ALAN WALKER */
+#artistReveal{
+display:none;
+position:fixed;
+inset:0;
+z-index:100008;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+background:#020611;
+opacity:0;
+}
+#artistReveal.active{
+display:flex;
+animation:artistRevealFade 2.2s ease forwards;
+}
+#artistReveal img{
+width:100%;
+height:100%;
+max-width:none;
+object-fit:contain;
+object-position:center;
+transform:scale(1.12);
+animation:artistImageZoom 8s ease-out forwards;
+}
+.artist-reveal-overlay{
+position:absolute;
+inset:0;
+pointer-events:none;
+background:linear-gradient(180deg,rgba(2,6,17,.12),transparent 45%,rgba(2,6,17,.28));
+}
+.artist-reveal-caption{
+position:absolute;
+left:20px;
+right:20px;
+bottom:clamp(25px,7vh,75px);
+text-align:center;
+color:#fff;
+font-size:clamp(24px,5vw,58px);
+font-weight:900;
+letter-spacing:clamp(2px,1vw,8px);
+text-shadow:0 0 20px #4169e1,0 0 40px #00eaff;
+animation:captionReveal 2s ease 1s both;
+}
+@keyframes artistRevealFade{
+from{opacity:0}
+to{opacity:1}
+}
+@keyframes artistImageZoom{
+from{transform:scale(1.12);filter:brightness(.35) blur(12px)}
+to{transform:scale(1);filter:brightness(1) blur(0)}
+}
+@keyframes captionReveal{
+from{opacity:0;transform:translateY(35px)}
+to{opacity:1;transform:translateY(0)}
+}
+
 .countdown-section{min-height:auto;padding:40px 20px;background:rgba(5,9,20,.35)}
 .countdown-layout{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:center}
 .countdown-box{flex:1;max-width:1000px;margin:auto;padding:35px 20px;text-align:center;background:linear-gradient(145deg,rgba(16,31,60,.88),rgba(8,15,32,.88));border:1px solid var(--luxury-border);backdrop-filter:blur(5px)}
@@ -388,25 +584,11 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .maintenance-message p{color:#cbd8f0;font-size:17px;line-height:1.7;margin-bottom:15px}
 .maintenance-date{color:#8eb8ff!important;font-weight:900;letter-spacing:2px}
 .continue-button{display:none;flex-shrink:0;padding:18px 28px;color:#fff;background:linear-gradient(135deg,#4169e1,#172b52);border:1px solid #8eb8ff;font-size:15px;font-weight:900;letter-spacing:3px;cursor:pointer}
-.maintenance-poster{width:min(100%,420px);aspect-ratio:1/1;position:relative;overflow:hidden;padding:22px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;background:radial-gradient(ellipse at 50% 42%,rgba(65,105,225,.55),transparent 55%),linear-gradient(145deg,#172d54,#050914 80%);border:1px solid #8eb8ff}
-.maintenance-poster::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(142,184,255,.13) 50%,transparent 75%);pointer-events:none}
-.poster-top{position:relative;z-index:3;color:#a9c9ff;font-size:12px;font-weight:900;letter-spacing:4px}
-.poster-silhouette{position:absolute;inset:15% 0 15%;background:radial-gradient(ellipse at 50% 25%,#02040a 0 10%,transparent 10.5%),radial-gradient(ellipse at 50% 75%,#02040a 0 27%,transparent 27.5%);opacity:.96}
-.poster-title{position:relative;z-index:3;margin:auto 0}
-.poster-title h2{color:white;font-size:clamp(25px,5vw,38px);font-weight:900;letter-spacing:2px}
-.poster-title p{color:#c6dcff;font-weight:900;letter-spacing:5px;margin-top:8px}
-.poster-countdown{position:relative;z-index:3;width:100%}
-.poster-countdown h3{font-size:12px;color:#dce8ff;letter-spacing:2px;margin-bottom:12px}
-.poster-timer{display:flex;justify-content:center;gap:8px}
-.poster-timer div{min-width:65px;padding:9px;background:rgba(5,12,29,.92);border:1px solid #668fff}
-.poster-timer span{display:block;color:white;font-size:25px;font-weight:900}
-.poster-timer small{color:#a9c9ff;font-size:9px}
-.poster-countdown>p{margin-top:12px;color:#a9c9ff;font-size:10px;font-weight:900;letter-spacing:2px}
-#announcementConfetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100003}
+
+/* CONFETTI */
+#announcementConfetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:100009;overflow:hidden}
 .confetti-piece{position:absolute;top:-25px;width:10px;height:16px;opacity:0;animation:confettiFall linear forwards}
 @keyframes confettiFall{0%{transform:translateY(-30px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(900deg);opacity:0}}
-.artist-announced{border-color:#00eaff;box-shadow:0 0 45px rgba(0,234,255,.65)}
-.artist-announced .poster-title p{color:#00eaff;font-size:clamp(24px,5vw,38px);text-shadow:0 0 20px #00eaff}
 
 @media(max-width:600px){
 .navbar{position:relative;height:auto;min-height:60px;padding:12px 10px;flex-direction:column;gap:12px}
@@ -430,6 +612,13 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .subtitle{font-size:14px;letter-spacing:2px}
 .home-buttons{gap:10px}
 .home-button{padding:12px 16px;font-size:12px}
+.artist-announcement{padding:20px 12px}
+.artist-announcement-label{letter-spacing:3px}
+.artist-announcement-name{letter-spacing:1px}
+.artist-announcement-coming{letter-spacing:1px}
+.announcement-time-item{min-width:80px;padding:10px 8px}
+.announcement-time-item span{font-size:29px}
+.announcement-time-item small{font-size:9px}
 .section-title{font-size:32px;letter-spacing:3px;margin-bottom:30px}
 .artists{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .artist{min-height:220px;padding:12px;font-size:16px}
@@ -457,11 +646,6 @@ section,#tickets{padding:75px 12px 60px}
 .maintenance-message h1{font-size:23px}
 .maintenance-message p{font-size:14px}
 .continue-button{display:none!important}
-.maintenance-poster{width:min(100%,380px);padding:18px}
-.poster-top{font-size:10px}
-.poster-title h2{font-size:27px}
-.poster-timer div{min-width:55px;padding:8px 5px}
-.poster-timer span{font-size:22px}
 .map-overlay{padding:10px}
 .map-window{padding:13px;max-height:95vh}
 .map-header h2{font-size:17px}
@@ -474,6 +658,8 @@ section,#tickets{padding:75px 12px 60px}
 .site-access-box{padding:30px 17px}
 .site-access-logo{letter-spacing:2px}
 .site-access-message{font-size:12px}
+.final-countdown-number{font-size:42vw}
+.artist-reveal-caption{bottom:30px}
 }
 @media(min-width:601px) and (max-width:1024px){
 .navbar{padding:12px 18px;gap:12px}
@@ -501,6 +687,8 @@ section,#tickets{padding:75px 12px 60px}
 html{scroll-behavior:auto}
 .festival-beam{animation:none}
 .ticket-card,.artist,.home-button{transition:none}
+.artist-announcement,.artist-announcement::before{animation:none}
+#artistReveal img,.final-countdown-number{animation:none}
 }
 </style>
 </head>
@@ -536,6 +724,7 @@ Come back at 07:00.
 <div class="site-clock-date" id="siteClockDate">SE ÎNCARCĂ DATA...</div>
 </div>
 
+<!-- MENTENANTA -->
 <div class="maintenance-overlay" id="maintenanceOverlay">
 <div class="maintenance-content">
 <div class="maintenance-box">
@@ -550,21 +739,47 @@ Come back at 07:00.
 <button class="continue-button" id="continueButton" type="button">CONTINUE →</button>
 </div>
 
-<div class="maintenance-poster">
-<div class="poster-top">RAVE FESTIVAL 2027</div>
-<div class="poster-silhouette"></div>
-<div class="poster-title"><h2>A NEW ARTIST</h2><p>IS COMING</p></div>
-<div class="poster-countdown">
-<h3 id="maintenanceHeading">ARTIST ANNOUNCEMENT IN</h3>
-<div class="poster-timer">
-<div><span id="maintenanceHours">00</span><small>ORE</small></div>
-<div><span id="maintenanceMinutes">00</span><small>MINUTE</small></div>
-<div><span id="maintenanceSeconds">00</span><small>SECUNDE</small></div>
+<!-- ANUNT ARTIST - NUMAI PE MENTENANTA -->
+<div class="artist-announcement" id="maintenanceAnnouncement" aria-live="polite">
+<div class="artist-announcement-label">RAVE FESTIVAL 2027</div>
+<div class="artist-announcement-name" id="maintenanceArtistName">A NEW ARTIST</div>
+<div class="artist-announcement-coming" id="maintenanceArtistComing">IS COMING</div>
+<div class="artist-announcement-timer-label" id="maintenanceHeading">ARTIST ANNOUNCEMENT IN</div>
+
+<div class="artist-announcement-timer">
+<div class="announcement-time-item">
+<span id="maintenanceHours">00</span>
+<small>ORE</small>
 </div>
-<p id="maintenanceFooter">TODAY • 23:45 • STAY TUNED</p>
+<div class="announcement-time-item">
+<span id="maintenanceMinutes">00</span>
+<small>MINUTE</small>
+</div>
+<div class="announcement-time-item">
+<span id="maintenanceSeconds">00</span>
+<small>SECUNDE</small>
+</div>
+</div>
+
+<div class="artist-announcement-footer" id="maintenanceFooter">NOVEMBER 13 • 19:30 • STAY TUNED</div>
 </div>
 </div>
 </div>
+
+<!-- NUMARATOAREA FINALA 10-1 -->
+<div id="announcementFinalCountdown" aria-live="assertive">
+<div class="final-countdown-label">RAVE FESTIVAL 2027</div>
+<div class="final-countdown-number" id="finalCountdownNumber">10</div>
+<div class="final-countdown-footer">ARTIST ANNOUNCEMENT</div>
+</div>
+
+<!-- REVEAL FULL SCREEN -->
+<div id="artistReveal" aria-live="polite">
+<img src="./ALAN-WALKER.webp" alt="ALAN WALKER - RAVE FESTIVAL 2027"
+onerror="this.style.display='none';document.getElementById('artistRevealFallback').style.display='block';">
+<div id="artistRevealFallback" style="display:none;color:white;text-align:center;font-size:clamp(35px,8vw,90px);font-weight:900;letter-spacing:5px;">ALAN WALKER</div>
+<div class="artist-reveal-overlay"></div>
+<div class="artist-reveal-caption">ALAN WALKER • RAVE FESTIVAL 2027</div>
 </div>
 
 <audio id="mainMusic" loop preload="auto">
@@ -576,7 +791,6 @@ Come back at 07:00.
 <div class="phone-overlay" id="phoneOverlay">
 <div class="phone-device">
 <div class="phone-screen">
-
 <button class="phone-close" id="closePhoneButton" type="button">×</button>
 
 <div class="phone-top">
@@ -619,7 +833,6 @@ Come back at 07:00.
 </div>
 <div class="phone-page-content" id="phoneAppContent"></div>
 </div>
-
 </div>
 </div>
 </div>
@@ -831,6 +1044,9 @@ const siteAccessStatus=document.getElementById("siteAccessStatus");
 const siteAccessMessage=document.getElementById("siteAccessMessage");
 const siteAccessClock=document.getElementById("siteAccessClock");
 
+/* MOMENTUL ANUNTULUI: 13 NOIEMBRIE 2026, ORA 19:30 ROMANIA */
+const artistAnnouncementDate=new Date("2026-11-13T19:30:00+02:00").getTime();
+
 function getBucharestTime(){
 const parts=new Intl.DateTimeFormat("en-GB",{
 timeZone:"Europe/Bucharest",
@@ -849,52 +1065,179 @@ second:getPart("second")
 };
 }
 
-/* FUNDALURI AUTOMATE:
-   00:00–07:00 GALAXY STARS
-   07:00–07:01 TRANZITIE SPRE CELESTIAL
-   07:01–23:50 CELESTIAL
-   23:50–00:00 TRANZITIE SPRE GALAXY STARS
-*/
+function getBucharestDateParts(){
+const parts=new Intl.DateTimeFormat("en-GB",{
+timeZone:"Europe/Bucharest",
+year:"numeric",
+month:"2-digit",
+day:"2-digit"
+}).formatToParts(new Date());
+
+return{
+year:Number(parts.find(part=>part.type==="year").value),
+month:Number(parts.find(part=>part.type==="month").value),
+day:Number(parts.find(part=>part.type==="day").value)
+};
+}
+
+/* FUNDALURI AUTOMATE */
 function updateFestivalBackground(hour,minute,second){
 const secondsNow=hour*3600+minute*60+second;
 
 const morningStart=7*3600;
 const morningEnd=7*3600+60;
-
 const eveningStart=23*3600+50*60;
-const midnight=24*3600;
 
 let galaxyOpacity=1;
 let celestialOpacity=0;
 
-/* 07:00–07:01: GALAXY SE ESTOMPEAZA, CELESTIAL APARE */
 if(secondsNow>=morningStart&&secondsNow<morningEnd){
 const progress=(secondsNow-morningStart)/(morningEnd-morningStart);
 celestialOpacity=progress;
 galaxyOpacity=1-progress;
 }
-
-/* 07:01–23:50: CELESTIAL RAMANE VIZIBIL */
 else if(secondsNow>=morningEnd&&secondsNow<eveningStart){
 celestialOpacity=1;
 galaxyOpacity=0;
 }
-
-/* 23:50–00:00: CELESTIAL SE ESTOMPEAZA, GALAXY REVINE */
 else if(secondsNow>=eveningStart){
-const progress=(secondsNow-eveningStart)/(midnight-eveningStart);
+const progress=(secondsNow-eveningStart)/(24*3600-eveningStart);
 celestialOpacity=1-progress;
 galaxyOpacity=progress;
 }
 
-/* APLICAM TRANSPARENTA FUNDALURILOR */
 document.documentElement.style.setProperty("--galaxy-opacity",String(galaxyOpacity));
 document.documentElement.style.setProperty("--celestial-opacity",String(celestialOpacity));
+}
+
+/* CONFETTI PENTRU MOMENTUL ANUNTULUI */
+let announcementConfettiStarted=false;
+
+function launchAnnouncementConfetti(){
+if(announcementConfettiStarted)return;
+
+try{
+if(sessionStorage.getItem("raveNewArtistConfettiShown")==="yes")return;
+sessionStorage.setItem("raveNewArtistConfettiShown","yes");
+}catch(error){}
+
+announcementConfettiStarted=true;
+
+const oldContainer=document.getElementById("announcementConfetti");
+if(oldContainer)oldContainer.remove();
+
+const container=document.createElement("div");
+container.id="announcementConfetti";
+document.body.appendChild(container);
+
+const colors=["#00eaff","#4169e1","#8eb8ff","#ffffff","#8b5cf6"];
+
+for(let i=0;i<180;i++){
+const piece=document.createElement("div");
+piece.className="confetti-piece";
+piece.style.left=Math.random()*100+"%";
+piece.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+piece.style.animationDuration=(3+Math.random()*5)+"s";
+piece.style.animationDelay=(Math.random()*2)+"s";
+piece.style.transform="rotate("+Math.random()*360+"deg)";
+container.appendChild(piece);
+}
+
+setTimeout(()=>container.remove(),10000);
+}
+
+/* CONTROLUL NUMARATORII FINALE SI AL REVEAL-ULUI */
+let artistRevealStarted=false;
+
+function showArtistReveal(){
+if(artistRevealStarted)return;
+artistRevealStarted=true;
+
+const finalCountdown=document.getElementById("announcementFinalCountdown");
+const reveal=document.getElementById("artistReveal");
+const announcement=document.getElementById("maintenanceAnnouncement");
+
+if(finalCountdown)finalCountdown.classList.remove("active");
+if(announcement)announcement.style.display="none";
+
+if(reveal)reveal.classList.add("active");
+
+launchAnnouncementConfetti();
+}
+
+/* COUNTDOWN REAL-TIME PANA LA 19:30 */
+function updateArtistAnnouncement(){
+
+const now=Date.now();
+const remaining=artistAnnouncementDate-now;
+
+const setText=(id,value)=>{
+const element=document.getElementById(id);
+if(element)element.textContent=value;
+};
+
+const artistName=document.getElementById("maintenanceArtistName");
+const artistComing=document.getElementById("maintenanceArtistComing");
+const heading=document.getElementById("maintenanceHeading");
+const footer=document.getElementById("maintenanceFooter");
+
+const finalCountdown=document.getElementById("announcementFinalCountdown");
+const finalCountdownNumber=document.getElementById("finalCountdownNumber");
+
+if(remaining>10000){
+
+const totalSeconds=Math.floor(remaining/1000);
+const hours=Math.floor(totalSeconds/3600);
+const minutes=Math.floor((totalSeconds%3600)/60);
+const seconds=totalSeconds%60;
+
+setText("maintenanceHours",String(hours).padStart(2,"0"));
+setText("maintenanceMinutes",String(minutes).padStart(2,"0"));
+setText("maintenanceSeconds",String(seconds).padStart(2,"0"));
+
+if(artistName)artistName.textContent="A NEW ARTIST";
+if(artistComing)artistComing.textContent="IS COMING";
+if(heading)heading.textContent="ARTIST ANNOUNCEMENT IN";
+if(footer)footer.textContent="NOVEMBER 13 • 19:30 • STAY TUNED";
+
+if(finalCountdown)finalCountdown.classList.remove("active");
+
+return;
+}
+
+/* ULTIMELE 10 SECUNDE: 10, 9, 8 ... 1 */
+if(remaining>0){
+
+const finalNumber=Math.ceil(remaining/1000);
+
+if(finalCountdown)finalCountdown.classList.add("active");
+if(finalCountdownNumber)finalCountdownNumber.textContent=String(finalNumber);
+
+if(artistName)artistName.textContent="GET READY";
+if(artistComing)artistComing.textContent="ALAN WALKER";
+if(heading)heading.textContent="ARTIST ANNOUNCEMENT IN";
+if(footer)footer.textContent="NOVEMBER 13 • 19:30 • STAY TUNED";
+
+return;
+}
+
+/* LA 19:30: ALAN WALKER ESTE DEZVALUIT */
+setText("maintenanceHours","00");
+setText("maintenanceMinutes","00");
+setText("maintenanceSeconds","00");
+
+if(artistName)artistName.textContent="ALAN WALKER";
+if(artistComing)artistComing.textContent="IS COMING TO RAVE FESTIVAL";
+if(heading)heading.textContent="NEW ARTIST ANNOUNCED!";
+if(footer)footer.textContent="RAVE FESTIVAL 2027 • 15–18 JULY";
+
+showArtistReveal();
 }
 
 function updateSiteClockAndLight(){
 const now=new Date();
 const bucharest=getBucharestTime();
+const dateParts=getBucharestDateParts();
 
 const hour=bucharest.hour;
 const minute=bucharest.minute;
@@ -943,10 +1286,29 @@ const openingStart=7*3600;
 const fullyOpen=7*3600+60;
 const closingStart=23*3600+50*60;
 
+const announcementDay=
+dateParts.year===2026&&dateParts.month===11&&dateParts.day===14;
+
 let accessOpen=false;
 let overlayOpacity=1;
 
-if(secondsNow<openingStart){
+if(announcementDay){
+if(secondsNow<closingStart){
+accessOpen=true;
+overlayOpacity=0;
+siteAccessStatus.textContent="WEBSITE OPEN";
+siteAccessMessage.innerHTML=
+"THE NEW ARTIST IS NOW ANNOUNCED!<br>Welcome to RAVE FESTIVAL 2027.";
+}else{
+accessOpen=false;
+const progress=(secondsNow-closingStart)/(24*3600-closingStart);
+overlayOpacity=Math.min(1,progress);
+siteAccessStatus.textContent="WEBSITE CLOSING";
+siteAccessMessage.innerHTML=
+"The website is closing for today.<br>See you tomorrow at 07:00!";
+}
+}
+else if(secondsNow<openingStart){
 accessOpen=false;
 overlayOpacity=1;
 siteAccessStatus.textContent="WEBSITE CLOSED";
@@ -1414,73 +1776,7 @@ phoneOverlay.classList.remove("active");
 }
 });
 
-const artistAnnouncementDate=new Date("2026-11-07T23:45:00+02:00").getTime();
-let announcementConfettiStarted=false;
-let artistAlreadyRevealed=false;
-
-function launchAnnouncementConfetti(){
-if(announcementConfettiStarted)return;
-announcementConfettiStarted=true;
-
-const container=document.createElement("div");
-container.id="announcementConfetti";
-document.body.appendChild(container);
-
-const colors=["#00eaff","#4169e1","#ffffff","#ffd700","#ff00cc","#00ff99"];
-
-for(let i=0;i<180;i++){
-const piece=document.createElement("div");
-piece.className="confetti-piece";
-piece.style.left=Math.random()*100+"%";
-piece.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
-piece.style.animationDuration=(3+Math.random()*5)+"s";
-piece.style.animationDelay=(Math.random()*2)+"s";
-piece.style.transform="rotate("+Math.random()*360+"deg)";
-container.appendChild(piece);
-}
-
-setTimeout(()=>container.remove(),10000);
-}
-
-function revealNewArtist(){
-if(artistAlreadyRevealed)return;
-artistAlreadyRevealed=true;
-
-const poster=document.querySelector(".maintenance-poster");
-poster.style.background='linear-gradient(rgba(5,9,20,.20),rgba(5,9,20,.35)),url("./891288836_4784079731821693_4256196259621737418_n.png.jpg") center center/cover no-repeat';
-
-document.querySelector(".poster-title h2").textContent="ARTIST ANNOUNCED";
-document.querySelector(".poster-title p").textContent="A$AP ROCKY";
-document.getElementById("maintenanceHeading").textContent="THE ANNOUNCEMENT IS HERE";
-document.getElementById("maintenanceFooter").textContent="RAVE FESTIVAL 2027 • A$AP ROCKY";
-
-poster.classList.add("artist-announced");
-document.querySelector(".poster-silhouette").style.display="none";
-document.querySelector(".poster-countdown").style.display="none";
-
-launchAnnouncementConfetti();
-}
-
-function updateMaintenanceCountdown(){
-const distance=artistAnnouncementDate-Date.now();
-
-if(distance<=0){
-revealNewArtist();
-return;
-}
-
-const hours=Math.floor(distance/3600000);
-const minutes=Math.floor((distance%3600000)/60000);
-const seconds=Math.floor((distance%60000)/1000);
-
-document.getElementById("maintenanceHours").textContent=String(hours).padStart(2,"0");
-document.getElementById("maintenanceMinutes").textContent=String(minutes).padStart(2,"0");
-document.getElementById("maintenanceSeconds").textContent=String(seconds).padStart(2,"0");
-}
-
-updateMaintenanceCountdown();
-setInterval(updateMaintenanceCountdown,1000);
-
+/* COUNTDOWN PENTRU FESTIVAL */
 const festivalDate=new Date("2027-07-15T18:00:00+03:00").getTime();
 
 function updateFestivalCountdown(){
@@ -1525,6 +1821,11 @@ document.getElementById("continueButton").addEventListener("click",()=>{
 document.getElementById("maintenanceOverlay").style.display="none";
 document.body.style.overflow="";
 });
+
+/* ACTUALIZARE COUNTDOWN IN TIMP REAL */
+updateArtistAnnouncement();
+setInterval(updateArtistAnnouncement,1000);
+
 </script>
 
 </body>
