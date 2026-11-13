@@ -25,13 +25,48 @@ html{scroll-behavior:smooth;width:100%;overflow-x:hidden}
 --luxury-blue:#4169e1;
 --luxury-light:#8eb8ff;
 --luxury-white:#f4f7ff;
---luxury-border:rgba(100,150,255,.35)
+--luxury-border:rgba(100,150,255,.35);
+--galaxy-opacity:1;
+--celestial-opacity:0
 }
 body{
-min-height:100vh;width:100%;
-background:linear-gradient(rgba(5,9,20,.48),rgba(5,9,20,.58)),url("./Celestial Angel Gate Portal.png") center center/cover fixed no-repeat;
-color:var(--luxury-white);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden
+min-height:100vh;
+width:100%;
+position:relative;
+isolation:isolate;
+background:#050914;
+color:var(--luxury-white);
+font-family:Arial,Helvetica,sans-serif;
+overflow-x:hidden
 }
+
+/* AUTOMATIC GALAXY / CELESTIAL BACKGROUND */
+body::before,
+body::after{
+content:"";
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+background-position:center center;
+background-size:cover;
+background-repeat:no-repeat;
+background-attachment:fixed;
+transition:opacity 1s linear
+}
+body::before{
+background-image:
+linear-gradient(rgba(5,9,20,.48),rgba(5,9,20,.58)),
+url("./Galaxy Stars.png");
+opacity:var(--galaxy-opacity)
+}
+body::after{
+background-image:
+linear-gradient(rgba(5,9,20,.48),rgba(5,9,20,.58)),
+url("./Celestial Angel Gate Portal.png");
+opacity:var(--celestial-opacity)
+}
+
 img,video,iframe{max-width:100%}
 
 .site-clock{position:fixed;bottom:20px;left:20px;z-index:9997;min-width:190px;padding:10px 16px;text-align:center;background:rgba(5,12,29,.88);border:1px solid #8eb8ff;box-shadow:0 0 18px rgba(142,184,255,.35);backdrop-filter:blur(12px);color:#fff;pointer-events:none}
@@ -786,7 +821,7 @@ Come back at 07:00.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script>
-/* CEAS, PROGRAM LUMINI SI ACCES SITE - ORA ROMANIEI */
+/* CEAS, PROGRAM LUMINI, FUNDAL SI ACCES SITE - ORA ROMANIEI */
 
 const siteClockTime=document.getElementById("siteClockTime");
 const siteClockDate=document.getElementById("siteClockDate");
@@ -814,6 +849,49 @@ second:getPart("second")
 };
 }
 
+/* FUNDALURI AUTOMATE:
+   00:00–07:00 GALAXY STARS
+   07:00–07:01 TRANZITIE SPRE CELESTIAL
+   07:01–23:50 CELESTIAL
+   23:50–00:00 TRANZITIE SPRE GALAXY STARS
+*/
+function updateFestivalBackground(hour,minute,second){
+const secondsNow=hour*3600+minute*60+second;
+
+const morningStart=7*3600;
+const morningEnd=7*3600+60;
+
+const eveningStart=23*3600+50*60;
+const midnight=24*3600;
+
+let galaxyOpacity=1;
+let celestialOpacity=0;
+
+/* 07:00–07:01: GALAXY SE ESTOMPEAZA, CELESTIAL APARE */
+if(secondsNow>=morningStart&&secondsNow<morningEnd){
+const progress=(secondsNow-morningStart)/(morningEnd-morningStart);
+celestialOpacity=progress;
+galaxyOpacity=1-progress;
+}
+
+/* 07:01–23:50: CELESTIAL RAMANE VIZIBIL */
+else if(secondsNow>=morningEnd&&secondsNow<eveningStart){
+celestialOpacity=1;
+galaxyOpacity=0;
+}
+
+/* 23:50–00:00: CELESTIAL SE ESTOMPEAZA, GALAXY REVINE */
+else if(secondsNow>=eveningStart){
+const progress=(secondsNow-eveningStart)/(midnight-eveningStart);
+celestialOpacity=1-progress;
+galaxyOpacity=progress;
+}
+
+/* APLICAM TRANSPARENTA FUNDALURILOR */
+document.documentElement.style.setProperty("--galaxy-opacity",String(galaxyOpacity));
+document.documentElement.style.setProperty("--celestial-opacity",String(celestialOpacity));
+}
+
 function updateSiteClockAndLight(){
 const now=new Date();
 const bucharest=getBucharestTime();
@@ -830,6 +908,7 @@ String(second).padStart(2,"0");
 siteClockTime.textContent=timeText;
 siteAccessClock.textContent=timeText;
 
+/* DATA ROMANIEI */
 const dateText=new Intl.DateTimeFormat("ro-RO",{
 timeZone:"Europe/Bucharest",
 weekday:"long",
@@ -840,6 +919,10 @@ year:"numeric"
 
 siteClockDate.textContent=dateText.toLocaleUpperCase("ro-RO");
 
+/* ACTUALIZARE FUNDAL */
+updateFestivalBackground(hour,minute,second);
+
+/* PROGRAM LUMINI */
 const minutesNow=hour*60+minute;
 
 const lightsOn=
@@ -854,7 +937,6 @@ movingLights.style.opacity=lightsOn?"0.8":"0";
 }
 
 /* PROGRAM ACCES SITE */
-
 const secondsNow=hour*3600+minute*60+second;
 
 const openingStart=7*3600;
