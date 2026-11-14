@@ -381,6 +381,56 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .ticket-card h3{font-size:24px;margin-bottom:15px;color:#e8f0ff}
 .price{color:#a9c9ff;font-size:35px;margin-bottom:25px;font-weight:900}
 
+/* RAVE REVELION - VIZIBIL DOAR IN SECTIUNEA BILETE */
+#tickets .revelion-countdown{
+width:calc(100% - 20px);
+max-width:1000px;
+min-height:230px;
+margin:55px auto 0;
+padding:45px 20px;
+display:flex !important;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+visibility:visible !important;
+opacity:1 !important;
+position:relative;
+z-index:2;
+background:
+radial-gradient(ellipse at center,rgba(0,234,255,.22),transparent 65%),
+linear-gradient(145deg,#102448,#080f20 65%,#050914);
+border:2px solid #8eb8ff;
+box-shadow:
+0 0 18px rgba(0,234,255,.35),
+0 0 45px rgba(65,105,225,.35),
+inset 0 0 30px rgba(65,105,225,.18);
+backdrop-filter:blur(8px);
+}
+#tickets .revelion-title{
+display:block !important;
+visibility:visible !important;
+opacity:1 !important;
+color:#8eb8ff;
+font-size:clamp(32px,5vw,48px);
+font-weight:900;
+letter-spacing:5px;
+text-shadow:
+0 0 12px #4169e1,
+0 0 25px #00eaff;
+}
+#tickets .revelion-subtitle{
+display:block !important;
+visibility:visible !important;
+opacity:1 !important;
+margin:20px 0 0;
+color:#ffffff;
+font-size:clamp(15px,3vw,21px);
+font-weight:900;
+letter-spacing:4px;
+text-shadow:0 0 12px rgba(142,184,255,.65);
+}
+
 #artists{background:rgba(5,9,20,.32)}
 .artists{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 .artist{min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:25px;position:relative;overflow:hidden;border:1px solid var(--luxury-border);font-size:25px;font-weight:900;letter-spacing:2px;color:#fff;text-shadow:0 0 5px #000;background-size:cover;background-position:center;background-repeat:no-repeat;transition:.3s}
@@ -489,6 +539,9 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .countdown-item small{font-size:8px}
 section,#tickets{padding:75px 12px 60px}
 .ticket-card{width:100%;max-width:350px}
+#tickets .revelion-countdown{padding:35px 10px;margin-top:35px;min-height:160px;width:100%}
+#tickets .revelion-title{font-size:clamp(26px,7vw,36px);letter-spacing:3px}
+#tickets .revelion-subtitle{font-size:11px;letter-spacing:2px}
 .program-box{padding:20px 10px}
 .program-day{padding-left:10px}
 .program-day h3{font-size:21px}
@@ -739,6 +792,7 @@ Come back at 07:00.
 </div>
 </div>
 
+<!-- HOME - FARA RAVE REVELION -->
 <section class="home" id="home">
 <div class="home-content">
 <div class="year">2027</div>
@@ -767,19 +821,28 @@ Come back at 07:00.
 </div>
 </section>
 
+<!-- BILETE - RAVE REVELION ESTE AICI, NU PE HOME -->
 <section id="tickets">
 <h2 class="section-title">BILETE</h2>
+
 <div class="tickets">
 <div class="ticket-card">
 <h3>GENERAL ACCESS</h3>
 <div class="price">249 LEI</div>
 <a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button" target="_blank" rel="noopener noreferrer">CUMPĂRĂ</a>
 </div>
+
 <div class="ticket-card">
 <h3>VIP</h3>
 <div class="price">499 LEI</div>
 <a href="https://www.roblox.com/games/123235106040213/RAVE-FESTIVAL#!/store" class="home-button" target="_blank" rel="noopener noreferrer">CUMPĂRĂ</a>
 </div>
+</div>
+
+<!-- RAVE REVELION: BANNER STATIC, FARA COUNTDOWN -->
+<div class="revelion-countdown">
+<h2 class="revelion-title">RAVE REVELION</h2>
+<p class="revelion-subtitle">31 DECEMBRIE 2026</p>
 </div>
 </section>
 
@@ -984,6 +1047,16 @@ document.documentElement.style.setProperty("--galaxy-opacity",String(galaxyOpaci
 document.documentElement.style.setProperty("--celestial-opacity",String(celestialOpacity));
 }
 
+/* FUNCTIE NOUA: VERIFICA ZIUA IN FUSUL ORAR AL ROMANIEI */
+function isBucharestSunday(date=new Date()){
+const weekday=new Intl.DateTimeFormat("en-US",{
+timeZone:"Europe/Bucharest",
+weekday:"long"
+}).format(date);
+
+return weekday==="Sunday";
+}
+
 function updateSiteClockAndLight(){
 const now=new Date();
 const bucharest=getBucharestTime();
@@ -1041,17 +1114,31 @@ const closingStart=23*3600+50*60;
 let accessOpen=false;
 let overlayOpacity=1;
 
-if(secondsNow<openingStart){
+/* DUMINICA: SITE INCHIS TOATA ZIUA */
+if(isBucharestSunday(now)){
 accessOpen=false;
 overlayOpacity=1;
+
+siteAccessStatus.textContent="WEBSITE CLOSED";
+siteAccessMessage.innerHTML=
+"RAVE FESTIVAL website is closed every Sunday.<br>Come back Monday at 07:00.";
+}
+
+/* LUNI-SAMBATA: PROGRAM NORMAL */
+else if(secondsNow<openingStart){
+accessOpen=false;
+overlayOpacity=1;
+
 siteAccessStatus.textContent="WEBSITE CLOSED";
 siteAccessMessage.innerHTML=
 "The website is currently closed.<br>Come back at 07:00.";
 }
 else if(secondsNow<fullyOpen){
 accessOpen=true;
+
 const progress=(secondsNow-openingStart)/(fullyOpen-openingStart);
 overlayOpacity=1-progress;
+
 siteAccessStatus.textContent="WEBSITE OPENING";
 siteAccessMessage.innerHTML=
 "RAVE FESTIVAL is opening gradually.<br>Welcome!";
@@ -1059,19 +1146,23 @@ siteAccessMessage.innerHTML=
 else if(secondsNow<closingStart){
 accessOpen=true;
 overlayOpacity=0;
+
 siteAccessStatus.textContent="WEBSITE OPEN";
 siteAccessMessage.innerHTML=
 "Welcome to RAVE FESTIVAL 2027.<br>Enjoy the experience!";
 }
 else{
 accessOpen=false;
+
 const progress=(secondsNow-closingStart)/(24*3600-closingStart);
 overlayOpacity=Math.min(1,progress);
+
 siteAccessStatus.textContent="WEBSITE CLOSING";
 siteAccessMessage.innerHTML=
 "The website is closing for today.<br>See you tomorrow at 07:00!";
 }
 
+/* AFISARE SAU ASCUNDERE ECRAN INCHIS */
 if(accessOpen&&overlayOpacity<=0){
 siteAccessOverlay.style.display="none";
 document.body.style.overflowX="hidden";
@@ -1599,6 +1690,8 @@ document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
 
 updateFestivalCountdown();
 setInterval(updateFestivalCountdown,1000);
+
+/* RAVE REVELION: FARA COUNTDOWN SI FARA ACTIVARE AUTOMATA */
 
 /* MENTENANTA - DATA ROMANIEI */
 (function(){
