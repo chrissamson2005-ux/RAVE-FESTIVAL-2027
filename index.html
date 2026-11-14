@@ -87,7 +87,56 @@ body.white-light-on #nightWhiteLight{display:block;opacity:1}
 @keyframes beamPink{from{transform:rotate(-30deg)}to{transform:rotate(40deg)}}
 @keyframes beamWhite{from{transform:rotate(35deg)}to{transform:rotate(-35deg)}}
 
-/* ECRAN WEBSITE CLOSED - ANIMATIE COSMICA */
+/* FESTIVAL SMOKE FROM BOTH SIDES */
+#festivalSmoke{
+position:fixed;
+inset:0;
+z-index:100006;
+overflow:hidden;
+pointer-events:none;
+opacity:1;
+}
+.smoke-side{
+position:absolute;
+bottom:-20%;
+width:58vw;
+height:75vh;
+opacity:0;
+filter:blur(22px);
+mix-blend-mode:screen;
+background:
+radial-gradient(ellipse at 20% 70%,rgba(225,240,255,.65),transparent 48%),
+radial-gradient(ellipse at 45% 55%,rgba(190,215,255,.55),transparent 52%),
+radial-gradient(ellipse at 30% 35%,rgba(255,255,255,.38),transparent 48%),
+radial-gradient(ellipse at 70% 75%,rgba(125,170,255,.28),transparent 55%);
+}
+.smoke-left{left:-20%}
+.smoke-right{right:-20%}
+
+#festivalSmoke.active .smoke-left{
+animation:festivalSmokeLeft 18s ease-out forwards;
+}
+#festivalSmoke.active .smoke-right{
+animation:festivalSmokeRight 18s ease-out forwards;
+}
+@keyframes festivalSmokeLeft{
+0%{opacity:0;transform:translate(-25%,20%) scale(.65)}
+25%{opacity:.85}
+55%{opacity:.75;transform:translate(12%,-12%) scale(1.2)}
+100%{opacity:0;transform:translate(30%,-35%) scale(1.55)}
+}
+@keyframes festivalSmokeRight{
+0%{opacity:0;transform:translate(25%,20%) scale(.65)}
+25%{opacity:.85}
+55%{opacity:.75;transform:translate(-12%,-12%) scale(1.2)}
+100%{opacity:0;transform:translate(-30%,-35%) scale(1.55)}
+}
+
+@media(prefers-reduced-motion:reduce){
+#festivalSmoke{display:none}
+}
+
+/* ECRAN WEBSITE CLOSED */
 #siteAccessOverlay{
 position:fixed;inset:0;z-index:100005;
 display:none;align-items:center;justify-content:center;
@@ -337,7 +386,6 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .artist{min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:25px;position:relative;overflow:hidden;border:1px solid var(--luxury-border);font-size:25px;font-weight:900;letter-spacing:2px;color:#fff;text-shadow:0 0 5px #000;background-size:cover;background-position:center;background-repeat:no-repeat;transition:.3s}
 .artist:hover{transform:scale(1.04);border-color:#8eb8ff}
 .artist-name{position:relative;z-index:2;text-align:center}
-.artist-festival{position:relative;z-index:2;margin-top:9px;padding:7px 10px;color:#dceaff;background:rgba(8,20,45,.88);border:1px solid #8eb8ff;font-size:10px;font-weight:900;letter-spacing:2px;text-align:center}
 .artist-1{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./Meduza.png.png")}
 .artist-2{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./BABY%20GANG.png.png.png")}
 .artist-3{background-image:linear-gradient(transparent 15%,rgba(0,0,0,.90)),url("./AZTECA.png.png")}
@@ -433,7 +481,6 @@ section{min-height:100vh;padding:120px 30px 100px;background:rgba(5,9,20,.34)}
 .section-title{font-size:32px;letter-spacing:3px;margin-bottom:30px}
 .artists{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .artist{min-height:220px;padding:12px;font-size:16px}
-.artist-festival{font-size:7px;padding:6px}
 .countdown-box{margin:10px auto;padding:25px 10px}
 .countdown-title{font-size:15px;letter-spacing:2px}
 #countdown{gap:8px}
@@ -474,6 +521,7 @@ section,#tickets{padding:75px 12px 60px}
 .site-access-box{padding:30px 17px}
 .site-access-logo{letter-spacing:2px}
 .site-access-message{font-size:12px}
+.smoke-side{width:85vw;height:65vh;filter:blur(18px)}
 }
 @media(min-width:601px) and (max-width:1024px){
 .navbar{padding:12px 18px;gap:12px}
@@ -529,6 +577,12 @@ Come back at 07:00.
 <div class="festival-beam"></div>
 <div class="festival-beam"></div>
 <div class="festival-beam"></div>
+</div>
+
+<!-- FESTIVAL SMOKE EFFECT -->
+<div id="festivalSmoke" aria-hidden="true">
+<div class="smoke-side smoke-left"></div>
+<div class="smoke-side smoke-right"></div>
 </div>
 
 <div class="site-clock">
@@ -732,15 +786,15 @@ Come back at 07:00.
 <section id="artists">
 <h2 class="section-title">ARTIȘTI</h2>
 <div class="artists">
-<div class="artist artist-1"><span class="artist-name">MEDUZA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-<div class="artist artist-2"><span class="artist-name">BABY GANG</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-<div class="artist artist-3"><span class="artist-name">AZTECA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-<div class="artist artist-4"><span class="artist-name">PETRE ȘTEFAN</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-<div class="artist artist-5"><span class="artist-name">RAVA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-<div class="artist artist-6"><span class="artist-name">ZARA LARSSON</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-<div class="artist artist-7"><span class="artist-name">BORIS BREJCHA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-<div class="artist artist-8"><span class="artist-name">FRED AGAIN..</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
-<div class="artist artist-9"><span class="artist-name">ANYMA</span><span class="artist-festival">NEON RAVE FESTIVAL 2027</span></div>
+<div class="artist artist-1"><span class="artist-name">MEDUZA</span></div>
+<div class="artist artist-2"><span class="artist-name">BABY GANG</span></div>
+<div class="artist artist-3"><span class="artist-name">AZTECA</span></div>
+<div class="artist artist-4"><span class="artist-name">PETRE ȘTEFAN</span></div>
+<div class="artist artist-5"><span class="artist-name">RAVA</span></div>
+<div class="artist artist-6"><span class="artist-name">ZARA LARSSON</span></div>
+<div class="artist artist-7"><span class="artist-name">BORIS BREJCHA</span></div>
+<div class="artist artist-8"><span class="artist-name">FRED AGAIN..</span></div>
+<div class="artist artist-9"><span class="artist-name">ANYMA</span></div>
 <div class="artist artist-10"><span class="artist-name">ANDRA</span></div>
 <div class="artist artist-11"><span class="artist-name">IRINA RIMES</span></div>
 <div class="artist artist-12"><span class="artist-name">ALBERT NBN</span></div>
@@ -849,6 +903,50 @@ second:getPart("second")
 };
 }
 
+/* FESTIVAL SMOKE SCHEDULE - BUCHAREST TIME */
+let lastSmokeEvent="";
+
+function launchFestivalSmoke(eventKey){
+const smoke=document.getElementById("festivalSmoke");
+
+if(!smoke)return;
+if(lastSmokeEvent===eventKey)return;
+
+lastSmokeEvent=eventKey;
+smoke.classList.remove("active");
+
+void smoke.offsetWidth;
+
+smoke.classList.add("active");
+
+setTimeout(()=>{
+smoke.classList.remove("active");
+},18000);
+}
+
+function updateFestivalSmoke(hour,minute){
+const now=new Date();
+
+const dateParts=new Intl.DateTimeFormat("en-CA",{
+timeZone:"Europe/Bucharest",
+year:"numeric",
+month:"2-digit",
+day:"2-digit"
+}).format(now);
+
+if(hour===7&&minute===0){
+launchFestivalSmoke(dateParts+"-OPENING");
+}
+
+if(hour===17&&minute===30){
+launchFestivalSmoke(dateParts+"-LIGHTS");
+}
+
+if(hour===23&&minute===50){
+launchFestivalSmoke(dateParts+"-CLOSING");
+}
+}
+
 /* FUNDALURI AUTOMATE:
    00:00–07:00 GALAXY STARS
    07:00–07:01 TRANZITIE SPRE CELESTIAL
@@ -867,27 +965,21 @@ const midnight=24*3600;
 let galaxyOpacity=1;
 let celestialOpacity=0;
 
-/* 07:00–07:01: GALAXY SE ESTOMPEAZA, CELESTIAL APARE */
 if(secondsNow>=morningStart&&secondsNow<morningEnd){
 const progress=(secondsNow-morningStart)/(morningEnd-morningStart);
 celestialOpacity=progress;
 galaxyOpacity=1-progress;
 }
-
-/* 07:01–23:50: CELESTIAL RAMANE VIZIBIL */
 else if(secondsNow>=morningEnd&&secondsNow<eveningStart){
 celestialOpacity=1;
 galaxyOpacity=0;
 }
-
-/* 23:50–00:00: CELESTIAL SE ESTOMPEAZA, GALAXY REVINE */
 else if(secondsNow>=eveningStart){
 const progress=(secondsNow-eveningStart)/(midnight-eveningStart);
 celestialOpacity=1-progress;
 galaxyOpacity=progress;
 }
 
-/* APLICAM TRANSPARENTA FUNDALURILOR */
 document.documentElement.style.setProperty("--galaxy-opacity",String(galaxyOpacity));
 document.documentElement.style.setProperty("--celestial-opacity",String(celestialOpacity));
 }
@@ -921,6 +1013,9 @@ siteClockDate.textContent=dateText.toLocaleUpperCase("ro-RO");
 
 /* ACTUALIZARE FUNDAL */
 updateFestivalBackground(hour,minute,second);
+
+/* EFECT FUM LA 07:00, 17:30 SI 23:50 */
+updateFestivalSmoke(hour,minute);
 
 /* PROGRAM LUMINI */
 const minutesNow=hour*60+minute;
